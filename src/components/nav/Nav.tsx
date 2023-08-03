@@ -7,7 +7,7 @@ interface NavButtonProps {
 
 function NavButton(props: NavButtonProps) {
     return (
-        <a href={props.dir}>
+        <a href={props.dir} className = "nav-link">
             {props.text}
         </a>
     )

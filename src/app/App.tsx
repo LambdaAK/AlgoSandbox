@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from '../pages/Home/Home'
 import "./App.css"
 import Nav from '../components/nav/Nav'
+import Algos from '../pages/Algos/Algos'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/algos" element={<Algos/>} />
       </Routes>
     </BrowserRouter>
   )
