@@ -1,15 +1,38 @@
 @import "./../../css/util.scss";
 .title {
-    font-size: 3rem;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 2rem;
+    @include sm {
+        font-size: 3rem;
+    }
+    @include md {
+        font-size: 4rem;
+    }
 }
 
 .desc {
+    font-size: 1rem;
 
+    @include sm {
+        font-size: 1.2rem;
+    }
+
+    @include md {
+        font-size: 1.5rem;
+    }
 }
 
 .algos-link {
+    color: $interactive-color;
+    text-decoration: none;
+    font-size: 2rem;
+
+    @include sm {
+        font-size: 3rem;
+    }
+
+    @include md {
+        font-size: 4rem;
+    }
 
 }
 
@@ -21,5 +44,6 @@
     width: fit-content;
     gap: 5rem;
     margin-top: 10rem;
+    align-items: center;
     
 }

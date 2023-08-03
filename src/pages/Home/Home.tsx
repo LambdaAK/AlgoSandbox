@@ -16,12 +16,21 @@ function Desc() {
     )
 }
 
+function AlgosLink() {
+    return (
+        <a href="/algos" className = "algos-link">
+            Algos
+        </a>
+    )
+}
+
 
 export default function Home() {
     return (
         <div className = "home-container">
             <Title />
             <Desc />
+            <AlgosLink />
         </div>
     )
 }

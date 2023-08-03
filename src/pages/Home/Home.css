@@ -1,7 +1,45 @@
 .title {
-  font-size: 3rem;
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 2rem;
+}
+@media (min-width: 400px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+.desc {
+  font-size: 1rem;
+}
+@media (min-width: 400px) {
+  .desc {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 768px) {
+  .desc {
+    font-size: 1.5rem;
+  }
+}
+
+.algos-link {
+  color: #f39c12;
+  text-decoration: none;
+  font-size: 2rem;
+}
+@media (min-width: 400px) {
+  .algos-link {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  .algos-link {
+    font-size: 4rem;
+  }
 }
 
 .home-container {
@@ -12,6 +50,7 @@
   width: fit-content;
   gap: 5rem;
   margin-top: 10rem;
+  align-items: center;
 }
 
 /*# sourceMappingURL=Home.css.map */

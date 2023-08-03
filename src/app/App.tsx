@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from '../pages/Home/Home'
 import "./App.css"
+import Nav from '../components/nav/Nav'
 
 function App() {
 
