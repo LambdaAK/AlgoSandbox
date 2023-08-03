@@ -1,5 +1,9 @@
 .title {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 15px;
   font-size: 2rem;
+  color: #3498db;
 }
 @media (min-width: 400px) {
   .title {
@@ -13,6 +17,9 @@
 }
 
 .desc {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 15px;
   font-size: 1rem;
 }
 @media (min-width: 400px) {
@@ -27,6 +34,9 @@
 }
 
 .algos-link {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 15px;
   color: #f39c12;
   text-decoration: none;
   font-size: 2rem;
@@ -40,6 +50,9 @@
   .algos-link {
     font-size: 4rem;
   }
+}
+.algos-link:hover {
+  scale: 1.15;
 }
 
 .home-container {

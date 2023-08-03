@@ -1,5 +1,6 @@
 @import "./../../css/util.scss";
 .home-button {
+    @include shadow;
     color: $interactive-color;
     font-size: 2rem;
     margin-right: auto;

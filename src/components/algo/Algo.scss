@@ -1,0 +1,28 @@
+@import "./../../css/util.scss";
+
+.algo-title {
+    font-size: 1.5rem;
+    text-align: center;
+    @include sm {
+        font-size: 2rem;
+    }
+    @include md {
+        font-size: 2.5rem;
+    }
+}
+
+.algo-description {
+
+}
+
+.algo-icons {
+
+}
+
+.algo-container {
+    @include shadow;
+    width: min(60%, 40rem);
+    text-decoration: none;
+    color: $interactive-color;
+
+}
