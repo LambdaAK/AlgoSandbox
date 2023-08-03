@@ -3,6 +3,8 @@
 .algo-title {
     font-size: 1.5rem;
     text-align: center;
+    color: $interactive-color;
+    margin-bottom: 1rem;
     @include sm {
         font-size: 2rem;
     }
@@ -11,12 +13,29 @@
     }
 }
 
-.algo-description {
+.algo-desc {
+    color: $primary-color;
+    font-size: 0.75rem;
+    @include sm {
+        font-size: 1rem;
+    }
 
+    @include md {
+        font-size: 1.25rem;
+    }
 }
 
 .algo-icons {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    @include md {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 }
 
 .algo-container {

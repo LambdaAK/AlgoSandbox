@@ -1,0 +1,10 @@
+@import "./../../css/util.scss";
+
+.algo-icon {
+    @include shadow;
+    width: fit-content;
+    font-size: 1rem;
+    color: paleturquoise;
+    text-align: center;
+    text-justify: center;
+}

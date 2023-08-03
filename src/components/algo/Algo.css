@@ -1,6 +1,8 @@
 .algo-title {
   font-size: 1.5rem;
   text-align: center;
+  color: #f39c12;
+  margin-bottom: 1rem;
 }
 @media (min-width: 400px) {
   .algo-title {
@@ -10,6 +12,36 @@
 @media (min-width: 768px) {
   .algo-title {
     font-size: 2.5rem;
+  }
+}
+
+.algo-desc {
+  color: #3498db;
+  font-size: 0.75rem;
+}
+@media (min-width: 400px) {
+  .algo-desc {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .algo-desc {
+    font-size: 1.25rem;
+  }
+}
+
+.algo-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .algo-icons {
+    flex-direction: row;
+    justify-content: space-evenly;
   }
 }
 
