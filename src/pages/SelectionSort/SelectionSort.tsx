@@ -49,7 +49,16 @@ const complexity: Complexity = {
 }
 
 const props: AlgoPageProps = {
-    overview: "Overview for selection sort.",
+    name: "Selection Sort",
+    overview:
+    `
+    Selection Sort is a straightforward comparison-based sorting algorithm that effectively sorts an array by dividing it into two regions: the sorted portion and the unsorted portion. The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion and moves it to the end of the sorted region. This process continues iteratively until the entire array becomes sorted.
+
+    
+    The Selection Sort algorithm efficiently works by iterating through the unsorted portion and finding the minimum (or maximum) element. Once identified, the algorithm swaps this element with the first element of the unsorted region. This operation effectively expands the sorted region by one element and reduces the unsorted region's size by one. The process then repeats, with each iteration adding one more element to the sorted section, until the entire array becomes sorted.
+    
+    
+    `,
     implementations: [pythonImplentation, javaImplentation],
     complexity: complexity,
     sandbox: () => <div>Sandbox Component</div>

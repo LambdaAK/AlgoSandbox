@@ -40,18 +40,65 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
+  max-width: 75%;
+  font-size: 1.5rem;
 }
 
 .algo-complexity {
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 400px) {
+  .algo-complexity {
+    grid-template-columns: 3fr 1fr;
+  }
 }
 
 .algo-implementations {
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
+}
+
+.algo-header {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+@media (min-width: 400px) {
+  .algo-header {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  .algo-header {
+    font-size: 4rem;
+  }
+}
+
+.complexity-formula {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  color: #3498db;
+  width: fit-content;
+  align-self: center;
+  font-size: 1.5rem;
+}
+@media (min-width: 400px) {
+  .complexity-formula {
+    font-size: 2rem;
+  }
 }
 
 /*# sourceMappingURL=AlgoPage.css.map */

@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./AlgoPage.css"
 import HomeButton from "../homebutton/HomeButton"
 
+
 export interface Complexity {
 	bestCaseTime: string,
 	averageCaseTime: string,
@@ -17,6 +18,7 @@ export interface Implementation {
 }
 
 export interface AlgoPageProps {
+    name: string,
 	overview: string,
 	implementations: Implementation[],
 	complexity: Complexity,
@@ -30,12 +32,20 @@ enum AlgoPageState {
     Sandbox
 }
 
-
 interface AlgoNavButtonProps {
     text: string,
     value: AlgoPageState,
     setter: Function
 }
+
+function AlgoHeader(props: AlgoPageProps) {
+    return (
+        <div className = "algo-header">
+            {props.name}
+        </div>
+    )
+}
+
 function AlgoNavButton(props: AlgoNavButtonProps) {
     return (
         <div className = "algo-nav-button" onClick = {() => props.setter(props.value)}>
@@ -55,7 +65,18 @@ function OverViewComponent(props: AlgoPageProps) {
 function ComplexityComponent(props: AlgoPageProps) {
     return (
         <div className = "algo-complexity">
-            Complexity
+            Worst Case Time Complexity:
+            <span className = "complexity-formula">{props.complexity.worstCaseTime}</span>
+            Average Case Time Complexity:  
+            <span className = "complexity-formula">{props.complexity.averageCaseTime}</span>
+            Best Case Time Complexity:
+            <span className = "complexity-formula">{props.complexity.bestCaseTime}</span>
+            Worst Case Space Complexity:
+            <span className = "complexity-formula">{props.complexity.worstCaseSpace}</span> 
+            Average Case Space Complexity:
+            <span className = "complexity-formula">{props.complexity.averageCaseSpace}</span>
+            Best Case Space Complexity:
+            <span className = "complexity-formula">{props.complexity.bestCaseSpace}</span>
         </div>
     )
 }
@@ -76,6 +97,7 @@ export function AlgoPage(props: AlgoPageProps) {
     return (
         <div className = "algo-page">
             <HomeButton/>
+            <AlgoHeader {...props}/>
             <div className = "algo-nav">
                 <AlgoNavButton text = "Overview" value = {AlgoPageState.Overview} setter = {setPageState}/>
                 <AlgoNavButton text = "Complexity" value = {AlgoPageState.Complexity} setter = {setPageState}/>

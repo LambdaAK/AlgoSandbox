@@ -35,12 +35,50 @@
 
 .algo-overview {
     @include shadow;
+    max-width: 75%;
+    font-size: 1.5rem;
 }
 
 .algo-complexity {
     @include shadow;
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include sm {
+        grid-template-columns: 3fr 1fr;
+    }
 }
 
 .algo-implementations {
     @include shadow;
+}
+
+.algo-header {
+    @include shadow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    @include sm {
+        font-size: 3rem;
+    }
+    @include md {
+        font-size: 4rem;
+    }
+}
+
+.complexity-formula {
+    @include shadow;
+    color: $primary-color;
+    width: fit-content;
+    // center it
+    align-self: center;
+    font-size: 1.5rem;
+
+    @include sm {
+        font-size: 2rem;
+    }
 }
