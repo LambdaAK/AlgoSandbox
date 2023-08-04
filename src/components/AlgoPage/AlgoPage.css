@@ -1,0 +1,57 @@
+.algo-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.algo-nav {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 8rem;
+}
+@media (min-width: 400px) {
+  .algo-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .algo-nav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.algo-nav-button {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  width: fit-content;
+  text-align: center;
+  text-justify: center;
+  color: #f39c12;
+  font-size: 1rem;
+}
+
+.algo-overview {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.algo-complexity {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.algo-implementations {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/*# sourceMappingURL=AlgoPage.css.map */

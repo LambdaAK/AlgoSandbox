@@ -13,7 +13,6 @@ function NavButton(props: NavButtonProps) {
     )
 }
 
-
 export default function Nav() {
     return (
         <div className = "nav-container">
