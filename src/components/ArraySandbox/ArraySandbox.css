@@ -3,21 +3,29 @@
   border-radius: 8px;
   padding: 10px;
   display: flex;
-  gap: 1rem;
-  margin-top: 5rem;
-  padding: 2.5rem;
+  flex-wrap: wrap;
+  width: min(80%, 40rem);
+  margin-left: auto;
+  margin-right: auto;
+  gap: 0.5rem;
 }
 
 .array-input {
+  border: none;
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
+  background-color: #1e1e1e;
+  color: white;
 }
 
 .target-input {
+  border: none;
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
+  background-color: #1e1e1e;
+  color: white;
 }
 
 .array-input-section {
@@ -30,11 +38,13 @@
 }
 
 .run-button {
+  border: none;
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
   width: fit-content;
   color: #f39c12;
+  background-color: #1e1e1e;
 }
 
 .element {
@@ -67,6 +77,13 @@
   padding: 10px;
   color: white;
   background-color: #1e1e1e;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  max-width: min(80%, 40rem);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=ArraySandbox.css.map */

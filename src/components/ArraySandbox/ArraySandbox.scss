@@ -3,18 +3,28 @@
 .array-display {
     @include shadow;
     display: flex;
-    gap: 1rem;
-    margin-top: 5rem;
-    padding: 2.5rem;
+    flex-wrap: wrap;
+    width: min(80%, 40rem);
+    margin-left: auto;
+    margin-right: auto;
+    gap: 0.5rem;
+    
+
 }
 
 .array-input {
+    border: none;
     @include shadow;
-
+    background-color: $background-color;
+    color: white;
 }
 
+
 .target-input {
+    border: none;
     @include shadow;
+    background-color: $background-color;
+    color: white;
 }
 
 .array-input-section {
@@ -25,9 +35,11 @@
 }
 
 .run-button {
+    border: none;
     @include shadow;
     width: fit-content;
     color: $interactive-color;
+    background-color: $background-color;
 }
 
 .element {
@@ -52,10 +64,15 @@
     background-color: $highlight-color;
 }
 
-
-
 .dialog-box {
     @include shadow;
     color: white;
     background-color: $background-color;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    max-width: min(80%, 40rem);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1.5rem;
 }

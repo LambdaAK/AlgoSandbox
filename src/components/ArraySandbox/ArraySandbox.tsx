@@ -73,7 +73,12 @@ function InputSection(props: InputSectionProps) {
 
 function ArrayInput() {
     return (
-        <input id = "array-input" className = "array-input" type = "text">
+        <input
+            id = "array-input"
+            className = "array-input"
+            type = "text"
+            placeholder = "Input Array"
+        >
 
         </input>
     )
@@ -81,7 +86,12 @@ function ArrayInput() {
 
 function TargetInput() {
     return (
-        <input id = "target-input" className = "target-input" type = "text">
+        <input
+            id = "target-input"
+            className = "target-input"
+            type = "text"
+            placeholder = "Input Target Value"   
+        >
 
         </input>
     )
@@ -120,12 +130,10 @@ export interface ArraySandboxProps {
     stateGenerator: Function
 }
 
-
 export interface ArraySandboxState {
     dialog: string,
     elements: ElementProps[]
 }
-
 
 export function ArraySandbox(props: ArraySandboxProps) {
 
