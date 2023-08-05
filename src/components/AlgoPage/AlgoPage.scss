@@ -35,24 +35,25 @@
 
 .algo-overview {
     @include shadow;
-    max-width: 75%;
+    max-width: 50%;
     font-size: 1.5rem;
 }
 
 .algo-complexity {
     @include shadow;
-    font-size: 1.5rem;
+    font-size: 1rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
 
     @include sm {
         grid-template-columns: 3fr 1fr;
+        font-size: 1.5rem;
     }
 }
 
 .algo-implementations {
-    @include shadow;
+
 }
 
 .algo-header {
@@ -81,4 +82,37 @@
     @include sm {
         font-size: 2rem;
     }
+}
+
+.overview-sentence {
+    @include shadow;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    @include sm {
+        font-size: 1rem;
+    }
+    @include md {
+        font-size: 1.2rem;
+    }
+}
+
+.language-buttons {
+    @include shadow;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.language-button {
+    @include shadow;
+    width: fit-content;
+    color: $primary-color;
+}
+
+.language-button-selected {
+    @extend .language-button;
+    color: $secondary-color;
 }

@@ -2,8 +2,7 @@ import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../compo
 
 
 const pythonCode: string =
-`
-def selection_sort(arr):
+`def selection_sort(arr):
     for i in range(len(arr)):
         min_index = i
         for j in range(i + 1, len(arr)):
@@ -13,8 +12,7 @@ def selection_sort(arr):
 `
 
 const javaCode: string =
-`
-public static void selectionSort(int[] arr) {
+`public static void selectionSort(int[] arr) {
     for (int i = 0; i < arr.length; i++) {
         int minIndex = i;
         for (int j = i + 1; j < arr.length; j++) {
@@ -29,15 +27,58 @@ public static void selectionSort(int[] arr) {
 }
 `
 
+const cppCode: string =
+`void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        int temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+}
+`
+
+const jsCode: string =
+`function selectionSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        let temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+}
+`
+
 const pythonImplentation: Implementation = {
-    language: "Python",
+    language: "python",
     code: pythonCode
 }
 
 const javaImplentation: Implementation = {
-    language: "Java",
+    language: "java",
     code: javaCode
 }
+
+const cppImplentation: Implementation = {
+    language: "cpp",
+    code: cppCode
+}
+
+const jsImplentation: Implementation = {
+    language: "javascript",
+    code: jsCode
+}
+
 
 const complexity: Complexity = {
     bestCaseTime: "O(n^2)",
@@ -50,16 +91,14 @@ const complexity: Complexity = {
 
 const props: AlgoPageProps = {
     name: "Selection Sort",
-    overview:
-    `
-    Selection Sort is a straightforward comparison-based sorting algorithm that effectively sorts an array by dividing it into two regions: the sorted portion and the unsorted portion. The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion and moves it to the end of the sorted region. This process continues iteratively until the entire array becomes sorted.
-
-    
-    The Selection Sort algorithm efficiently works by iterating through the unsorted portion and finding the minimum (or maximum) element. Once identified, the algorithm swaps this element with the first element of the unsorted region. This operation effectively expands the sorted region by one element and reduces the unsorted region's size by one. The process then repeats, with each iteration adding one more element to the sorted section, until the entire array becomes sorted.
-    
-    
-    `,
-    implementations: [pythonImplentation, javaImplentation],
+    overview: [
+        "Selection sort is a sorting algorithm that sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning.",
+        "The algorithm maintains two subarrays in a given array.",
+        "1) The subarray which is already sorted.",
+        "2) Remaining subarray which is unsorted.",
+        "In every iteration of selection sort, the minimum element (considering ascending order) from the unsorted subarray is picked and moved to the sorted subarray."
+    ],
+    implementations: [pythonImplentation, javaImplentation, cppImplentation, jsImplentation],
     complexity: complexity,
     sandbox: () => <div>Sandbox Component</div>
 }

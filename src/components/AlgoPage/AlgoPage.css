@@ -40,7 +40,7 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
-  max-width: 75%;
+  max-width: 50%;
   font-size: 1.5rem;
 }
 
@@ -48,7 +48,7 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
@@ -56,13 +56,8 @@
 @media (min-width: 400px) {
   .algo-complexity {
     grid-template-columns: 3fr 1fr;
+    font-size: 1.5rem;
   }
-}
-
-.algo-implementations {
-  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
-  border-radius: 8px;
-  padding: 10px;
 }
 
 .algo-header {
@@ -99,6 +94,48 @@
   .complexity-formula {
     font-size: 2rem;
   }
+}
+
+.overview-sentence {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 400px) {
+  .overview-sentence {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .overview-sentence {
+    font-size: 1.2rem;
+  }
+}
+
+.language-buttons {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.language-button, .language-button-selected {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  width: fit-content;
+  color: #3498db;
+}
+
+.language-button-selected {
+  color: #e74c3c;
 }
 
 /*# sourceMappingURL=AlgoPage.css.map */

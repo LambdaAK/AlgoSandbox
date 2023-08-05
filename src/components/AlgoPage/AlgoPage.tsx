@@ -1,6 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./AlgoPage.css"
 import HomeButton from "../homebutton/HomeButton"
+import Prism from "prismjs"
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark, materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { docco, nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
 
 
 export interface Complexity {
@@ -19,7 +25,7 @@ export interface Implementation {
 
 export interface AlgoPageProps {
     name: string,
-	overview: string,
+	overview: string[],
 	implementations: Implementation[],
 	complexity: Complexity,
 	sandbox: Function // a component
@@ -57,7 +63,9 @@ function AlgoNavButton(props: AlgoNavButtonProps) {
 function OverViewComponent(props: AlgoPageProps) {
     return (
         <div className = "algo-overview">
-            {props.overview}
+            {
+                props.overview.map(s => <li className = "overview-sentence">{s}</li>)
+            }
         </div>
     )
 }
@@ -81,10 +89,56 @@ function ComplexityComponent(props: AlgoPageProps) {
     )
 }
 
+
 function ImplementationsComponent(props: AlgoPageProps) {
+    const [language, setLanguage] = useState<string>("python")
+    const [code, setCode] = useState<string>("")
+
+    useEffect(() => {
+        // get the code for the language
+        const implementation: Implementation | undefined = props.implementations.find(i => i.language === language)
+        if (implementation) {
+            setCode(implementation.code)
+        }
+        
+    }, [language])
+
     return (
+        
         <div className = "algo-implementations">
-            Implementations
+            <div className = "language-buttons">
+                {
+                    props.implementations.map(i => <LanguageButton language = {i.language} currentLanguage = {language} setter = {setLanguage}/>)
+                }
+            </div>
+            <SyntaxHighlighter language = {language} style = {materialDark} customStyle={{
+                borderRadius: "8px",
+                boxShadow: "0 30px 30px hsla(0, 0%, 0%, 0.25)",
+                padding: "10px"
+            }}>
+
+            {code}
+            </SyntaxHighlighter>
+        </div> 
+    )
+}
+
+interface LanguageButtonProps {
+    language: string,
+    currentLanguage: string,
+    setter: Function
+}
+function LanguageButton(props: LanguageButtonProps) {
+    const cssClass: string = (() => {
+        if (props.language === props.currentLanguage) {
+            return "language-button-selected"
+        }
+        return "language-button"
+    })()
+    return (
+        
+        <div className = {cssClass} onClick = {() => props.setter(props.language)}>
+            {props.language}
         </div>
     )
 }
@@ -119,6 +173,7 @@ export function AlgoPage(props: AlgoPageProps) {
                 })()
             }
 
+            
         </div>
     )
 }
