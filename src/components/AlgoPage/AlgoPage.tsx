@@ -94,6 +94,12 @@ function ImplementationsComponent(props: AlgoPageProps) {
     const [language, setLanguage] = useState<string>("python")
     const [code, setCode] = useState<string>("")
 
+    const [width, setWidth] = useState<number>(window.innerWidth)
+
+    addEventListener("resize", () => {
+        setWidth(window.innerWidth)
+    })
+
     useEffect(() => {
         // get the code for the language
         const implementation: Implementation | undefined = props.implementations.find(i => i.language === language)
@@ -104,7 +110,6 @@ function ImplementationsComponent(props: AlgoPageProps) {
     }, [language])
 
     return (
-        
         <div className = "algo-implementations">
             <div className = "language-buttons">
                 {
@@ -114,7 +119,15 @@ function ImplementationsComponent(props: AlgoPageProps) {
             <SyntaxHighlighter language = {language} style = {materialDark} customStyle={{
                 borderRadius: "8px",
                 boxShadow: "0 30px 30px hsla(0, 0%, 0%, 0.25)",
-                padding: "10px"
+                fontSize: (() => {
+                    if (width < 400) {
+                        return "0.3rem"
+                    }
+                    else if (width < 768) {
+                        return "0.7rem"
+                    }
+                    return "1.2rem"
+                })()
             }}>
 
             {code}

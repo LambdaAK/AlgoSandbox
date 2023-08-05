@@ -118,12 +118,26 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
   width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.5rem;
+}
+@media (min-width: 400px) {
+  .language-buttons {
+    grid-template-columns: 1fr 1fr;
+    font-size: 0.8rem;
+  }
+}
+@media (min-width: 768px) {
+  .language-buttons {
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 1rem;
+  }
 }
 
 .language-button, .language-button-selected {
@@ -132,10 +146,12 @@
   padding: 10px;
   width: fit-content;
   color: #3498db;
+  transition: ease-in-out all 0.25s;
 }
 
 .language-button-selected {
   color: #e74c3c;
+  transform: translateY(-5px);
 }
 
 /*# sourceMappingURL=AlgoPage.css.map */
