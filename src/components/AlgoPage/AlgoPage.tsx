@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark, materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { docco, nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrayDisplay, ArraySandbox, Property } from "../ArraySandbox/ArraySandbox";
 
 
 
@@ -252,10 +253,8 @@ export function AlgoPage(props: AlgoPageProps) {
                     }
                 })()
             }
-            
+        
         </div>
-
-            
 
         </AnimatePresence>
     )

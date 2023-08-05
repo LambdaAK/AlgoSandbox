@@ -1,0 +1,61 @@
+@import "./../../css/util.scss";
+
+.array-display {
+    @include shadow;
+    display: flex;
+    gap: 1rem;
+    margin-top: 5rem;
+    padding: 2.5rem;
+}
+
+.array-input {
+    @include shadow;
+
+}
+
+.target-input {
+    @include shadow;
+}
+
+.array-input-section {
+    @include shadow;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 1rem;
+}
+
+.run-button {
+    @include shadow;
+    width: fit-content;
+    color: $interactive-color;
+}
+
+.element {
+    @include shadow;
+    width: fit-content;
+    text-align: center;
+    text-justify: center;
+    color: black;
+    font-size: 2rem;
+    background-color: $neutral-color;
+}
+
+.primary {
+    background-color: $primary-color;
+}
+
+.secondary {
+    background-color: $secondary-color;
+}
+
+.highlight {
+    background-color: $highlight-color;
+}
+
+
+
+.dialog-box {
+    @include shadow;
+    color: white;
+    background-color: $background-color;
+}
