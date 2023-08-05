@@ -4,10 +4,33 @@
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  width: min(80%, 40rem);
+  width: min(80%, 80rem);
   margin-left: auto;
   margin-right: auto;
   gap: 0.5rem;
+}
+
+.input-modal {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: min(80%, 80rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-fields {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+@media (min-width: 400px) {
+  .input-fields {
+    grid-template-columns: 5fr 1fr;
+  }
 }
 
 .array-input {
@@ -17,6 +40,7 @@
   padding: 10px;
   background-color: #1e1e1e;
   color: white;
+  font-size: 1rem;
 }
 
 .target-input {
@@ -35,6 +59,9 @@
   display: grid;
   grid-template-columns: 4fr 1fr;
   gap: 1rem;
+  width: min(80%, 80rem);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .run-button {
@@ -45,6 +72,7 @@
   width: fit-content;
   color: #f39c12;
   background-color: #1e1e1e;
+  font-size: 1.2rem;
 }
 
 .element {
@@ -55,7 +83,7 @@
   text-align: center;
   text-justify: center;
   color: black;
-  font-size: 2rem;
+  font-size: 1rem;
   background-color: #bdc3c7;
 }
 
@@ -79,11 +107,11 @@
   background-color: #1e1e1e;
   margin-top: 3rem;
   margin-bottom: 1rem;
-  max-width: min(80%, 40rem);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-size: 1.5rem;
+  width: min(80%, 80rem);
 }
 
 /*# sourceMappingURL=ArraySandbox.css.map */

@@ -4,12 +4,29 @@
     @include shadow;
     display: flex;
     flex-wrap: wrap;
-    width: min(80%, 40rem);
+    width: min(80%, 80rem);
     margin-left: auto;
     margin-right: auto;
     gap: 0.5rem;
-    
+}
 
+.input-modal {
+    @include shadow;
+    display: flex;
+    flex-direction: column;
+    width: min(80%, 80rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    @include sm {
+        grid-template-columns: 5fr 1fr;
+    }
 }
 
 .array-input {
@@ -17,8 +34,8 @@
     @include shadow;
     background-color: $background-color;
     color: white;
+    font-size: 1rem;
 }
-
 
 .target-input {
     border: none;
@@ -32,6 +49,9 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
     gap: 1rem;
+    width: min(80%, 80rem);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .run-button {
@@ -40,6 +60,7 @@
     width: fit-content;
     color: $interactive-color;
     background-color: $background-color;
+    font-size: 1.2rem;
 }
 
 .element {
@@ -48,9 +69,10 @@
     text-align: center;
     text-justify: center;
     color: black;
-    font-size: 2rem;
+    font-size: 1rem;
     background-color: $neutral-color;
 }
+
 
 .primary {
     background-color: $primary-color;
@@ -70,9 +92,9 @@
     background-color: $background-color;
     margin-top: 3rem;
     margin-bottom: 1rem;
-    max-width: min(80%, 40rem);
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-size: 1.5rem;
+    width: min(80%, 80rem);
 }

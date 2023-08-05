@@ -62,9 +62,12 @@ function InputSection(props: InputSectionProps) {
     }, [])
 
     return (
-        <div className = "array-input-section">
-            <ArrayInput/>
-            <TargetInput/>
+        <div className = "input-modal">
+            <div className = "input-fields">
+                <ArrayInput/>
+                <TargetInput/>
+            </div>
+            
             <RunButton/>
         </div>
     )
@@ -156,7 +159,7 @@ export function ArraySandbox(props: ArraySandboxProps) {
         }
         const id = setTimeout(() => {
             setStates(states.slice(1))
-        }, 2000)
+        }, 500)
 
         return () => clearTimeout(id) // clear the timeout when the component unmounts
 
