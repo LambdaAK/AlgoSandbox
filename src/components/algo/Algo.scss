@@ -9,12 +9,16 @@
     text-align: center;
     color: $interactive-color;
     margin-bottom: 1rem;
+    &:hover {
+        transform: translateY(-10px);
+    }
     @include sm {
         font-size: 2rem;
     }
     @include md {
         font-size: 2.5rem;
     }
+    transition: ease-in-out all 0.2s;
 }
 
 .algo-desc {

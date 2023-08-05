@@ -3,10 +3,17 @@ import "./Algo.css"
 
 interface TitleProps {
     name: string,
+    dir: string
 }
 function Title(props: TitleProps) {
     return (
-        <div className="algo-title">
+        <div className="algo-title"
+        onClick = {
+            () => {
+                window.location.href = props.dir
+            }
+        }
+        >
             {props.name}
         </div>
     )
@@ -26,13 +33,14 @@ function Desc(props: DescProps) {
 interface AlgoProps {
     name: string,
     desc: string,
-    icons: string[]
+    icons: string[],
+    dir: string
 }
 
 export default function Algo(props: AlgoProps) {
     return (
         <div className="algo-container">
-            <Title name = {props.name}/>
+            <Title name = {props.name} dir = {props.dir}/>
             <Desc desc = {props.desc}/>
             <div className = "algo-icons">
             {

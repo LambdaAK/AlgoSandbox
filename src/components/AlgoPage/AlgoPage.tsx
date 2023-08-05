@@ -6,6 +6,7 @@ import Prism from "prismjs"
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark, materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { docco, nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { AnimatePresence, motion } from "framer-motion";
 
 
 
@@ -66,6 +67,30 @@ function OverViewComponent(props: AlgoPageProps) {
             {
                 props.overview.map(s => <li className = "overview-sentence">{s}</li>)
             }
+            <AnimatePresence>
+                <motion.div
+                initial = {{
+                    opacity: 0,
+                    x: 100
+                }}
+                animate = {{
+                    opacity: 1,
+                    x: 0
+                }}
+                transition = {{
+                    duration: 0.5
+                }}
+                key = "a"
+                exit = {{
+                    opacity: 0,
+                    x: -100
+                }}
+                
+
+                >
+                    aegaegaegaegaeg
+                </motion.div>
+            </AnimatePresence>
         </div>
     )
 }
@@ -109,30 +134,50 @@ function ImplementationsComponent(props: AlgoPageProps) {
         
     }, [language])
 
+
     return (
-        <div className = "algo-implementations">
+        <>
+        <motion.div className = "algo-implementations">
             <div className = "language-buttons">
                 {
                     props.implementations.map(i => <LanguageButton language = {i.language} currentLanguage = {language} setter = {setLanguage}/>)
                 }
             </div>
-            <SyntaxHighlighter language = {language} style = {materialDark} customStyle={{
-                borderRadius: "8px",
-                boxShadow: "0 30px 30px hsla(0, 0%, 0%, 0.25)",
-                fontSize: (() => {
-                    if (width < 400) {
-                        return "0.3rem"
-                    }
-                    else if (width < 768) {
-                        return "0.7rem"
-                    }
-                    return "1.2rem"
-                })()
-            }}>
-
-            {code}
-            </SyntaxHighlighter>
-        </div> 
+            <motion.div
+                initial = {{
+                    opacity: 0,
+                    x: 100
+                }}
+                animate = {{
+                    opacity: 1,
+                    x: 0
+                }}
+                transition = {{
+                    duration: 0.5
+                }}
+                exit = {{
+                    opacity: 0,
+                    x: -100
+                }}
+            >
+                <SyntaxHighlighter language = {language} style = {materialDark} customStyle={{
+                                    borderRadius: "8px",
+                                    boxShadow: "0 30px 30px hsla(0, 0%, 0%, 0.25)",
+                                    fontSize: (() => {
+                                        if (width < 400) {
+                                            return "0.3rem"
+                                        }
+                                        else if (width < 768) {
+                                            return "0.7rem"
+                                        }
+                                        return "1.2rem"
+                                    })()
+                                }}>
+                                {code}
+                                </SyntaxHighlighter>
+            </motion.div>
+        </motion.div>
+        </>
     )
 }
 
@@ -156,12 +201,58 @@ function LanguageButton(props: LanguageButtonProps) {
     )
 }
 
+function Test() {
+    const [isVisible, setIsVisible] = useState<boolean>(false)
+    const toggle = () => setIsVisible(!isVisible)
+
+    return (
+        <>
+        <button onClick = {toggle}>Toggle</button>
+        <AnimatePresence>
+            {
+                (() => {
+                    if (isVisible) {
+                        return (
+                            <motion.div
+                            initial = {{
+                                opacity: 0,
+                                x: 100
+                            }}
+                            animate = {{
+                                opacity: 1,
+                                x: 0
+                            }}
+                            transition = {{
+                                duration: 0.5
+                            }}
+                            key = "a"
+                            exit = {{
+                                opacity: 0,
+                                x: -100
+                            }}
+                            >
+                                aegaegaegaegaeg
+                            </motion.div>
+
+                        )
+                    }
+                    else {
+                        <div></div>
+                    }
+                })()
+            }
+        </AnimatePresence>
+        </>
+    )
+}
+
 
 export function AlgoPage(props: AlgoPageProps) {
 
     const [pageState, setPageState] = useState<AlgoPageState>(AlgoPageState.Overview)
 
     return (
+        <AnimatePresence>
         <div className = "algo-page">
             <HomeButton/>
             <AlgoHeader {...props}/>
@@ -185,8 +276,11 @@ export function AlgoPage(props: AlgoPageProps) {
                     }
                 })()
             }
-
             
         </div>
+
+            
+
+        </AnimatePresence>
     )
 }
