@@ -67,30 +67,6 @@ function OverViewComponent(props: AlgoPageProps) {
             {
                 props.overview.map(s => <li className = "overview-sentence">{s}</li>)
             }
-            <AnimatePresence>
-                <motion.div
-                initial = {{
-                    opacity: 0,
-                    x: 100
-                }}
-                animate = {{
-                    opacity: 1,
-                    x: 0
-                }}
-                transition = {{
-                    duration: 0.5
-                }}
-                key = "a"
-                exit = {{
-                    opacity: 0,
-                    x: -100
-                }}
-                
-
-                >
-                    aegaegaegaegaeg
-                </motion.div>
-            </AnimatePresence>
         </div>
     )
 }

@@ -10,6 +10,7 @@ import SelectionSort from '../pages/SelectionSort/SelectionSort'
 import InsertionSort from '../pages/InsertionSort/InsertionSort'
 import MergeSort from '../pages/MergeSort/MergeSort'
 import LinearSearch from '../pages/LinearSearch/LinearSearch'
+import BinarySearch from '../pages/BinarySearch/BinarySearch'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
         <Route path = "/insertionsort" element = {<InsertionSort/>}/>
         <Route path = "/mergesort" element = {<MergeSort/>}/>
         <Route path = "/linearsearch" element = {<LinearSearch/>}/>
+        <Route path = "/binarysearch" element = {<BinarySearch/>}/>
       </Routes>
     </BrowserRouter>
   )
