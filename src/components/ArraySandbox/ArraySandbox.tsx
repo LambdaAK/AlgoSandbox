@@ -4,6 +4,9 @@ export enum Property {
     Primary,
     Secondary,
     Highlight,
+    LP,
+    RP,
+    MP
 }
 
 export interface ElementProps {
@@ -139,6 +142,12 @@ function Element(props: ElementProps) {
                 return "secondary"
             case Property.Highlight:
                 return "highlight"
+            case Property.LP:
+                return "left-pointer"
+            case Property.RP:
+                return "right-pointer"
+            case Property.MP:
+                return "middle-pointer"
         }
     }).join(" ")
 

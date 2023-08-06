@@ -34,10 +34,10 @@ export default function Algos() {
                     dir = "/linearsearch"
                 />
                 <Algo
-                    name = "Binary Search"
+                    name = "Left Bisect"
                     desc = "Efficiently finds a target element in a sorted array by repeatedly halving the search space."
                     icons = {["Search", "Divide and Conquer", "Sorted Array"]}
-                    dir = "/binarysearch"
+                    dir = "/leftbisect"
                 />
             </div>
         </>

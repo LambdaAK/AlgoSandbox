@@ -91,6 +91,8 @@
 
 .primary {
   background-color: #3498db;
+  transform: translateY(-0.5rem);
+  transition: transform 0.1s ease-in-out;
 }
 
 .secondary {
@@ -140,6 +142,29 @@
   .delay-header {
     font-size: 1.5rem;
   }
+}
+
+.left-pointer {
+  transform: translateY(-0.5rem);
+  transition: transform 0.1s ease-in-out;
+  background-color: #2DE1FC;
+}
+
+.right-pointer {
+  transform: translateY(-0.5rem);
+  transition: transform 0.1s ease-in-out;
+  background-color: #2AFC98;
+}
+
+.middle-pointer {
+  transform: translateY(-0.5rem);
+  transition: transform 0.1s ease-in-out;
+  background-color: #214F4B;
+}
+
+.target {
+  background-color: #FCA82D;
+  color: black;
 }
 
 /*# sourceMappingURL=ArraySandbox.css.map */

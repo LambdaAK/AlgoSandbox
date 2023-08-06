@@ -78,6 +78,8 @@
 
 .primary {
     background-color: $primary-color;
+    transform: translateY(-0.5rem);
+    transition: transform 0.1s ease-in-out;
 }
 
 .secondary {
@@ -122,3 +124,27 @@
     }
 }
 
+@mixin raise-element {
+    transform: translateY(-0.5rem);
+    transition: transform 0.1s ease-in-out;
+}
+
+.left-pointer {
+    @include raise-element;
+    background-color: #2DE1FC;
+}
+
+.right-pointer {
+    @include raise-element;
+    background-color: #2AFC98;
+}
+
+.middle-pointer {
+    @include raise-element;
+    background-color: #214F4B;
+}
+
+.target {
+    background-color: #FCA82D;
+    color: black;
+}
