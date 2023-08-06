@@ -73,6 +73,8 @@
   color: #f39c12;
   background-color: #1e1e1e;
   font-size: 1.2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .element {
@@ -112,6 +114,32 @@
   text-align: center;
   font-size: 1.5rem;
   width: min(80%, 80rem);
+}
+
+.delay-input {
+  border: none;
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.delay-header {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1rem;
+  color: #3498db;
+}
+@media (min-width: 400px) {
+  .delay-header {
+    font-size: 1.5rem;
+  }
 }
 
 /*# sourceMappingURL=ArraySandbox.css.map */

@@ -61,6 +61,8 @@
     color: $interactive-color;
     background-color: $background-color;
     font-size: 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .element {
@@ -98,3 +100,25 @@
     font-size: 1.5rem;
     width: min(80%, 80rem);
 }
+
+.delay-input {
+    border: none;
+    @include shadow;
+    font-size: 1rem;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.delay-header {
+    @include shadow;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    color: $primary-color;
+
+    @include sm {
+        font-size: 1.5rem;
+    }
+}
+

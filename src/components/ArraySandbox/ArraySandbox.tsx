@@ -39,12 +39,14 @@ export function ArrayDisplay(props: ArrayDisplayProps) {
 interface InputSectionProps {
     arraySetter: Function,
     targetSetter: Function,
+    delaySetter: Function
 }
 function InputSection(props: InputSectionProps) {
 
     useEffect(() => {
         
         const button: HTMLElement = document.getElementById("run-button") as HTMLElement
+        const slider: HTMLElement = document.getElementById("delay-input") as HTMLElement
 
         button.addEventListener("click", () => {
             const arrayInputContent: string = (document.getElementById("array-input") as HTMLInputElement).value
@@ -59,6 +61,10 @@ function InputSection(props: InputSectionProps) {
             props.targetSetter(target)
         })
 
+        slider.addEventListener("input", () => {
+            props.delaySetter(1000 - 10 * parseInt((document.getElementById("delay-input") as HTMLInputElement).value))
+        })
+
     }, [])
 
     return (
@@ -67,7 +73,7 @@ function InputSection(props: InputSectionProps) {
                 <ArrayInput/>
                 <TargetInput/>
             </div>
-            
+            <DelaySetter/>
             <RunButton/>
         </div>
     )
@@ -108,6 +114,21 @@ function RunButton() {
     )
 }
 
+function DelaySetter() {
+    return (
+        <>
+            <div className = "delay-header">
+                Speed
+            </div>
+            <input
+                id = "delay-input"
+                className = "delay-input"
+                type = "range"
+            ></input>
+        </>
+    )
+}
+
 function Element(props: ElementProps) {
     // TODO: add the properties to the element
     const css: string = props.properties.map(p => {
@@ -143,6 +164,7 @@ export function ArraySandbox(props: ArraySandboxProps) {
     const [inputArray, setInputArray] = useState([])
     const [target, setTarget] = useState(0)
     const [states, setStates] = useState<ArraySandboxState[]>([])
+    const [delay, setDelay] = useState(1000)
 
     useEffect(() => {
         // we now have a new input array and target
@@ -159,7 +181,7 @@ export function ArraySandbox(props: ArraySandboxProps) {
         }
         const id = setTimeout(() => {
             setStates(states.slice(1))
-        }, 500)
+        }, delay)
 
         return () => clearTimeout(id) // clear the timeout when the component unmounts
 
@@ -167,7 +189,7 @@ export function ArraySandbox(props: ArraySandboxProps) {
 
     return (
         <div className = "array-sandbox">
-            <InputSection arraySetter={setInputArray} targetSetter={setTarget}/>
+            <InputSection arraySetter={setInputArray} targetSetter={setTarget} delaySetter={setDelay}/>
             <DialogBox content={
                 (() => {
                     if (states.length === 0) {
