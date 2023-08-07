@@ -1,10 +1,12 @@
+
 export enum Property {
     Primary,
     Secondary,
     Highlight,
     LP,
     RP,
-    MP
+    MP,
+    Sorted
 }
 
 export interface DialogBoxProps {
@@ -54,6 +56,8 @@ function Element(props: ElementProps) {
                 return "right-pointer"
             case Property.MP:
                 return "middle-pointer"
+            case Property.Sorted:
+                return "sorted"
         }
     }).join(" ")
 

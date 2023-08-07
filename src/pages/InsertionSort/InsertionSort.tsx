@@ -1,4 +1,6 @@
 import {AlgoPage, AlgoPageProps, Implementation, Complexity} from "../../components/AlgoPage/AlgoPage";
+import { ArraySandboxState, ArraySortSandbox } from "../../components/ArraySortSandbox/ArraySortSandbox";
+import { ElementProps, Property } from "../../components/sandboxUtils";
 
 const pythonCode: string =
 `def insertion_sort(arr):
@@ -81,6 +83,104 @@ const complexity: Complexity = {
     bestCaseSpace: "O(1)"
 }
 
+/*
+function insertionSort(inputArr) {
+    let n = inputArr.length;
+        for (let i = 1; i < n; i++) {
+            // Choosing the first element in our unsorted subarray
+            let current = inputArr[i];
+            // The last element of our sorted subarray
+            let j = i-1; 
+            while ((j > -1) && (current < inputArr[j])) {
+                inputArr[j+1] = inputArr[j];
+                j--;
+            }
+            inputArr[j+1] = current;
+        }
+    return inputArr;
+}
+*/
+
+const InsertionSortStateGenerator = (inputArray: number[]) => {
+    const states: ArraySandboxState[] = []
+    let comparisons: number = 0
+    
+    for (let i = 1; i < inputArray.length; i++) {
+        // i is the index of the end of the sorted portion of the array
+        let j = i - 1 // insertion index
+        let current = inputArray[i]
+        while (j >= 0 && current < inputArray[j]) {
+            comparisons++
+            // new state
+            const newDialog: string = `i = ${i}, j = ${j}`
+            const newElements: ElementProps[] = inputArray.map((value: number, index: number) => {
+                const properties: Property[] = []
+                if (index == i) {
+                    properties.push(Property.LP)
+                }
+                if (index == j) {
+                    properties.push(Property.RP)
+                }
+                
+                if (index < i) {
+                    properties.push(Property.Sorted)
+                }
+                
+                return {
+                    value: value,
+                    properties: properties
+                }
+            })
+            states.push({
+                dialog: newDialog,
+                elements: newElements
+            })
+
+            // move element
+            inputArray[j + 1] = inputArray[j]
+            j--
+        }
+        // now, j + 1 is where arr[i] should be inserted
+        inputArray[j + 1] = current
+        // new state
+
+        const newDialog: string = `inserted ${inputArray[i]} at index ${j + 1}`
+        const newElements: ElementProps[] = inputArray.map((value: number, index: number) => {
+            const properties: Property[] = []
+            if (index == i) {
+                properties.push(Property.LP)
+            }
+            if (index == j) {
+                properties.push(Property.RP)
+            }
+            else if (index == j + 1) {
+                properties.push(Property.MP)
+            }
+            if (index < i) {
+                properties.push(Property.Sorted)
+            }
+            return {
+                value: value,
+                properties: properties
+            }
+        })
+        states.push({
+            dialog: newDialog,
+            elements: newElements
+        })
+    }
+    states.push({
+        dialog: `Sorted array with ${comparisons} comparisons`,
+        elements: inputArray.map((value: number) => {
+            return {
+                value: value,
+                properties: []
+            }
+        })
+    })
+    return states
+}
+
 const props: AlgoPageProps = {
     name: "Insertion Sort",
     overview: [
@@ -96,7 +196,7 @@ const props: AlgoPageProps = {
     ],
     implementations: implementations,
     complexity: complexity,
-    sandbox: () => <div>Sandbox Component</div>
+    sandbox: () => <ArraySortSandbox stateGenerator={InsertionSortStateGenerator} name={"Insertion Sort"}/>
 }
 
 export default function InsertionSort() {

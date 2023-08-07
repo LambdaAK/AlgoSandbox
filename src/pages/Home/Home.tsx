@@ -65,7 +65,7 @@ function AlgosLink() {
                 duration: 1.5
             }}
         >
-            Algos
+            Algorithms
         </motion.a>
     )
 }

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 import "./ArraySortSandbox.css"
 import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils"
 
-
-
 interface InputSectionProps {
     arraySetter: Function,
     delaySetter: Function
@@ -28,7 +26,6 @@ function InputSection(props: InputSectionProps) {
             const delay: number = parseInt(delayInput.value)
             props.delaySetter(1000 - 10 * delay)
         })
-
 
     }, [])
 
