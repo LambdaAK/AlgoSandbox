@@ -21,18 +21,6 @@
   margin-right: auto;
 }
 
-.input-fields {
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-bottom: 1rem;
-  gap: 1rem;
-}
-@media (min-width: 400px) {
-  .input-fields {
-    grid-template-columns: 5fr 1fr;
-  }
-}
-
 .array-input {
   border: none;
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
@@ -50,18 +38,6 @@
   padding: 10px;
   background-color: #1e1e1e;
   color: white;
-}
-
-.array-input-section {
-  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
-  border-radius: 8px;
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  gap: 1rem;
-  width: min(80%, 80rem);
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .run-button {
@@ -142,12 +118,12 @@
   font-size: 1rem;
   color: #3498db;
 }
+
 @media (min-width: 400px) {
   .delay-header {
     font-size: 1.5rem;
   }
 }
-
 .left-pointer {
   transform: translateY(-0.5rem);
   transition: transform 0.1s ease-in-out;
@@ -171,4 +147,10 @@
   color: black;
 }
 
-/*# sourceMappingURL=ArraySandbox.css.map */
+.array-sandbox {
+  width: 100%;
+}
+
+
+
+/*# sourceMappingURL=ArraySortSandbox.css.map */

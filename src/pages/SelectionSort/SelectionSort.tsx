@@ -1,4 +1,5 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
+import { ArraySandboxState, ArraySortSandbox, ElementProps, Property } from "../../components/ArraySortSandbox/ArraySortSandbox";
 
 
 const pythonCode: string =
@@ -89,6 +90,91 @@ const complexity: Complexity = {
     worstCaseSpace: "O(1)"
 }
 
+const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxState[] => {
+    const states: ArraySandboxState[] = []
+    for (let i = 0; i < inputArray.length; i++) {
+        for (let j = i + 1; j < inputArray.length; j++) {
+            // add a state, color i primary and j secondary
+            
+            const newDialog: string = `i = ${i}, j = ${j}`
+            const newElements: ElementProps[] = inputArray.map((value: number, index: number) => {
+                if (index == i) {
+                    return {
+                        value: value,
+                        properties: [Property.LP]
+                    }
+                }
+                else if (index == j) {
+                    return {
+                        value: value,
+                        properties: [Property.RP]
+                    }
+                }
+                else {
+                    return {
+                        value: value,
+                        properties: []
+                    }
+                }
+            })
+
+            states.push({
+                dialog: newDialog,
+                elements: newElements
+            })
+
+            // compare
+            if (inputArray[i] > inputArray[j]) {
+                // swap
+                const temp = inputArray[i]
+                inputArray[i] = inputArray[j]
+                inputArray[j] = temp
+
+                // add a state, color i secondary and j primary
+
+                const newDialog: string = `Swapped ${inputArray[i]} and ${inputArray[j]}`
+
+                const newElements: ElementProps[] = inputArray.map((value: number, index: number) => {
+                    if (index == i) {
+                        return {
+                            value: value,
+                            properties: [Property.RP]
+                        }
+                    }
+                    else if (index == j) {
+                        return {
+                            value: value,
+                            properties: [Property.LP]
+                        }
+                    }
+                    else {
+                        return {
+                            value: value,
+                            properties: []
+                        }
+                    }
+                })
+
+                states.push({
+                    dialog: newDialog,
+                    elements: newElements
+                })
+            }
+
+        }
+    }
+    states.push({
+        dialog: "The array is now sorted!",
+        elements: inputArray.map((value: number) => {
+            return {
+                value: value,
+                properties: []
+            }
+        })
+    })
+    return states
+}
+
 const props: AlgoPageProps = {
     name: "Selection Sort",
     overview: [
@@ -100,7 +186,7 @@ const props: AlgoPageProps = {
     ],
     implementations: [pythonImplentation, javaImplentation, cppImplentation, jsImplentation],
     complexity: complexity,
-    sandbox: () => <div>Sandbox Component</div>
+    sandbox: () => <ArraySortSandbox stateGenerator={selectionSortStateGenerator} name={"Selection Sort"}/>
 }
 
 export default function SelectionSort() {

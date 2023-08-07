@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "./ArraySandbox.css"
+import "./ArraySortSandbox.css"
 export enum Property {
     Primary,
     Secondary,
@@ -41,7 +41,6 @@ export function ArrayDisplay(props: ArrayDisplayProps) {
 
 interface InputSectionProps {
     arraySetter: Function,
-    targetSetter: Function,
     delaySetter: Function
 }
 function InputSection(props: InputSectionProps) {
@@ -49,33 +48,28 @@ function InputSection(props: InputSectionProps) {
     useEffect(() => {
         
         const button: HTMLElement = document.getElementById("run-button") as HTMLElement
-        const slider: HTMLElement = document.getElementById("delay-input") as HTMLElement
+        const delayInput: HTMLInputElement = document.getElementById("delay-input") as HTMLInputElement
 
         button.addEventListener("click", () => {
             const arrayInputContent: string = (document.getElementById("array-input") as HTMLInputElement).value
-            const targetInputContent: string = (document.getElementById("target-input") as HTMLInputElement).value
             const array: number[] = arrayInputContent.split(",").map(e => parseInt(e))
-            const target: number = parseInt(targetInputContent)
 
             console.log(array)
-            console.log(target)
 
             props.arraySetter(array)
-            props.targetSetter(target)
         })
 
-        slider.addEventListener("input", () => {
-            props.delaySetter(1000 - 10 * parseInt((document.getElementById("delay-input") as HTMLInputElement).value))
+        delayInput.addEventListener("input", () => {
+            const delay: number = parseInt(delayInput.value)
+            props.delaySetter(1000 - 10 * delay)
         })
+
 
     }, [])
 
     return (
         <div className = "input-modal">
-            <div className = "input-fields">
-                <ArrayInput/>
-                <TargetInput/>
-            </div>
+            <ArrayInput/>
             <DelaySetter/>
             <RunButton/>
         </div>
@@ -90,19 +84,6 @@ function ArrayInput() {
             className = "array-input"
             type = "text"
             placeholder = "Input Array"
-        >
-
-        </input>
-    )
-}
-
-function TargetInput() {
-    return (
-        <input
-            id = "target-input"
-            className = "target-input"
-            type = "text"
-            placeholder = "Input Target Value"   
         >
 
         </input>
@@ -160,7 +141,7 @@ function Element(props: ElementProps) {
 
 export interface ArraySandboxProps {
     name: string,
-    stateGenerator: Function // array -> target -> states
+    stateGenerator: Function // array -> states
 }
 
 export interface ArraySandboxState {
@@ -168,21 +149,20 @@ export interface ArraySandboxState {
     elements: ElementProps[]
 }
 
-export function ArraySandbox(props: ArraySandboxProps) {
+export function ArraySortSandbox(props: ArraySandboxProps) {
 
     const [inputArray, setInputArray] = useState([])
-    const [target, setTarget] = useState(0)
     const [states, setStates] = useState<ArraySandboxState[]>([])
     const [delay, setDelay] = useState(1000)
 
     useEffect(() => {
         // we now have a new input array and target
         // use stateGenerator to generate the states of the algorithm from the input array and target
-        const newStates = props.stateGenerator(inputArray, target)
+        const newStates = props.stateGenerator(inputArray)
         setStates(newStates)
 
 
-    }, [inputArray, target])
+    }, [inputArray])
 
     useEffect(() => {
         if (states.length === 1) {
@@ -198,7 +178,7 @@ export function ArraySandbox(props: ArraySandboxProps) {
 
     return (
         <div className = "array-sandbox">
-            <InputSection arraySetter={setInputArray} targetSetter={setTarget} delaySetter={setDelay}/>
+            <InputSection arraySetter={setInputArray} delaySetter={setDelay}/>
             <DialogBox content={
                 (() => {
                     if (states.length === 0) {

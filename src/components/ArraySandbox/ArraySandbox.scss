@@ -73,6 +73,7 @@
     color: black;
     font-size: 1rem;
     background-color: $neutral-color;
+    transition: all 0.2s ease-in-out;
 }
 
 
@@ -109,6 +110,10 @@
     font-size: 1rem;
     margin-left: 5%;
     margin-right: 5%;
+    --webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+    
 }
 
 .delay-header {

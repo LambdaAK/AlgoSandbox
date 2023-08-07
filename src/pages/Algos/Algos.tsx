@@ -5,7 +5,6 @@ import "./Algos.css"
 
 export default function Algos() {
     return (
-    
         <>
             <HomeButton />
             <div className = "algos-container">
@@ -36,7 +35,7 @@ export default function Algos() {
                 <Algo
                     name = "Left Bisect"
                     desc = "Efficiently finds a target element in a sorted array by repeatedly halving the search space."
-                    icons = {["Search", "Divide and Conquer", "Sorted Array"]}
+                    icons = {["Search", "Divide and Conquer", "Binary Search"]}
                     dir = "/leftbisect"
                 />
             </div>
