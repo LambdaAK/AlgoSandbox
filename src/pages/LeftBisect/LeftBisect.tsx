@@ -1,6 +1,6 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
 import { ArraySearchSandbox, ArraySearchSandboxState } from "../../components/ArraySearchSandbox/ArraySearchSandbox";
-import { ElementProps, Property } from "../../components/sandboxUtils";
+import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 
 const pythonCode: string =
 `def left_bisect(arr, target):

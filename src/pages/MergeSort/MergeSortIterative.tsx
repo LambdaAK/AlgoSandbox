@@ -1,4 +1,6 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
+import { ArraySandboxState, ArraySortSandbox } from "../../components/ArraySortSandbox/ArraySortSandbox";
+import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 
 const pythonCode: string =
 `
@@ -190,8 +192,135 @@ const complexity: Complexity = {
     worstCaseSpace: "O(n)"
 }
 
+
+const mergeSortStateGenerator: Function = (arr: number[]): ArraySandboxState[] => {
+    const states: ArraySandboxState[] = []
+    function merge(
+        arr: number[], 
+        auxArray: number[], 
+        leftStart: number, 
+        mid: number, 
+        rightEnd: number) 
+        {
+        let left = leftStart;
+        let right = mid + 1;
+        let auxIndex = leftStart;
+
+
+        const newDialog: string = `Merging from index ${leftStart} to ${rightEnd}`
+        const newElements: ElementProps[] = arr
+            .map((value: number, index: number) => {
+                const properties: Property[] = []
+                if (index >= leftStart && index <= mid) {
+                    properties.push(Property.LP)
+                } else if (index > mid && index <= rightEnd) {
+                    properties.push(Property.RP)
+                }
+                return {
+                    value: value,
+                    properties: properties
+                }
+            })
+        
+        states.push({
+            dialog: newDialog,
+            elements: newElements
+        })
+
+        while (left <= mid && right <= rightEnd) {
+          if (arr[left] <= arr[right]) {
+            auxArray[auxIndex] = arr[left];
+            left++;
+          } else {
+            auxArray[auxIndex] = arr[right];
+            right++;
+          }
+          auxIndex++;
+        }
+      
+        while (left <= mid) {
+          auxArray[auxIndex] = arr[left];
+          left++;
+          auxIndex++;
+        }
+      
+        while (right <= rightEnd) {
+          auxArray[auxIndex] = arr[right];
+          right++;
+          auxIndex++;
+        }
+      
+        for (let i = leftStart; i <= rightEnd; i++) {
+          arr[i] = auxArray[i];
+        }
+
+        // add state
+        const newDialog2: string = `Merged from index ${leftStart} to ${rightEnd}`
+        const newElements2: ElementProps[] = arr
+            .map((value: number, index: number) => {
+                const properties: Property[] = []
+                if (index >= leftStart && index <= rightEnd) {
+                    properties.push(Property.LP)
+                }
+                return {
+                    value: value,
+                    properties: properties
+                }
+            })
+
+        states.push({
+            dialog: newDialog2,
+            elements: newElements2
+        })
+      }
+
+    const n = arr.length;
+    const auxArray = new Array(n);
+    
+    for (let size = 1; size < n; size *= 2) {
+        for (let leftStart = 0; leftStart < n - 1; leftStart += 2 * size) {
+            const mid = Math.min(leftStart + size - 1, n - 1);
+            const rightEnd = Math.min(leftStart + 2 * size - 1, n - 1);
+
+            // new state (splitting)
+            const newDialog: string = `Spliting [${leftStart}, ${rightEnd}] into [${leftStart}, ${mid}] and [${mid + 1}, ${rightEnd}]`
+            const newElements: ElementProps[] = arr
+                .map((value: number, index: number) => {
+                    const properties: Property[] = []
+                    if (index >= leftStart && index <= mid) {
+                        properties.push(Property.LP)
+                    } else if (index > mid && index <= rightEnd) {
+                        properties.push(Property.RP)
+                    }
+                    return {
+                        value: value,
+                        properties: properties
+                    }
+                })
+            states.push({
+                dialog: newDialog,
+                elements: newElements
+            })
+            merge(arr, auxArray, leftStart, mid, rightEnd);
+        }
+    }
+
+    states.push({
+        dialog: "Finished",
+        elements: arr.map((value: number) => {
+            return {
+                value: value,
+                properties: []
+            }
+        })
+    })
+    
+    return states
+}
+
+
 const props: AlgoPageProps = {
-    name: "Merge Sort",
+    name: "Merge Sort Iterative",
     implementations: implementations,
     overview: [
         "Divides the list into halves, sorts them, and then merges them back together.",
@@ -205,7 +334,7 @@ const props: AlgoPageProps = {
         "The space complexity is O(n) for all cases."
     ],
     complexity: complexity,
-    sandbox: () => <div>Sandbox Component</div>
+    sandbox: () => <ArraySortSandbox stateGenerator={mergeSortStateGenerator} name={"Merge Sort"}/>
 }
 
 export default function MergeSort() {

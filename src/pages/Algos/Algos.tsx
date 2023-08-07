@@ -21,10 +21,10 @@ export default function Algos() {
                     dir = "/insertionsort"
                 />
                 <Algo
-                    name = "Merge Sort"
+                    name = "Merge Sort Iterative"
                     desc = "Divides the list into halves, sorts them, and then merges them back together."
                     icons = {["Sort", "Divide and Conquer", "Stable Sort"]}
-                    dir = "/mergesort"
+                    dir = "/mergesortiterative"
                 />
                 <Algo
                     name = "Linear Search"

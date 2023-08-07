@@ -8,9 +8,9 @@ import Nav from '../components/nav/Nav'
 import Algos from '../pages/Algos/Algos'
 import SelectionSort from '../pages/SelectionSort/SelectionSort'
 import InsertionSort from '../pages/InsertionSort/InsertionSort'
-import MergeSort from '../pages/MergeSort/MergeSort'
 import LinearSearch from '../pages/LinearSearch/LinearSearch'
 import LeftBisect from '../pages/LeftBisect/LeftBisect'
+import MergeSortIterative from '../pages/MergeSort/MergeSortIterative'
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
         <Route path="/algos" element={<Algos/>} />
         <Route path="/selectionsort" element={<SelectionSort/>} />
         <Route path = "/insertionsort" element = {<InsertionSort/>}/>
-        <Route path = "/mergesort" element = {<MergeSort/>}/>
+        <Route path = "/mergesortiterative" element = {<MergeSortIterative/>}/>
         <Route path = "/linearsearch" element = {<LinearSearch/>}/>
         <Route path = "/leftbisect" element = {<LeftBisect/>}/>
       </Routes>

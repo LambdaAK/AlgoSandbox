@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./ArraySortSandbox.css"
-import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils"
+import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils/sandboxUtils"
 
 interface InputSectionProps {
     arraySetter: Function,

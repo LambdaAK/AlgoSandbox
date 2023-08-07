@@ -1,3 +1,4 @@
+import "./sandboxUtils.css"
 
 export enum Property {
     Primary,

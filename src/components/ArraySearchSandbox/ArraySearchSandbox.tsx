@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./ArraySearchSandbox.css"
-import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils"
+import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils/sandboxUtils"
 
 
 interface InputSectionProps {
