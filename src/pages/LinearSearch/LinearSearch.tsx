@@ -1,5 +1,7 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
-import { ArraySandbox, ArraySandboxProps, ArrayDisplayProps, ArraySandboxState, ElementProps, Property } from "../../components/ArraySandbox/ArraySandbox";
+import { ArraySearchSandbox, ArraySearchSandboxProps, ArraySearchSandboxState } from "../../components/ArraySearchSandbox/ArraySearchSandbox";
+import { ElementProps, Property } from "../../components/sandboxUtils";
+
 
 const pythonCode: string =
 `def linear_search(arr, target):
@@ -71,8 +73,8 @@ const complexity: Complexity = {
     bestCaseSpace: "O(1)"
 }
 
-const linearSearchStateGenerator = (inputArray: number[], target: number): ArraySandboxState[] => {
-    const states: ArraySandboxState[] = []
+const linearSearchStateGenerator = (inputArray: number[], target: number): ArraySearchSandboxState[] => {
+    const states: ArraySearchSandboxState[] = []
 
     // generate the states for a linear search
     // the target has the Primary property
@@ -152,7 +154,7 @@ const linearSearchStateGenerator = (inputArray: number[], target: number): Array
 
 const LinearSearchSandbox = () => {
     return (
-        <ArraySandbox name = "Linear Search" stateGenerator = {linearSearchStateGenerator} />
+        <ArraySearchSandbox name = "Linear Search" stateGenerator = {linearSearchStateGenerator} />
     )
 }
 

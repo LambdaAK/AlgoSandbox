@@ -1,5 +1,6 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
-import { ArraySandbox, ArraySandboxState, ElementProps, Property } from "../../components/ArraySandbox/ArraySandbox";
+import { ArraySearchSandbox, ArraySearchSandboxState } from "../../components/ArraySearchSandbox/ArraySearchSandbox";
+import { ElementProps, Property } from "../../components/sandboxUtils";
 
 const pythonCode: string =
 `def left_bisect(arr, target):
@@ -108,8 +109,8 @@ function isSorted(inputArray: number[]): boolean {
     return true
 }
 
-function leftBisectStateGenerator(inputArray: number[], target: number): ArraySandboxState[] {
-    const states: ArraySandboxState[] = []
+function leftBisectStateGenerator(inputArray: number[], target: number): ArraySearchSandboxState[] {
+    const states: ArraySearchSandboxState[] = []
 
     if (!isSorted(inputArray)) {
         states.push(
@@ -166,7 +167,7 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySa
                 }
             }
         })
-        const newState: ArraySandboxState = {
+        const newState: ArraySearchSandboxState = {
             dialog: newDialog,
             elements: newElements
         }
@@ -223,7 +224,7 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySa
 
 const LeftBisectSandbox = () => {
     return (
-        <ArraySandbox name = "Linear Search" stateGenerator = {leftBisectStateGenerator} />
+        <ArraySearchSandbox name = "Linear Search" stateGenerator = {leftBisectStateGenerator} />
     )
 }
 

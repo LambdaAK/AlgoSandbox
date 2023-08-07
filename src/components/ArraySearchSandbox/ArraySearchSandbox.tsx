@@ -1,49 +1,14 @@
 import { useEffect, useState } from "react"
-import "./ArraySandbox.css"
-export enum Property {
-    Primary,
-    Secondary,
-    Highlight,
-    LP,
-    RP,
-    MP
-}
+import "./ArraySearchSandbox.css"
+import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils"
 
-export interface ElementProps {
-    value: number,
-    properties: Property[]
-}
-
-export interface ArrayDisplayProps {
-    elements: ElementProps[]
-}
-
-interface DialogBoxProps {
-    content: string
-}
-export function DialogBox(props: DialogBoxProps) {
-    return (
-        <div className = "dialog-box">
-            {props.content}
-        </div>
-    )
-}
-
-export function ArrayDisplay(props: ArrayDisplayProps) {
-    return (
-        <div className = "array-display">
-            {
-                props.elements.map(e => <Element value = {e.value} properties = {e.properties}/>)
-            }
-        </div>
-    )
-}
 
 interface InputSectionProps {
     arraySetter: Function,
     targetSetter: Function,
     delaySetter: Function
 }
+
 function InputSection(props: InputSectionProps) {
 
     useEffect(() => {
@@ -104,7 +69,6 @@ function TargetInput() {
             type = "text"
             placeholder = "Input Target Value"   
         >
-
         </input>
     )
 }
@@ -132,47 +96,21 @@ function DelaySetter() {
     )
 }
 
-function Element(props: ElementProps) {
-    // TODO: add the properties to the element
-    const css: string = props.properties.map(p => {
-        switch (p) {
-            case Property.Primary:
-                return "primary"
-            case Property.Secondary:
-                return "secondary"
-            case Property.Highlight:
-                return "highlight"
-            case Property.LP:
-                return "left-pointer"
-            case Property.RP:
-                return "right-pointer"
-            case Property.MP:
-                return "middle-pointer"
-        }
-    }).join(" ")
-
-    return (
-        <div className = {css + " element"}>
-            {props.value}
-        </div>
-    )
-}
-
-export interface ArraySandboxProps {
+export interface ArraySearchSandboxProps {
     name: string,
     stateGenerator: Function // array -> target -> states
 }
 
-export interface ArraySandboxState {
+export interface ArraySearchSandboxState {
     dialog: string,
     elements: ElementProps[]
 }
 
-export function ArraySandbox(props: ArraySandboxProps) {
+export function ArraySearchSandbox(props: ArraySearchSandboxProps) {
 
     const [inputArray, setInputArray] = useState([])
     const [target, setTarget] = useState(0)
-    const [states, setStates] = useState<ArraySandboxState[]>([])
+    const [states, setStates] = useState<ArraySearchSandboxState[]>([])
     const [delay, setDelay] = useState(1000)
 
     useEffect(() => {

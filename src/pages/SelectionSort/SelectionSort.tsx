@@ -1,6 +1,6 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
-import { ArraySandboxState, ArraySortSandbox, ElementProps, Property } from "../../components/ArraySortSandbox/ArraySortSandbox";
-
+import { ArraySandboxState, ArraySortSandbox } from "../../components/ArraySortSandbox/ArraySortSandbox";
+import { ElementProps, Property } from "../../components/sandboxUtils";
 
 const pythonCode: string =
 `def selection_sort(arr):
