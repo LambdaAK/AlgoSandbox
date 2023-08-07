@@ -27,6 +27,12 @@ export default function Algos() {
                     dir = "/mergesortiterative"
                 />
                 <Algo
+                    name = "Merge Sort"
+                    desc = "Divides the list into halves, sorts them, and then merges them back together."
+                    icons = {["Sort", "Divide and Conquer", "Stable Sort"]}
+                    dir = "/mergesort"
+                />
+                <Algo
                     name = "Linear Search"
                     desc = "Sequentially scans the list to locate a target element."
                     icons = {["Search"]}

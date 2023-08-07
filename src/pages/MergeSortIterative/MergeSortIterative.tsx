@@ -334,7 +334,7 @@ const props: AlgoPageProps = {
         "The space complexity is O(n) for all cases."
     ],
     complexity: complexity,
-    sandbox: () => <ArraySortSandbox stateGenerator={mergeSortStateGenerator} name={"Merge Sort"}/>
+    sandbox: () => <ArraySortSandbox stateGenerator={mergeSortStateGenerator} name={"Merge Sort Iterative"}/>
 }
 
 export default function MergeSort() {
