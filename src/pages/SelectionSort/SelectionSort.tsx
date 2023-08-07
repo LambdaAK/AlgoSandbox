@@ -92,11 +92,13 @@ const complexity: Complexity = {
 
 const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxState[] => {
     const states: ArraySandboxState[] = []
+    let comparisons: number = 0
+    let swaps: number = 0
     for (let i = 0; i < inputArray.length; i++) {
         for (let j = i + 1; j < inputArray.length; j++) {
             // add a state, color i primary and j secondary
-            
-            const newDialog: string = `i = ${i}, j = ${j}`
+            comparisons++
+            const newDialog: string = `i = ${i}, j = ${j}, ${comparisons} comparisons, ${swaps} swaps`
             const newElements: ElementProps[] = inputArray.map((value: number, index: number) => {
                 if (index == i) {
                     return {
@@ -125,6 +127,7 @@ const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxState[] 
 
             // compare
             if (inputArray[i] > inputArray[j]) {
+                swaps++
                 // swap
                 const temp = inputArray[i]
                 inputArray[i] = inputArray[j]
@@ -164,7 +167,7 @@ const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxState[] 
         }
     }
     states.push({
-        dialog: "The array is now sorted!",
+        dialog: `The array is now sorted. It took ${comparisons} comparisons and ${swaps} swaps for an array of length ${inputArray.length}.`,
         elements: inputArray.map((value: number) => {
             return {
                 value: value,
