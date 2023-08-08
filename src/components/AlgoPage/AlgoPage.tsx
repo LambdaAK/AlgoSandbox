@@ -7,7 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark, materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { docco, nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrayDisplay, ArraySearhSandbox, Property } from "../ArraySearchSandbox/ArraySearchSandbox";
+
 
 
 
@@ -177,52 +177,6 @@ function LanguageButton(props: LanguageButtonProps) {
         </div>
     )
 }
-
-function Test() {
-    const [isVisible, setIsVisible] = useState<boolean>(false)
-    const toggle = () => setIsVisible(!isVisible)
-
-    return (
-        <>
-        <button onClick = {toggle}>Toggle</button>
-        <AnimatePresence>
-            {
-                (() => {
-                    if (isVisible) {
-                        return (
-                            <motion.div
-                            initial = {{
-                                opacity: 0,
-                                x: 100
-                            }}
-                            animate = {{
-                                opacity: 1,
-                                x: 0
-                            }}
-                            transition = {{
-                                duration: 0.5
-                            }}
-                            key = "a"
-                            exit = {{
-                                opacity: 0,
-                                x: -100
-                            }}
-                            >
-                                aegaegaegaegaeg
-                            </motion.div>
-
-                        )
-                    }
-                    else {
-                        <div></div>
-                    }
-                })()
-            }
-        </AnimatePresence>
-        </>
-    )
-}
-
 
 export function AlgoPage(props: AlgoPageProps) {
 
