@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import "./Home.css"
 import Nav from "../../components/nav/Nav"
+import SortText from "../../components/SortText/SortText"
 
 function Title() {
     return (
@@ -76,7 +77,7 @@ export default function Home() {
     return (
         <div className = "home-container">
             <Nav/>
-            <Title />
+            <SortText text="AlgoSandbox"/>
             <Desc />
         </div>
     )

@@ -101,7 +101,7 @@ function insertionSort(inputArr) {
 }
 */
 
-const InsertionSortStateGenerator = (inputArray: number[]) => {
+export const insertionSortStateGenerator = (inputArray: number[]) => {
     const states: ArraySandboxState[] = []
     let comparisons: number = 0
     
@@ -196,7 +196,7 @@ const props: AlgoPageProps = {
     ],
     implementations: implementations,
     complexity: complexity,
-    sandbox: () => <ArraySortSandbox stateGenerator={InsertionSortStateGenerator} name={"Insertion Sort"}/>
+    sandbox: () => <ArraySortSandbox stateGenerator={insertionSortStateGenerator} name={"Insertion Sort"}/>
 }
 
 export default function InsertionSort() {

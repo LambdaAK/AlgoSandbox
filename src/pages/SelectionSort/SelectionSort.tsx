@@ -90,7 +90,7 @@ const complexity: Complexity = {
     worstCaseSpace: "O(1)"
 }
 
-const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxState[] => {
+export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxState[] => {
     const states: ArraySandboxState[] = []
     let comparisons: number = 0
     let swaps: number = 0

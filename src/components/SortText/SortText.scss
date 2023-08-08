@@ -1,0 +1,28 @@
+@import "./../../css/util.scss";
+
+.sort-text {
+    @include shadow;
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+    @include sm {
+        gap: 0.2rem;
+    }
+    @include md {
+        gap: 0.5rem;
+    }
+}
+
+.sort-text-element {
+    @include shadow;
+    font-size: 1rem;
+    @include sm {
+        font-size: 1.5rem;
+    }
+    @include md {
+        font-size: 4rem;
+    }
+    @include lg {
+        font-size: 5rem;
+    }
+}

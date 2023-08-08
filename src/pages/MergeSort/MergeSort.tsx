@@ -193,7 +193,7 @@ const complexity: Complexity = {
 }
 
 
-function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
+export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
     const states: ArraySandboxState[] = [];
     function merge(arr: number[], start: number, mid: number, end: number) {
         const leftSubarray = arr.slice(start, mid + 1);

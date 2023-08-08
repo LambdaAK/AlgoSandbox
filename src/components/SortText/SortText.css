@@ -1,0 +1,42 @@
+.sort-text {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 0rem;
+}
+@media (min-width: 400px) {
+  .sort-text {
+    gap: 0.2rem;
+  }
+}
+@media (min-width: 768px) {
+  .sort-text {
+    gap: 0.5rem;
+  }
+}
+
+.sort-text-element {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+@media (min-width: 400px) {
+  .sort-text-element {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .sort-text-element {
+    font-size: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .sort-text-element {
+    font-size: 5rem;
+  }
+}
+
+/*# sourceMappingURL=SortText.css.map */

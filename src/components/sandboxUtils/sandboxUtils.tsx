@@ -117,5 +117,25 @@ export function getDelay(n: number): number {
     } else {
       return 0;
     }
-  }
-  
+}
+
+export function propertiesToString(properties: Property[]): string {
+    return properties.map(p => {
+        switch (p) {
+            case Property.Primary:
+                return "primary"
+            case Property.Secondary:
+                return "secondary"
+            case Property.Highlight:
+                return "highlight"
+            case Property.LP:
+                return "left-pointer"
+            case Property.RP:
+                return "right-pointer"
+            case Property.MP:
+                return "middle-pointer"
+            case Property.Sorted:
+                return "sorted"
+        }
+    }).join(" ")
+}

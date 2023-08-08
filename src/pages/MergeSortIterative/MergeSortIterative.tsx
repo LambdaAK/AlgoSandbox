@@ -193,7 +193,7 @@ const complexity: Complexity = {
 }
 
 
-const mergeSortStateGenerator: Function = (arr: number[]): ArraySandboxState[] => {
+export const mergeSortIterativeStateGenerator: Function = (arr: number[]): ArraySandboxState[] => {
     const states: ArraySandboxState[] = []
     function merge(
         arr: number[], 
@@ -334,7 +334,7 @@ const props: AlgoPageProps = {
         "The space complexity is O(n) for all cases."
     ],
     complexity: complexity,
-    sandbox: () => <ArraySortSandbox stateGenerator={mergeSortStateGenerator} name={"Merge Sort Iterative"}/>
+    sandbox: () => <ArraySortSandbox stateGenerator={mergeSortIterativeStateGenerator} name={"Merge Sort Iterative"}/>
 }
 
 export default function MergeSort() {
