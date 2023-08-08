@@ -41,9 +41,15 @@ export default function Algos() {
                 />
                 <Algo
                     name = "Left Bisect"
-                    desc = "Efficiently finds a target element in a sorted array by repeatedly halving the search space."
+                    desc = "Efficiently finds the first occurence of a target element in a sorted array by repeatedly halving the search space."
                     icons = {["Search", "Divide and Conquer", "Binary Search"]}
                     dir = "/leftbisect"
+                />
+                <Algo
+                    name = "Right Bisect"
+                    desc = "Efficiently finds the last occurence of a target element in a sorted array by repeatedly halving the search space."
+                    icons = {["Search", "Divide and Conquer", "Binary Search"]}
+                    dir = "/rightbisect"
                 />
             </div>
         </>
