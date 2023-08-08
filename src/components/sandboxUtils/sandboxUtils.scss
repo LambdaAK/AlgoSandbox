@@ -1,3 +1,4 @@
+@import "./../../css/util.scss";
 .array-display {
     box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
     border-radius: 8px;
@@ -18,6 +19,9 @@
     background-color: #1e1e1e;
     color: white;
     font-size: 1rem;
+    @include sm {
+        font-size: 1.5rem !important;
+    }
 
 }
 
@@ -29,9 +33,12 @@
     width: fit-content;
     color: #f39c12;
     background-color: #1e1e1e;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
+    @include sm {
+        font-size: 1.5rem !important;
+    }
 }
 
 .element {
@@ -41,9 +48,16 @@
     text-align: center;
     text-justify: center;
     color: black;
-    font-size: 1rem;
+    font-size: 1rem !important;
     background-color: #bdc3c7;
     transition: all 0.2s ease-in-out;
+    @include sm {
+        font-size: 1.5rem !important;
+    }
+    @include md {
+        font-size: 2rem !important;
+    }
+
 }
 
 .primary {
@@ -99,11 +113,7 @@
     color: #3498db;
 }
 
-@media (min-width: 400px) {
-    .delay-header {
-      font-size: 1.5rem;
-    }
-}
+
 
 .left-pointer {
     transform: translateY(-0.5rem);

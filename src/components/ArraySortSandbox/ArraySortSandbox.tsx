@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./ArraySortSandbox.css"
-import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils/sandboxUtils"
+import { ArrayDisplay, ArrayInput, DelaySetter, DialogBox, ElementProps, RunButton } from "../sandboxUtils/sandboxUtils"
 
 interface InputSectionProps {
     arraySetter: Function,
@@ -35,43 +35,6 @@ function InputSection(props: InputSectionProps) {
             <DelaySetter/>
             <RunButton/>
         </div>
-    )
-}
-
-
-function ArrayInput() {
-    return (
-        <input
-            id = "array-input"
-            className = "array-input"
-            type = "text"
-            placeholder = "Input Array"
-        >
-
-        </input>
-    )
-}
-
-function RunButton() {
-    return (
-        <button id = "run-button" className = "run-button">
-            Run
-        </button>
-    )
-}
-
-function DelaySetter() {
-    return (
-        <>
-            <div className = "delay-header">
-                Speed
-            </div>
-            <input
-                id = "delay-input"
-                className = "delay-input"
-                type = "range"
-            ></input>
-        </>
     )
 }
 

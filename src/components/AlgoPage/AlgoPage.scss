@@ -31,6 +31,12 @@
     text-justify: center;
     color: $interactive-color;
     font-size: 1rem;
+    @include sm {
+        font-size: 1.5rem;
+    }
+    @include lg {
+        font-size: 2rem;
+    }
 }
 
 .algo-overview {

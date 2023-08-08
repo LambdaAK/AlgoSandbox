@@ -144,7 +144,7 @@
 }
 @media (min-width: 400px) {
   .delay-header {
-    font-size: 1.5rem;
+    font-size: 2rem !important;
   }
 }
 
