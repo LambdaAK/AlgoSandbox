@@ -139,3 +139,33 @@ export function propertiesToString(properties: Property[]): string {
         }
     }).join(" ")
 }
+
+interface StatisticProps {
+    name: string,
+    value: string
+}
+function Statistic(props: StatisticProps) {
+    return (
+        <div className = "statistic">
+            <div className = "statistic-name">
+                {props.name}
+            </div>
+            <div className = "statistic-value">
+                {props.value}
+            </div>
+        </div>
+    )
+}
+
+export function StatisticsBox(props: any) {
+    return (
+        <div className = "statistics-box">
+            {
+                Object.keys(props).map(key => {
+                    console.log(props[key])
+                    return <Statistic name = {key} value = {props[key]}/>
+                })
+            }
+        </div>
+    )
+}

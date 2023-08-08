@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./ArraySortSandbox.css"
-import { ArrayDisplay, ArrayInput, DelaySetter, DialogBox, ElementProps, RunButton } from "../sandboxUtils/sandboxUtils"
+import { ArrayDisplay, ArrayInput, DelaySetter, DialogBox, ElementProps, RunButton, StatisticsBox } from "../sandboxUtils/sandboxUtils"
 
 interface InputSectionProps {
     arraySetter: Function,
@@ -45,7 +45,8 @@ export interface ArraySandboxProps {
 
 export interface ArraySandboxState {
     dialog: string,
-    elements: ElementProps[]
+    elements: ElementProps[],
+    statistics: object
 }
 
 export function ArraySortSandbox(props: ArraySandboxProps) {
@@ -88,6 +89,16 @@ export function ArraySortSandbox(props: ArraySandboxProps) {
                     }
                 })()
             }/>
+            {
+                (() => {
+                    if (states.length === 0) {
+                        return <div></div>
+                    }
+                    else {
+                        return <StatisticsBox {...states[0].statistics}/>
+                    }
+                })()
+            }
             <ArrayDisplay elements={
                 (() => {
                     if (states.length === 0) {

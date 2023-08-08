@@ -116,7 +116,11 @@ export const bubbleSortStateGenerator = (arr: number[]) => {
                     })
                 states.push({
                     dialog: newDialog,
-                    elements: newElements
+                    elements: newElements,
+                    statistics: {
+                        comparisons: comparisons,
+                        swaps: swaps
+                    }
                 })
 
                 if (arr[j] < arr[j - 1]) {
@@ -147,7 +151,11 @@ export const bubbleSortStateGenerator = (arr: number[]) => {
                         })
                     states.push({
                         dialog: newDialog,
-                        elements: newElements
+                        elements: newElements,
+                        statistics: {
+                            comparisons: comparisons,
+                            swaps: swaps
+                        }
                     })
                 }
             }
@@ -168,7 +176,11 @@ export const bubbleSortStateGenerator = (arr: number[]) => {
         })
     states.push({
         dialog: newDialog,
-        elements: newElements
+        elements: newElements,
+        statistics: {
+            comparisons: comparisons,
+            swaps: swaps
+        }
     })
     return states
 }

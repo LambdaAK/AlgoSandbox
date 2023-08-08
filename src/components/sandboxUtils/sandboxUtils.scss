@@ -145,3 +145,29 @@
 .array-sandbox {
     width: 100%;
 }
+
+.statistics-box {
+    @include shadow;
+    display: flex;
+    flex-direction: row;
+    width: min(80%, 80rem);
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statistic {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.statistic-name {
+    @include shadow;
+    color: $primary-color;
+}
+
+.statistic-value {
+    @include shadow;
+    color: $secondary-color;
+}

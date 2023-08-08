@@ -104,6 +104,7 @@ function insertionSort(inputArr) {
 export const insertionSortStateGenerator = (inputArray: number[]) => {
     const states: ArraySandboxState[] = []
     let comparisons: number = 0
+    let insertions: number = 0
     
     for (let i = 1; i < inputArray.length; i++) {
         // i is the index of the end of the sorted portion of the array
@@ -133,7 +134,11 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
             })
             states.push({
                 dialog: newDialog,
-                elements: newElements
+                elements: newElements,
+                statistics: {
+                    comparisons: comparisons,
+                    insertions: insertions
+                }
             })
 
             // move element
@@ -142,6 +147,7 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
         }
         // now, j + 1 is where arr[i] should be inserted
         inputArray[j + 1] = current
+        insertions++
         // new state
 
         const newDialog: string = `inserted ${inputArray[i]} at index ${j + 1}`
@@ -166,7 +172,11 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
         })
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                insertions: insertions
+            }
         })
     }
     states.push({
@@ -174,9 +184,13 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
         elements: inputArray.map((value: number) => {
             return {
                 value: value,
-                properties: []
+                properties: [],
             }
-        })
+        }),
+        statistics: {
+            comparisons: comparisons,
+            insertions: insertions
+        }
     })
     return states
 }

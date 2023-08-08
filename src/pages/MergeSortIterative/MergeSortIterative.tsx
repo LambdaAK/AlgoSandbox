@@ -227,6 +227,7 @@ const complexity: Complexity = {
 
 
 export const mergeSortIterativeStateGenerator: Function = (arr: number[]): ArraySandboxState[] => {
+    let merges: number = 0
     const states: ArraySandboxState[] = []
     function merge(
         arr: number[], 
@@ -235,6 +236,7 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
         mid: number, 
         rightEnd: number) 
         {
+        merges++
         let left = leftStart;
         let right = mid + 1;
         let auxIndex = leftStart;
@@ -257,7 +259,10 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
         
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                merges: merges
+            }
         })
 
         while (left <= mid && right <= rightEnd) {
@@ -303,7 +308,10 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
 
         states.push({
             dialog: newDialog2,
-            elements: newElements2
+            elements: newElements2,
+            statistics: {
+                merges: merges
+            }
         })
       }
 
@@ -332,20 +340,27 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
                 })
             states.push({
                 dialog: newDialog,
-                elements: newElements
+                elements: newElements,
+                statistics: {
+                    merges: merges
+                }
             })
             merge(arr, auxArray, leftStart, mid, rightEnd);
         }
     }
 
     states.push({
-        dialog: "Finished",
+        dialog: "Finished sorting with " + merges + " merges",
         elements: arr.map((value: number) => {
             return {
                 value: value,
-                properties: []
+                properties: [],
+                
             }
-        })
+        }),
+        statistics: {
+            merges: merges
+        }
     })
     
     return states

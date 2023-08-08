@@ -121,7 +121,11 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
 
             states.push({
                 dialog: newDialog,
-                elements: newElements
+                elements: newElements,
+                statistics: {
+                    comparisons: comparisons,
+                    swaps: swaps
+                }
             })
 
             // compare
@@ -159,7 +163,11 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
 
                 states.push({
                     dialog: newDialog,
-                    elements: newElements
+                    elements: newElements,
+                    statistics: {
+                        comparisons: comparisons,
+                        swaps: swaps
+                    }
                 })
             }
 
@@ -172,7 +180,11 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
                 value: value,
                 properties: []
             }
-        })
+        }),
+        statistics: {
+            comparisons: comparisons,
+            swaps: swaps
+        }
     })
     return states
 }

@@ -219,7 +219,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             })
         states.push({
             dialog: dialog,
-            elements: elements
+            elements: elements,
+            statistics: {
+                merges: merges
+            }
         })
       
         let leftIndex = 0;
@@ -264,7 +267,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             })
         states.push({
             dialog: dialog2,
-            elements: elements2
+            elements: elements2,
+            statistics: {
+                merges: merges
+            }
         })
       }
       
@@ -292,7 +298,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             })
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                merges: merges
+            }
         })
         mergeSort(arr, start, mid);
         // add state
@@ -310,7 +319,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             })
         states.push({
             dialog: newDialog2,
-            elements: newElements2
+            elements: newElements2,
+            statistics: {
+                merges: merges
+            }
         })
         
         mergeSort(arr, mid + 1, end);
@@ -329,7 +341,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             })
         states.push({
             dialog: newDialog3,
-            elements: newElements3
+            elements: newElements3,
+            statistics: {
+                merges: merges
+            }
         })
       
         merge(arr, start, mid, end);
@@ -343,7 +358,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
                 value: value,
                 properties: []
             }
-        })
+        }),
+        statistics: {
+            merges: merges
+        }
     })
     return states
         
