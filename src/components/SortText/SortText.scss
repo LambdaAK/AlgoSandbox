@@ -28,14 +28,69 @@
 
 .sort-text-element {
     @include shadow;
+}
+
+.text-xs {
+    font-size: 0.5rem;
+    @include sm {
+        font-size: 0.75rem;
+    }
+    @include md {
+        font-size: 1.5rem;
+    }
+    @include lg {
+        font-size: 2rem;
+    }
+}
+
+.text-sm {
+    font-size: 0.75rem;
+    @include sm {
+        font-size: 1rem;
+    }
+    @include md {
+        font-size: 2rem;
+    }
+    @include lg {
+        font-size: 3rem;
+    }
+}
+
+.text-md {
     font-size: 1rem;
     @include sm {
         font-size: 1.5rem;
+    }
+    @include md {
+        font-size: 3rem;
+    }
+    @include lg {
+        font-size: 4rem;
+    }
+}
+
+.text-lg {
+    font-size: 1rem;
+    @include sm {
+        font-size: 2rem;
     }
     @include md {
         font-size: 4rem;
     }
     @include lg {
         font-size: 5rem;
+    }
+}
+
+.text-xl {
+    font-size: 1rem;
+    @include sm {
+        font-size: 3rem;
+    }
+    @include md {
+        font-size: 5rem;
+    }
+    @include lg {
+        font-size: 6rem;
     }
 }

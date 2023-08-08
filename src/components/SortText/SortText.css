@@ -33,21 +33,100 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
+}
+
+.text-xs {
+  font-size: 0.5rem;
+}
+@media (min-width: 400px) {
+  .text-xs {
+    font-size: 0.75rem;
+  }
+}
+@media (min-width: 768px) {
+  .text-xs {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .text-xs {
+    font-size: 2rem;
+  }
+}
+
+.text-sm {
+  font-size: 0.75rem;
+}
+@media (min-width: 400px) {
+  .text-sm {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .text-sm {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 992px) {
+  .text-sm {
+    font-size: 3rem;
+  }
+}
+
+.text-md {
   font-size: 1rem;
 }
 @media (min-width: 400px) {
-  .sort-text-element {
+  .text-md {
     font-size: 1.5rem;
   }
 }
 @media (min-width: 768px) {
-  .sort-text-element {
+  .text-md {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 992px) {
+  .text-md {
+    font-size: 4rem;
+  }
+}
+
+.text-lg {
+  font-size: 1rem;
+}
+@media (min-width: 400px) {
+  .text-lg {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .text-lg {
     font-size: 4rem;
   }
 }
 @media (min-width: 992px) {
-  .sort-text-element {
+  .text-lg {
     font-size: 5rem;
+  }
+}
+
+.text-xl {
+  font-size: 1rem;
+}
+@media (min-width: 400px) {
+  .text-xl {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 768px) {
+  .text-xl {
+    font-size: 5rem;
+  }
+}
+@media (min-width: 992px) {
+  .text-xl {
+    font-size: 6rem;
   }
 }
 

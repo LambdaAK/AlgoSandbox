@@ -14,7 +14,7 @@ const stateGenerators: Function[] = [
     mergeSortStateGenerator
 ]
 
-interface LetterProp {
+export interface LetterProp {
     letter: string,
     properties: Property[]
 }
@@ -28,15 +28,53 @@ function Letter(props: LetterProp) {
     )
 }
 
+export enum Sort {
+    Selection,
+    Insertion,
+    Merge,
+    MergeIterative,
+    Random
+}
+
+export enum Order {
+    Ascending,
+    Descending,
+    Random
+}
+
+export enum Size {
+    XS,
+    SM,
+    MD,
+    LG,
+    XL
+}
+
 interface SortTextProps {
-    text: string;
+    text: string,
+    sort: Sort,
+    order: Order,
+    size: Size
 }
 export default function SortText(props: SortTextProps) {
     const [states, setStates] = useState<LetterProp[][]>([])
 
     useEffect(() => {
         // pick a state generator from a random sorting algorithm
-        const stateGenerator: Function = stateGenerators[Math.floor(Math.random() * stateGenerators.length)]
+        const stateGenerator: Function = (() => {
+            switch (props.sort) {
+                case Sort.Selection:
+                    return selectionSortStateGenerator
+                case Sort.Insertion:
+                    return insertionSortStateGenerator
+                case Sort.Merge:
+                    return mergeSortStateGenerator
+                case Sort.MergeIterative:
+                    return mergeSortIterativeStateGenerator
+                case Sort.Random:
+                    return stateGenerators[Math.floor(Math.random() * stateGenerators.length)]
+            }
+        })()
 
         // generate states
 
@@ -46,17 +84,26 @@ export default function SortText(props: SortTextProps) {
         // convert text to array of characters
         const textArray: string[] = props.text.split("")
 
-        // shuffle array
-        for (let i = 0; i < props.text.length * 10; i++) {
-            // pick two random indices
-            const index1: number = Math.floor(Math.random() * props.text.length)
-            const index2: number = Math.floor(Math.random() * props.text.length)
-            // swap them
-            const temp: number = arr[index1]
-            arr[index1] = arr[index2]
-            arr[index2] = temp
+        // shuffle array according to the specification
+        switch (props.order) {
+            case Order.Ascending:
+                break
+            case Order.Descending:
+                arr.reverse()
+                break
+            case Order.Random:
+                for (let i = 0; i < props.text.length * 10; i++) {
+                    // pick two random indices
+                    const index1: number = Math.floor(Math.random() * props.text.length)
+                    const index2: number = Math.floor(Math.random() * props.text.length)
+                    // swap them
+                    const temp: number = arr[index1]
+                    arr[index1] = arr[index2]
+                    arr[index2] = temp
+                }
+                break
         }
-
+        
         // generate the states for sorting arr
         const sandboxStates: ArraySandboxState[] = stateGenerator(arr)
         // we want just the elmements, not the dialog
@@ -96,10 +143,24 @@ export default function SortText(props: SortTextProps) {
         return () => clearTimeout(id) // clear the timeout when the component unmounts
 
     }, [states])
-    
+
+    const css: string = (() => {
+        switch (props.size) {
+            case Size.XS:
+                return "text-xs"
+            case Size.SM:
+                return "text-sm"
+            case Size.MD:
+                return "text-md"
+            case Size.LG:
+                return "text-lg"
+            case Size.XL:
+                return "text-xl"
+        }
+    })()
 
     return (
-        <div className = "sort-text">
+        <div className = {"sort-text " + css}>
             {
                 (() => {
                     const s: LetterProp[] = (() => {
