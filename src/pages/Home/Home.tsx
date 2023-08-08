@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import "./Home.css"
+import Nav from "../../components/nav/Nav"
 
 function Title() {
     return (
@@ -73,11 +74,10 @@ function AlgosLink() {
 
 export default function Home() {
     return (
-        <div 
-            className = "home-container">
+        <div className = "home-container">
+            <Nav/>
             <Title />
             <Desc />
-            <AlgosLink />
         </div>
     )
 }
