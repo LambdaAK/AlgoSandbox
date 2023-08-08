@@ -195,7 +195,9 @@ const complexity: Complexity = {
 
 export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
     const states: ArraySandboxState[] = [];
+    let merges: number = 0
     function merge(arr: number[], start: number, mid: number, end: number) {
+        merges++
         const leftSubarray = arr.slice(start, mid + 1);
         const rightSubarray = arr.slice(mid + 1, end + 1);
 
@@ -293,7 +295,6 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             elements: newElements
         })
         mergeSort(arr, start, mid);
-
         // add state
         const newDialog2: string = `Sorted [${start}, ${mid}]`
         const newElements2: ElementProps[] = arr
@@ -313,7 +314,6 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
         })
         
         mergeSort(arr, mid + 1, end);
-
         // add state
         const newDialog3: string = `Sorted [${mid + 1}, ${end}]`
         const newElements3: ElementProps[] = arr
@@ -337,7 +337,7 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
 
     mergeSort(arr);
     states.push({
-        dialog: "Finished sorting",
+        dialog: `Finished sorting with ${merges} merges`,
         elements: arr.map((value: number) => {
             return {
                 value: value,
