@@ -5,6 +5,8 @@
   display: flex;
   flex-direction: row;
   gap: 0rem;
+  opacity: 0%;
+  animation: float-in 1s ease-in-out 0.5s forwards;
 }
 @media (min-width: 400px) {
   .sort-text {
@@ -17,6 +19,16 @@
   }
 }
 
+@keyframes float-in {
+  0% {
+    opacity: 0%;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0%);
+  }
+}
 .sort-text-element {
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;

@@ -78,7 +78,6 @@ export default function Home() {
         <div className = "home-container">
             <Nav/>
             <SortText text="AlgoSandbox"/>
-            <Desc />
         </div>
     )
 }
