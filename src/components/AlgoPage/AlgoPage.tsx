@@ -7,6 +7,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dark, materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { docco, nord } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AnimatePresence, motion } from "framer-motion";
+import AlgosButton from "../AlgosButton/AlgosButton";
+import Nav from "../nav/Nav";
 
 
 
@@ -185,7 +187,8 @@ export function AlgoPage(props: AlgoPageProps) {
     return (
         <AnimatePresence>
         <div className = "algo-page">
-            <HomeButton/>
+            <Nav/>
+            
             <AlgoHeader {...props}/>
             <div className = "algo-nav">
                 <AlgoNavButton text = "Overview" value = {AlgoPageState.Overview} setter = {setPageState}/>

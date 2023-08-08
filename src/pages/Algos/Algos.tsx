@@ -2,11 +2,12 @@ import HomeButton from "../../components/homebutton/HomeButton"
 import Home from "../Home/Home"
 import Algo from "../../components/algo/Algo"
 import "./Algos.css"
+import Nav from "../../components/nav/Nav"
 
 export default function Algos() {
     return (
         <>
-            <HomeButton />
+            <Nav/>
             <div className = "algos-container">
                 <Algo
                     name = "Selection Sort"

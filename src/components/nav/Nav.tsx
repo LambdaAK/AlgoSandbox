@@ -5,19 +5,15 @@ interface NavButtonProps {
     dir: string
 }
 
-function NavButton(props: NavButtonProps) {
-    return (
-        <a href={props.dir} className = "nav-link">
-            {props.text}
-        </a>
-    )
-}
-
 export default function Nav() {
     return (
-        <div className = "nav-container">
-            
-
+        <div className = "nav">
+            <a href="/" className = "nav-button">
+                Home
+            </a>
+            <a href="/algos" className = "nav-button">
+                Algos
+            </a>
         </div>
     )
 }

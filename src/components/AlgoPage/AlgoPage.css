@@ -4,6 +4,18 @@
   align-items: center;
 }
 
+.top-buttons {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-right: auto;
+  width: fit-content;
+}
+
 .algo-nav {
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;

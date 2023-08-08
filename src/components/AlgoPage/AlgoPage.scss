@@ -6,6 +6,16 @@
     align-items: center;
 }
 
+.top-buttons {
+    @include shadow;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-right: auto;
+    width: fit-content;
+}
+
 .algo-nav {
     @include shadow;
     display: grid;

@@ -1,5 +1,41 @@
-.nav-link {
+.nav {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 1rem;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.nav-button {
+  box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
+  border-radius: 8px;
+  padding: 10px;
+  width: fit-content;
+  text-align: center;
+  text-justify: center;
+  color: #f39c12;
+  font-size: 1rem;
   text-decoration: none;
+  opacity: 75%;
+  transition: all 0.2s ease-in-out;
+}
+@media (min-width: 400px) {
+  .nav-button {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .nav-button {
+    font-size: 2rem;
+  }
+}
+.nav-button:hover {
+  opacity: 100%;
+  transform: translateY(10px);
 }
 
 /*# sourceMappingURL=Nav.css.map */
