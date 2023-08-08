@@ -34,6 +34,12 @@ export default function Algos() {
                     dir = "/mergesort"
                 />
                 <Algo
+                    name = "Bubble Sort"
+                    desc = "Repeatedly swaps adjacent elements if they are in the wrong order."
+                    icons = {["Sort", "Comparison", "Stable Sort"]}
+                    dir = "/bubblesort"
+                />
+                <Algo
                     name = "Linear Search"
                     desc = "Sequentially scans the list to locate a target element."
                     icons = {["Search"]}

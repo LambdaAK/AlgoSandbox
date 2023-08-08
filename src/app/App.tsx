@@ -13,6 +13,7 @@ import LeftBisect from '../pages/LeftBisect/LeftBisect'
 import MergeSortIterative from '../pages/MergeSortIterative/MergeSortIterative'
 import MergeSort from '../pages/MergeSort/MergeSort'
 import RightBisect from '../pages/RightBisect/RightBisect'
+import { BubbleSort } from '../pages/BubbleSort/BubbleSort'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path = "/insertionsort" element = {<InsertionSort/>}/>
         <Route path = "/mergesort" element = {<MergeSort/>}/>
         <Route path = "/mergesortiterative" element = {<MergeSortIterative/>}/>
+        <Route path = "/bubblesort" element = {<BubbleSort/>}/>
         <Route path = "/linearsearch" element = {<LinearSearch/>}/>
         <Route path = "/leftbisect" element = {<LeftBisect/>}/>
         <Route path = "/rightbisect" element = {<RightBisect/>}/>

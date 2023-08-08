@@ -254,3 +254,4 @@ const props: AlgoPageProps = {
 }
 
 export default () => <AlgoPage {...props} />
+
