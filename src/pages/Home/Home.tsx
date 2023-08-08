@@ -9,8 +9,8 @@ export default function Home() {
             <Nav/>
             <SortText
                 text="AlgoSandbox"
-                sort={Sort.Merge}
-                order={Order.Random}
+                sort={Sort.Insertion}
+                order={Order.Descending}
                 size={Size.XL}
             />
         </div>

@@ -4,163 +4,196 @@ import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUti
 
 const pythonCode: string =
 `
-def merge(left, right):
-    result = []
-    left_index, right_index = 0, 0
-
-    while left_index < len(left) and right_index < len(right):
-        if left[left_index] < right[right_index]:
-            result.append(left[left_index])
-            left_index += 1
-        else:
-            result.append(right[right_index])
-            right_index += 1
-
-    result += left[left_index:]
-    result += right[right_index:]
-    return result
-
 def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-
-    mid = len(arr) // 2
-    left_half = merge_sort(arr[:mid])
-    right_half = merge_sort(arr[mid:])
-
-    return merge(left_half, right_half)
-
+    n = len(arr)
+    step = 1
     
+    while step < n:
+        for left in range(0, n - step, 2 * step):
+            mid = left + step - 1
+            right = min(left + 2 * step - 1, n - 1)
+            merge(arr, left, mid, right)
+        
+        step *= 2
+
+def merge(arr, left, mid, right):
+    temp = []
+    i = left
+    j = mid + 1
+    
+    while i <= mid and j <= right:
+        if arr[i] <= arr[j]:
+            temp.append(arr[i])
+            i += 1
+        else:
+            temp.append(arr[j])
+            j += 1
+    
+    while i <= mid:
+        temp.append(arr[i])
+        i += 1
+    
+    while j <= right:
+        temp.append(arr[j])
+        j += 1
+    
+    for k in range(len(temp)):
+        arr[left + k] = temp[k]
 `
 
 const javaCode: string =
 `import java.util.Arrays;
 
 public class MergeSort {
-
     public static void mergeSort(int[] arr) {
-        if (arr.length <= 1) {
-            return;
+        int n = arr.length;
+        int step = 1;
+        
+        while (step < n) {
+            for (int left = 0; left < n - step; left += 2 * step) {
+                int mid = left + step - 1;
+                int right = Math.min(left + 2 * step - 1, n - 1);
+                merge(arr, left, mid, right);
+            }
+            
+            step *= 2;
         }
-
-        int mid = arr.length / 2;
-        int[] left = Arrays.copyOfRange(arr, 0, mid);
-        int[] right = Arrays.copyOfRange(arr, mid, arr.length);
-
-        mergeSort(left);
-        mergeSort(right);
-
-        merge(arr, left, right);
     }
 
-    private static void merge(int[] arr, int[] left, int[] right) {
-        int leftIndex = 0;
-        int rightIndex = 0;
-        int mergedIndex = 0;
+    public static void merge(int[] arr, int left, int mid, int right) {
+        int[] temp = new int[right - left + 1];
+        int i = left, j = mid + 1, k = 0;
 
-        while (leftIndex < left.length && rightIndex < right.length) {
-            if (left[leftIndex] < right[rightIndex]) {
-                arr[mergedIndex++] = left[leftIndex++];
+        while (i <= mid && j <= right) {
+            if (arr[i] <= arr[j]) {
+                temp[k++] = arr[i++];
             } else {
-                arr[mergedIndex++] = right[rightIndex++];
+                temp[k++] = arr[j++];
             }
         }
 
-        while (leftIndex < left.length) {
-            arr[mergedIndex++] = left[leftIndex++];
+        while (i <= mid) {
+            temp[k++] = arr[i++];
         }
 
-        while (rightIndex < right.length) {
-            arr[mergedIndex++] = right[rightIndex++];
+        while (j <= right) {
+            temp[k++] = arr[j++];
         }
+
+        System.arraycopy(temp, 0, arr, left, temp.length);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {12, 11, 13, 5, 6, 7};
+        mergeSort(arr);
+        System.out.println("Sorted array: " + Arrays.toString(arr));
     }
 }
 `
 
 const cppCode: string =
-`#include <vector>
-
+`#include <algorithm>
 using namespace std;
 
-void merge(vector<int>& arr, int left, int mid, int right) {
-    int leftSize = mid - left + 1;
-    int rightSize = right - mid;
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
-    vector<int> leftArray(leftSize);
-    vector<int> rightArray(rightSize);
+    int L[n1], R[n2];
 
-    for (int i = 0; i < leftSize; i++) {
-        leftArray[i] = arr[left + i];
-    }
-    for (int j = 0; j < rightSize; j++) {
-        rightArray[j] = arr[mid + 1 + j];
-    }
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
 
     int i = 0, j = 0, k = left;
-    while (i < leftSize && j < rightSize) {
-        if (leftArray[i] <= rightArray[j]) {
-            arr[k] = leftArray[i];
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
             i++;
         } else {
-            arr[k] = rightArray[j];
+            arr[k] = R[j];
             j++;
         }
         k++;
     }
 
-    while (i < leftSize) {
-        arr[k] = leftArray[i];
+    while (i < n1) {
+        arr[k] = L[i];
         i++;
         k++;
     }
 
-    while (j < rightSize) {
-        arr[k] = rightArray[j];
+    while (j < n2) {
+        arr[k] = R[j];
         j++;
         k++;
     }
 }
 
-void mergeSort(vector<int>& arr, int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
-}
-`
-
-const jsCode: string =
-`
-function mergeSort(arr) {
-    if (arr.length <= 1) {
-        return arr;
-    }
-
-    const mid = Math.floor(arr.length / 2);
-    const left = arr.slice(0, mid);
-    const right = arr.slice(mid);
-
-    return merge(mergeSort(left), mergeSort(right));
-}
-
-function merge(left, right) {
-    const mergedArr = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
-
-    while (leftIndex < left.length && rightIndex < right.length) {
-        if (left[leftIndex] < right[rightIndex]) {
-            mergedArr.push(left[leftIndex]);
-            leftIndex++;
-        } else {
-            mergedArr.push(right[rightIndex]);
-            rightIndex++;
+void mergeSort(int arr[], int size) {
+    for (int curr_size = 1; curr_size <= size - 1; curr_size *= 2) {
+        for (int left_start = 0; left_start < size - 1; left_start += 2 * curr_size) {
+            int mid = min(left_start + curr_size - 1, size - 1);
+            int right_end = min(left_start + 2 * curr_size - 1, size - 1);
+            merge(arr, left_start, mid, right_end);
         }
     }
+}`
 
-    return mergedArr.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+const jsCode: string =
+`function merge(arr, left, mid, right) {
+    let n1 = mid - left + 1;
+    let n2 = right - mid;
+
+    let L = new Array(n1);
+    let R = new Array(n2);
+
+    for (let i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (let j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    let i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+function mergeSort(arr) {
+    const n = arr.length;
+    let step = 1;
+
+    while (step < n) {
+        for (let left = 0; left < n - step; left += 2 * step) {
+            let mid = left + step - 1;
+            let right = Math.min(left + 2 * step - 1, n - 1);
+            merge(arr, left, mid, right);
+        }
+
+        step *= 2;
+    }
 }
 `
 
