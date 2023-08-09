@@ -185,6 +185,18 @@ algoInfos.sort((a: AlgoInfo, b: AlgoInfo) => {
 
 export default function Algos() {
     const [tagsOpen, setTagsOpen] = useState(false)
+
+    useEffect(() => {
+        const body = document.getElementById("body") as HTMLBodyElement
+        if (tagsOpen) {
+            body.style.overflow = "hidden"
+        }
+        else {
+            body.style.overflow = "auto"
+        }
+    }, [tagsOpen])
+
+
     return (
         <>
         <Nav/>
