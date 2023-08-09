@@ -19,6 +19,16 @@ function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean}) {
 
     const [selectedTags, setSelectedTags] = useState<string[]>([])
 
+    const addTag = (tag: string) => {
+        if (!selectedTags.includes(tag)) {
+            setSelectedTags([...selectedTags, tag])
+        }
+    }
+
+    const removeTag = (tag: string) => {
+        setSelectedTags(selectedTags.filter((t: string) => t !== tag))
+    }
+
     const inside = (
         <motion.div className = "tags-modal"
             initial = {{
@@ -54,7 +64,12 @@ function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean}) {
                 {
                     tags.map((tag: string) => {
                         return (
-                            <Tag tagName = {tag}/>
+                            <Tag
+                                tagName = {tag}
+                                addTag = {addTag}
+                                removeTag = {removeTag}
+                                selectedTags = {selectedTags}
+                            />
                         )
                     })
                 }
@@ -93,16 +108,20 @@ function TagsButton(props: {toggleTagsOpen: () => void}) {
     )
 }
 
-function Tag(props: {tagName: string}) {
-    const [selected, setSelected] = useState(false)
+function Tag(props: {tagName: string, addTag: (tag: string) => void, removeTag: (tag: string) => void, selectedTags: string[]}) {
     return (
         <div className = {"tag " + (() => {
-            if (selected) return "tag-selected"
+            if (props.selectedTags.includes(props.tagName)) return "tag-selected"
             else return ""
         })()}
             onClick = {
                 () => {
-                    setSelected(!selected)
+                    if (props.selectedTags.includes(props.tagName)) {
+                        props.removeTag(props.tagName)
+                    }
+                    else {
+                        props.addTag(props.tagName)
+                    }
                 }
             }
         >
@@ -110,7 +129,6 @@ function Tag(props: {tagName: string}) {
         </div>
     )
 }
-
 
 interface AlgoInfo {
     name: string,
