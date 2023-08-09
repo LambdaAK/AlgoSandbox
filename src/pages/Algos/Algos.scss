@@ -1,5 +1,14 @@
 @import "./../../css/util.scss";
 
+.algos-page {
+    transition: 0.25s all ease-in-out;
+}
+
+.algos-page-modal-activated {
+    opacity: 50%;
+    filter: blur(5px);
+}
+
 .algos-container {
     display: flex;
     flex-direction: column;
@@ -9,4 +18,92 @@
 
 .header {
     
+}
+
+.search {
+    @include shadow;
+    background-color: $background-color;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    width: 45%;
+
+}
+
+.tag-selector {
+    @include shadow;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tag {
+    @include shadow;
+    font-size: 1rem;
+    color: $interactive-color;
+
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        color: $primary-color;
+    }
+    transition: all 0.2s ease-in-out;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    text-justify: center;
+}
+
+.tag-selected {
+    transform: translateY(-10px);
+    color: $primary-color; 
+}
+
+.tags-modal {
+    @include shadow;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.tags-button {
+    @include shadow;
+    color: $primary-color;
+    font-size: 1rem;
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        color: $interactive-color;
+    }
+    transition: all 0.2s ease-in-out;
+    @include sm {
+        font-size: 1.25rem;
+    }
+    @include md {
+        font-size: 1.5rem;
+    }
+}
+
+.tags-modal-exit-button {
+    @include shadow;
+    color: $secondary-color;
+    font-size: 2rem;
+    height: fit-content;
+    width: fit-content;
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        color: $interactive-color;
+    }
+    transition: all 0.2s ease-in-out;
 }
