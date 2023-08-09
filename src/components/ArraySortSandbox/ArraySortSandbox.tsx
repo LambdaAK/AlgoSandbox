@@ -15,7 +15,7 @@ function InputSection(props: InputSectionProps) {
 
         button.addEventListener("click", () => {
             const arrayInputContent: string = (document.getElementById("array-input") as HTMLInputElement).value
-            const array: number[] = arrayInputContent.split(",").map(e => parseInt(e))
+            const array: number[] = arrayInputContent.split(",").map(e => parseFloat(e))
 
             console.log(array)
 

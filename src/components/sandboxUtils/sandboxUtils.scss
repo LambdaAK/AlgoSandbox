@@ -149,8 +149,8 @@
 .statistics-box {
     @include shadow;
     display: flex;
-    flex-direction: row;
-    width: min(80%, 80rem);
+    flex-direction: column;
+    width: fit-content;
     flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
@@ -165,9 +165,12 @@
 .statistic-name {
     @include shadow;
     color: $primary-color;
+    font-size: 2rem;
 }
 
 .statistic-value {
     @include shadow;
     color: $secondary-color;
+    font-size: 2rem;
+    
 }

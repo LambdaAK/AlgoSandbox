@@ -3,6 +3,7 @@ import Home from "../Home/Home"
 import Algo from "../../components/algo/Algo"
 import "./Algos.css"
 import Nav from "../../components/nav/Nav"
+import SortText, { Sort, Order, Size } from "../../components/SortText/SortText"
 
 export default function Algos() {
     return (
