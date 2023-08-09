@@ -227,6 +227,7 @@ const complexity: Complexity = {
 
 
 export const mergeSortIterativeStateGenerator: Function = (arr: number[]): ArraySandboxState[] => {
+    // other statistics
     let merges: number = 0
     const states: ArraySandboxState[] = []
     function merge(
@@ -253,7 +254,13 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
                 }
                 return {
                     value: value,
-                    properties: properties
+                    properties: properties,
+                    statistics: {
+                        merges: merges,
+                        left: leftStart,
+                        mid: mid,
+                        right: rightEnd
+                    }
                 }
             })
         
@@ -261,7 +268,10 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
             dialog: newDialog,
             elements: newElements,
             statistics: {
-                merges: merges
+                merges: merges,
+                left: leftStart,
+                mid: mid,
+                right: rightEnd
             }
         })
 
@@ -302,7 +312,13 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
                 }
                 return {
                     value: value,
-                    properties: properties
+                    properties: properties,
+                    statistics: {
+                        merges: merges,
+                        left: leftStart,
+                        mid: mid,
+                        right: rightEnd
+                    }
                 }
             })
 
@@ -310,7 +326,10 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
             dialog: newDialog2,
             elements: newElements2,
             statistics: {
-                merges: merges
+                merges: merges,
+                left: leftStart,
+                mid: mid,
+                right: rightEnd
             }
         })
       }
@@ -342,7 +361,10 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
                 dialog: newDialog,
                 elements: newElements,
                 statistics: {
-                    merges: merges
+                    merges: merges,
+                    left: leftStart,
+                    mid: mid,
+                    right: rightEnd
                 }
             })
             merge(arr, auxArray, leftStart, mid, rightEnd);
@@ -350,16 +372,20 @@ export const mergeSortIterativeStateGenerator: Function = (arr: number[]): Array
     }
 
     states.push({
-        dialog: "Finished sorting with " + merges + " merges",
+        dialog: "Finished sorting",
         elements: arr.map((value: number) => {
             return {
                 value: value,
                 properties: [],
                 
+                
             }
         }),
         statistics: {
-            merges: merges
+            merges: merges,
+            left: -1,
+            mid: -1,
+            right: -1
         }
     })
     
