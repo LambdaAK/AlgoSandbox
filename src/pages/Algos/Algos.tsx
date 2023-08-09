@@ -274,7 +274,7 @@ export default function Algos() {
                         else {
                             for (let i = 0; i < terms.length; i++) {
                                 const termsInName: string[] = algoInfo.name.toLowerCase().split(" ")
-                                const termsInQuery = query.toLowerCase().split(" ")
+                                const termsInQuery = query.toLowerCase().split(" ").filter((term: string) => term.length > 0 && term !== " ")
                                 // the algo should be included if all the terms in the query are in the name
                                 
                                 for (let j = 0; j < termsInQuery.length; j++) {
