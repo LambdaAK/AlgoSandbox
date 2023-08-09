@@ -9,9 +9,15 @@ import { AnimatePresence, motion } from "framer-motion"
 
 
 
-function Search() {
+function Search(props: {setQuery: (query: string) => void}) {
     return (
-        <input type="text" className = "search" placeholder = "Search"></input>
+        <input type="text" className = "search" placeholder = "Search"
+            onChange = {
+                (e) => {
+                    props.setQuery(e.target.value)
+                }
+            }
+        ></input>
     )
 }
 
@@ -201,6 +207,9 @@ algoInfos.sort((a: AlgoInfo, b: AlgoInfo) => {
 export default function Algos() {
     const [tagsOpen, setTagsOpen] = useState(false)
     const [selectedTags, setSelectedTags] = useState<string[]>([])
+    const [query, setQuery] = useState("")
+
+    const terms: string[] = query.split(" ")
 
     useEffect(() => {
         const body = document.getElementById("body") as HTMLBodyElement
@@ -216,6 +225,17 @@ export default function Algos() {
     return (
         <>
         <Nav/>
+        <div>
+            {
+                query.split(" ").map((term: string) => {
+                    return (
+                        <div>
+                            {term}
+                        </div>
+                    )
+                })
+            }
+        </div>
         <div style = {
                 {
                     display: "flex",
@@ -227,7 +247,7 @@ export default function Algos() {
                     marginLeft: "2rem"
                 }
             }>
-                <Search/>
+                <Search setQuery = {setQuery}/>
                 <TagsButton toggleTagsOpen={
                     () => setTagsOpen(!tagsOpen)
                 }/>
@@ -247,6 +267,24 @@ export default function Algos() {
                                 if (!algoInfo.icons.includes(selectedTags[i])) return false
                             }
                             return true
+                        }
+                    })
+                    .filter((algoInfo: AlgoInfo) => {
+                        if (query.length === 0) return true
+                        else {
+                            for (let i = 0; i < terms.length; i++) {
+                                const termsInName: string[] = algoInfo.name.toLowerCase().split(" ")
+                                const termsInQuery = query.toLowerCase().split(" ")
+                                // the algo should be included if all the terms in the query are in the name
+                                
+                                for (let j = 0; j < termsInQuery.length; j++) {
+                                    if (!termsInName.includes(termsInQuery[j])) {
+                                        return false
+                                    }
+                                }
+                                return true
+                            }
+                            return false
                         }
                     })
                     .map((algoInfo: AlgoInfo) => {

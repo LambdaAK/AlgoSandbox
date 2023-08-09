@@ -114,11 +114,6 @@
 .text-xl {
   font-size: 1rem;
 }
-@media (min-width: 400px) {
-  .text-xl {
-    font-size: 3rem;
-  }
-}
 @media (min-width: 768px) {
   .text-xl {
     font-size: 5rem;
