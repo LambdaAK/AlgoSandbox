@@ -117,19 +117,37 @@ function isSorted(inputArray: number[]): boolean {
 }
 
 function rightBisectStateGenerator(inputArray: number[], target: number): ArraySearchSandboxState[] {
+    let comparisons: number = 0
     const states: ArraySearchSandboxState[] = []
 
     if (!isSorted(inputArray)) {
         states.push(
             {
                 dialog: "The input array must be sorted.",
-                elements: []   
+                elements: [],
+                statistics: {
+                    comparisons: -1,
+                    left: -1,
+                    mid: -1,
+                    right: -1,
+                    "search space": -1
+                }  
             }
         )
         return states
     }
 
-    const targetIndex: number = inputArray.indexOf(target) // leftmost index of target
+    const targetIndex: number = (() => {
+        // find the rightmost occurence of target in inputArray
+        // use linear search
+        for (let i = inputArray.length - 1; i >= 0; i--) {
+            if (inputArray[i] == target) {
+                return i
+            }
+        }
+        return -1
+
+    })()
 
 
     let lp = 0
@@ -176,10 +194,20 @@ function rightBisectStateGenerator(inputArray: number[], target: number): ArrayS
         })
         const newState: ArraySearchSandboxState = {
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                left: lp,
+                mid: mp,
+                right: rp,
+                "search space": rp - lp + 1
+            }
+
         }
 
         states.push(newState)
+
+        comparisons++
 
         if (mVal > target) {
             rp = mp
@@ -214,7 +242,14 @@ function rightBisectStateGenerator(inputArray: number[], target: number): ArrayS
         })
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                left: lp,
+                mid: lp,
+                right: rp,
+                "search space": rp - lp + 1
+            }
         })
     }
     else {
@@ -227,7 +262,14 @@ function rightBisectStateGenerator(inputArray: number[], target: number): ArrayS
         })
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                left: lp,
+                mid: lp,
+                right: rp,
+                "search space": rp - lp + 1
+            }
         })
     }
     
