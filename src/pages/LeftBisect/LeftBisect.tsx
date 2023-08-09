@@ -110,13 +110,21 @@ function isSorted(inputArray: number[]): boolean {
 }
 
 function leftBisectStateGenerator(inputArray: number[], target: number): ArraySearchSandboxState[] {
+    let comparisons: number = 0
     const states: ArraySearchSandboxState[] = []
 
     if (!isSorted(inputArray)) {
         states.push(
             {
                 dialog: "The input array must be sorted.",
-                elements: []   
+                elements: [],
+                statistics: {
+                    comparisons: -1,
+                    left: -1,
+                    mid: -1,
+                    right: -1,
+                    "search space": -1
+                }
             }
         )
         return states
@@ -169,11 +177,19 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySe
         })
         const newState: ArraySearchSandboxState = {
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                left: lp,
+                mid: mp,
+                right: rp,
+                "search space": rp - lp + 1
+            }
         }
 
         states.push(newState)
 
+        comparisons++
         if (mVal < target) {
             lp = mp + 1
         }
@@ -201,7 +217,14 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySe
         })
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                left: lp,
+                mid: Math.floor((lp + rp) / 2),
+                right: rp,
+                "search space": rp - lp + 1
+            }
         })
     }
     else {
@@ -214,7 +237,14 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySe
         })
         states.push({
             dialog: newDialog,
-            elements: newElements
+            elements: newElements,
+            statistics: {
+                comparisons: comparisons,
+                left: lp,
+                mid: Math.floor((lp + rp) / 2),
+                right: rp,
+                "search space": rp - lp + 1
+            }
         })
     }
     

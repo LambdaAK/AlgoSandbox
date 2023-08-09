@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import "./ArraySearchSandbox.css"
-import { ArrayDisplay, DialogBox, ElementProps } from "../sandboxUtils/sandboxUtils"
+import { ArrayDisplay, DialogBox, ElementProps, StatisticsBox } from "../sandboxUtils/sandboxUtils"
 
 
 interface InputSectionProps {
@@ -21,9 +21,6 @@ function InputSection(props: InputSectionProps) {
             const targetInputContent: string = (document.getElementById("target-input") as HTMLInputElement).value
             const array: number[] = arrayInputContent.split(",").map(e => parseInt(e))
             const target: number = parseInt(targetInputContent)
-
-            console.log(array)
-            console.log(target)
 
             props.arraySetter(array)
             props.targetSetter(target)
@@ -103,7 +100,8 @@ export interface ArraySearchSandboxProps {
 
 export interface ArraySearchSandboxState {
     dialog: string,
-    elements: ElementProps[]
+    elements: ElementProps[],
+    statistics: object
 }
 
 export function ArraySearchSandbox(props: ArraySearchSandboxProps) {
@@ -147,6 +145,16 @@ export function ArraySearchSandbox(props: ArraySearchSandboxProps) {
                     }
                 })()
             }/>
+            {
+                (() => {
+                    if (states.length === 0) {
+                        return <div></div>
+                    }
+                    else {
+                        return <StatisticsBox {...states[0].statistics}/>
+                    }
+                })()
+            }
             <ArrayDisplay elements={
                 (() => {
                     if (states.length === 0) {
