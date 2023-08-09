@@ -149,11 +149,12 @@
 .statistics-box {
     @include shadow;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: fit-content;
     flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
+    gap: 5rem;
 }
 
 .statistic {

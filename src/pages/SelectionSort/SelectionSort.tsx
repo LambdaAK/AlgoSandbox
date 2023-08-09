@@ -97,7 +97,7 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
         for (let j = i + 1; j < inputArray.length; j++) {
             // add a state, color i primary and j secondary
             comparisons++
-            const newDialog: string = `i = ${i}, j = ${j}, ${comparisons} comparisons, ${swaps} swaps`
+            const newDialog: string = `Scanning`
             const newElements: ElementProps[] = inputArray.map((value: number, index: number) => {
                 if (index == i) {
                     return {
@@ -124,7 +124,9 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
                 elements: newElements,
                 statistics: {
                     comparisons: comparisons,
-                    swaps: swaps
+                    swaps: swaps,
+                    i: i,
+                    j: j
                 }
             })
 
@@ -166,7 +168,9 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
                     elements: newElements,
                     statistics: {
                         comparisons: comparisons,
-                        swaps: swaps
+                        swaps: swaps,
+                        i: i,
+                        j: j
                     }
                 })
             }
@@ -183,7 +187,9 @@ export const selectionSortStateGenerator = (inputArray: number[]): ArraySandboxS
         }),
         statistics: {
             comparisons: comparisons,
-            swaps: swaps
+            swaps: swaps,
+            i: -1,
+            j: -1
         }
     })
     return states
