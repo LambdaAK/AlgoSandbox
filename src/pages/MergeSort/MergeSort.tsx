@@ -221,7 +221,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             dialog: dialog,
             elements: elements,
             statistics: {
-                merges: merges
+                merges: merges,
+                start: start,
+                mid: mid,
+                end: end
             }
         })
       
@@ -269,7 +272,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             dialog: dialog2,
             elements: elements2,
             statistics: {
-                merges: merges
+                merges: merges,
+                start: start,
+                mid: mid,
+                end: end
             }
         })
       }
@@ -300,7 +306,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             dialog: newDialog,
             elements: newElements,
             statistics: {
-                merges: merges
+                merges: merges,
+                start: start,
+                mid: mid,
+                end: end
             }
         })
         mergeSort(arr, start, mid);
@@ -321,7 +330,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             dialog: newDialog2,
             elements: newElements2,
             statistics: {
-                merges: merges
+                merges: merges,
+                start: start,
+                mid: mid,
+                end: end
             }
         })
         
@@ -343,7 +355,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             dialog: newDialog3,
             elements: newElements3,
             statistics: {
-                merges: merges
+                merges: merges,
+                start: start,
+                mid: mid,
+                end: end
             }
         })
       
@@ -360,7 +375,10 @@ export function mergeSortStateGenerator(arr: number[]): ArraySandboxState[] {
             }
         }),
         statistics: {
-            merges: merges
+            merges: merges,
+            start: -1,
+            mid: -1,
+            end: -1
         }
     })
     return states

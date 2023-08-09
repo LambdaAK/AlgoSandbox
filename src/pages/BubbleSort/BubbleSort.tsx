@@ -119,7 +119,9 @@ export const bubbleSortStateGenerator = (arr: number[]) => {
                     elements: newElements,
                     statistics: {
                         comparisons: comparisons,
-                        swaps: swaps
+                        swaps: swaps,
+                        i: i,
+                        j: j
                     }
                 })
 
@@ -154,7 +156,9 @@ export const bubbleSortStateGenerator = (arr: number[]) => {
                         elements: newElements,
                         statistics: {
                             comparisons: comparisons,
-                            swaps: swaps
+                            swaps: swaps,
+                            i: i,
+                            j: j
                         }
                     })
                 }
@@ -179,7 +183,9 @@ export const bubbleSortStateGenerator = (arr: number[]) => {
         elements: newElements,
         statistics: {
             comparisons: comparisons,
-            swaps: swaps
+            swaps: swaps,
+            i: -1,
+            j: -1
         }
     })
     return states

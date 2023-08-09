@@ -137,7 +137,9 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
                 elements: newElements,
                 statistics: {
                     comparisons: comparisons,
-                    insertions: insertions
+                    insertions: insertions,
+                    i: i,
+                    j: j
                 }
             })
 
@@ -175,7 +177,9 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
             elements: newElements,
             statistics: {
                 comparisons: comparisons,
-                insertions: insertions
+                insertions: insertions,
+                i: i,
+                j: j
             }
         })
     }
@@ -189,7 +193,9 @@ export const insertionSortStateGenerator = (inputArray: number[]) => {
         }),
         statistics: {
             comparisons: comparisons,
-            insertions: insertions
+            insertions: insertions,
+            i: -1,
+            j: -1
         }
     })
     return states
