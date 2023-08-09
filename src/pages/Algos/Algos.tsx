@@ -15,18 +15,17 @@ function Search() {
     )
 }
 
-function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean}) {
+function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean, selectedTags: string[], setSelectedTags: (tags: string[]) => void}) {
 
-    const [selectedTags, setSelectedTags] = useState<string[]>([])
 
     const addTag = (tag: string) => {
-        if (!selectedTags.includes(tag)) {
-            setSelectedTags([...selectedTags, tag])
+        if (!props.selectedTags.includes(tag)) {
+            props.setSelectedTags([...props.selectedTags, tag])
         }
     }
 
     const removeTag = (tag: string) => {
-        setSelectedTags(selectedTags.filter((t: string) => t !== tag))
+        props.setSelectedTags(props.selectedTags.filter((t: string) => t !== tag))
     }
 
     const inside = (
@@ -68,7 +67,7 @@ function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean}) {
                                 tagName = {tag}
                                 addTag = {addTag}
                                 removeTag = {removeTag}
-                                selectedTags = {selectedTags}
+                                selectedTags = {props.selectedTags}
                             />
                         )
                     })
@@ -99,9 +98,7 @@ const tags: string[] = [
 function TagsButton(props: {toggleTagsOpen: () => void}) {
     return (
         <div className = "tags-button"
-            onClick = {
-                () => props.toggleTagsOpen()
-            }
+            onClick = {props.toggleTagsOpen}
         >
             Tags
         </div>
@@ -203,6 +200,7 @@ algoInfos.sort((a: AlgoInfo, b: AlgoInfo) => {
 
 export default function Algos() {
     const [tagsOpen, setTagsOpen] = useState(false)
+    const [selectedTags, setSelectedTags] = useState<string[]>([])
 
     useEffect(() => {
         const body = document.getElementById("body") as HTMLBodyElement
@@ -241,7 +239,17 @@ export default function Algos() {
         
             <div className = "algos-container">
                 {
-                    algoInfos.map((algoInfo: AlgoInfo) => {
+                    algoInfos
+                    .filter((algoInfo: AlgoInfo) => {
+                        if (selectedTags.length === 0) return true
+                        else {
+                            for (let i = 0; i < selectedTags.length; i++) {
+                                if (!algoInfo.icons.includes(selectedTags[i])) return false
+                            }
+                            return true
+                        }
+                    })
+                    .map((algoInfo: AlgoInfo) => {
                         return (
                             <Algo name = {algoInfo.name} desc = {algoInfo.desc} icons = {algoInfo.icons} dir = {algoInfo.dir}/>
                         )
@@ -255,6 +263,8 @@ export default function Algos() {
             setOpen = {
                 (open: boolean) => setTagsOpen(open)
             }
+            selectedTags = {selectedTags}
+            setSelectedTags = {setSelectedTags}
         />
         </>
     )
