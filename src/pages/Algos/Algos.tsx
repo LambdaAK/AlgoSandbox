@@ -225,17 +225,6 @@ export default function Algos() {
     return (
         <>
         <Nav/>
-        <div>
-            {
-                query.split(" ").map((term: string) => {
-                    return (
-                        <div>
-                            {term}
-                        </div>
-                    )
-                })
-            }
-        </div>
         <div style = {
                 {
                     display: "flex",
