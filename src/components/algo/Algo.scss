@@ -11,6 +11,7 @@
     margin-bottom: 1rem;
     &:hover {
         transform: translateY(-10px);
+        cursor: pointer;
     }
     @include sm {
         font-size: 2rem;

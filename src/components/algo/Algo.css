@@ -13,6 +13,7 @@
 }
 .algo-title:hover {
   transform: translateY(-10px);
+  cursor: pointer;
 }
 @media (min-width: 400px) {
   .algo-title {

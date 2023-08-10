@@ -225,7 +225,7 @@ export default function Algos() {
     return (
         <>
         <Nav/>
-        <div style = {
+        <div id = "a" style = {
                 {
                     display: "flex",
                     flexDirection: "row",
@@ -233,7 +233,9 @@ export default function Algos() {
                     gap: "1rem",
                     marginTop: "2rem",
                     marginBottom: "2rem",
-                    marginLeft: "2rem"
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    width: "fit-content"
                 }
             }>
                 <Search setQuery = {setQuery}/>
