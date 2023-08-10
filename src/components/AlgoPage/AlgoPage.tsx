@@ -10,6 +10,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import AlgosButton from "../AlgosButton/AlgosButton";
 import Nav from "../nav/Nav";
 
+export const animationData: object = {
+    initial: {
+        opacity: 0,
+        x: -100
+    },
+    animate: {
+        opacity: 1,
+        x: 0
+    },
+    exit: {
+        opacity: 0,
+        x: 100
+    },
+    transition: {
+        duration: 0.5,
+        delay: 0.5,
+        ease: "easeInOut"
+    }
+}
 
 export interface Complexity {
 	bestCaseTime: string,
@@ -30,7 +49,7 @@ export interface AlgoPageProps {
 	overview: string[],
 	implementations: Implementation[],
 	complexity: Complexity,
-	sandbox: Function // a component
+	sandbox: JSX.Element // a component
 }
 
 enum AlgoPageState {
@@ -60,11 +79,8 @@ function AlgoNavButton(props: AlgoNavButtonProps) {
     return (
         <div className = { 
             (() => {
-                if (props.value === props.selected) {
-                    return "algo-nav-button-selected"
-                } else {
-                    return "algo-nav-button"
-                }
+                if (props.value === props.selected) return "algo-nav-button-selected"
+                else return "algo-nav-button"
             })()
         }
         onClick = {() => props.setter(props.value)}>
@@ -75,17 +91,18 @@ function AlgoNavButton(props: AlgoNavButtonProps) {
 
 function OverViewComponent(props: AlgoPageProps) {
     return (
-        <div className = "algo-overview">
+        <motion.div
+            className = "algo-overview" {...animationData}>
             {
                 props.overview.map(s => <li className = "overview-sentence">{s}</li>)
             }
-        </div>
+        </motion.div>
     )
 }
 
 function ComplexityComponent(props: AlgoPageProps) {
     return (
-        <div className = "algo-complexity">
+        <motion.div className = "algo-complexity" {...animationData}>
             Worst Case Time Complexity:
             <span className = "complexity-formula">{props.complexity.worstCaseTime}</span>
             Average Case Time Complexity:  
@@ -98,7 +115,7 @@ function ComplexityComponent(props: AlgoPageProps) {
             <span className = "complexity-formula">{props.complexity.averageCaseSpace}</span>
             Best Case Space Complexity:
             <span className = "complexity-formula">{props.complexity.bestCaseSpace}</span>
-        </div>
+        </motion.div>
     )
 }
 
@@ -124,30 +141,14 @@ function ImplementationsComponent(props: AlgoPageProps) {
 
 
     return (
-        <>
+        <motion.div {...animationData}>
         <motion.div className = "algo-implementations">
             <div className = "language-buttons">
                 {
                     props.implementations.map(i => <LanguageButton language = {i.language} currentLanguage = {language} setter = {setLanguage}/>)
                 }
             </div>
-            <motion.div
-                initial = {{
-                    opacity: 0,
-                    x: 100
-                }}
-                animate = {{
-                    opacity: 1,
-                    x: 0
-                }}
-                transition = {{
-                    duration: 0.5
-                }}
-                exit = {{
-                    opacity: 0,
-                    x: -100
-                }}
-            >
+            <motion.div {...animationData}>
                 <SyntaxHighlighter language = {language} style = {materialDark} customStyle={{
                                     borderRadius: "8px",
                                     boxShadow: "0 30px 30px hsla(0, 0%, 0%, 0.25)",
@@ -165,7 +166,7 @@ function ImplementationsComponent(props: AlgoPageProps) {
                                 </SyntaxHighlighter>
             </motion.div>
         </motion.div>
-        </>
+        </motion.div>
     )
 }
 
@@ -195,7 +196,6 @@ export function AlgoPage(props: AlgoPageProps) {
     const [pageState, setPageState] = useState<AlgoPageState>(AlgoPageState.Overview)
 
     return (
-        <AnimatePresence>
         <div className = "algo-page">
             <Nav/>
             
@@ -206,23 +206,15 @@ export function AlgoPage(props: AlgoPageProps) {
                 <AlgoNavButton text = "Implementations" value = {AlgoPageState.Implementations} setter = {setPageState} selected = {pageState}/>
                 <AlgoNavButton text = "Sandbox" value = {AlgoPageState.Sandbox} setter = {setPageState} selected = {pageState}/>
             </div>
-            {
-                (() => {
-                    switch (pageState) {
-                        case AlgoPageState.Overview:
-                            return <OverViewComponent {...props}/>
-                        case AlgoPageState.Complexity:
-                            return <ComplexityComponent {...props}/>
-                        case AlgoPageState.Implementations:
-                            return <ImplementationsComponent {...props}/>
-                        case AlgoPageState.Sandbox:
-                            return props.sandbox()
-                    }
-                })()
-            }
-        
+            <AnimatePresence>
+            
+                {pageState === AlgoPageState.Overview && <OverViewComponent {...props} key = "0"/>}
+                {pageState === AlgoPageState.Complexity && <ComplexityComponent {...props} key = "1"/>}
+                {pageState === AlgoPageState.Implementations && <ImplementationsComponent {...props} key = "2"/>}
+                {pageState === AlgoPageState.Sandbox && <props.sandbox {...props} key = "3"/>}
+                
+            
+            </AnimatePresence>
         </div>
-
-        </AnimatePresence>
     )
 }

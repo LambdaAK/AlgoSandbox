@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import "./ArraySortSandbox.css"
 import { ArrayDisplay, ArrayInput, DelaySetter, DialogBox, ElementProps, RunButton, StatisticsBox } from "../sandboxUtils/sandboxUtils"
+import { motion } from "framer-motion"
+import { animationData } from "../AlgoPage/AlgoPage"
 
 interface InputSectionProps {
     arraySetter: Function,
@@ -77,7 +79,7 @@ export function ArraySortSandbox(props: ArraySandboxProps) {
     }, [states])
 
     return (
-        <div className = "array-sandbox">
+        <motion.div className = "array-sandbox" {...animationData}>
             <InputSection arraySetter={setInputArray} delaySetter={setDelay}/>
             <DialogBox content={
                 (() => {
@@ -109,6 +111,6 @@ export function ArraySortSandbox(props: ArraySandboxProps) {
                     }
                 })()
             }/>
-        </div>
+        </motion.div>
     )  
 }
