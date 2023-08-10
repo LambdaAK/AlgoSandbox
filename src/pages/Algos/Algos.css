@@ -46,7 +46,7 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #f39c12;
   transition: all 0.2s ease-in-out;
   width: fit-content;
@@ -61,7 +61,7 @@
 }
 @media (min-width: 400px) {
   .tag {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 @media (min-width: 768px) {

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import AlgoIcon from "../algo icons/AlgoIcon"
 import "./Algo.css"
 
@@ -39,7 +40,9 @@ interface AlgoProps {
 
 export default function Algo(props: AlgoProps) {
     return (
-        <div className="algo-container">
+        <motion.div
+            className="algo-container"
+        >
             <Title name = {props.name} dir = {props.dir}/>
             <Desc desc = {props.desc}/>
             <div className = "algo-icons">
@@ -48,6 +51,6 @@ export default function Algo(props: AlgoProps) {
             }
             </div>
             
-        </div>
+        </motion.div>
     )
 }
