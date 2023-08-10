@@ -41,11 +41,26 @@
     text-justify: center;
     color: $interactive-color;
     font-size: 1rem;
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+        color: $primary-color;
+    }
     @include sm {
         font-size: 1.5rem;
     }
     @include lg {
         font-size: 2rem;
+    }
+    transition: all 0.2s ease-in-out;
+}
+
+.algo-nav-button-selected {
+    @extend .algo-nav-button;
+    transform: translateY(-10px);
+    color: $secondary-color;
+    &:hover {
+        color: $secondary-color;
     }
 }
 

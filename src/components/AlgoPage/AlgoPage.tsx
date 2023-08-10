@@ -11,8 +11,6 @@ import AlgosButton from "../AlgosButton/AlgosButton";
 import Nav from "../nav/Nav";
 
 
-
-
 export interface Complexity {
 	bestCaseTime: string,
 	averageCaseTime: string,
@@ -45,7 +43,8 @@ enum AlgoPageState {
 interface AlgoNavButtonProps {
     text: string,
     value: AlgoPageState,
-    setter: Function
+    setter: Function,
+    selected: AlgoPageState
 }
 
 function AlgoHeader(props: AlgoPageProps) {
@@ -57,8 +56,18 @@ function AlgoHeader(props: AlgoPageProps) {
 }
 
 function AlgoNavButton(props: AlgoNavButtonProps) {
+    
     return (
-        <div className = "algo-nav-button" onClick = {() => props.setter(props.value)}>
+        <div className = { 
+            (() => {
+                if (props.value === props.selected) {
+                    return "algo-nav-button-selected"
+                } else {
+                    return "algo-nav-button"
+                }
+            })()
+        }
+        onClick = {() => props.setter(props.value)}>
             {props.text}
         </div>
     )
@@ -180,6 +189,7 @@ function LanguageButton(props: LanguageButtonProps) {
     )
 }
 
+
 export function AlgoPage(props: AlgoPageProps) {
 
     const [pageState, setPageState] = useState<AlgoPageState>(AlgoPageState.Overview)
@@ -191,10 +201,10 @@ export function AlgoPage(props: AlgoPageProps) {
             
             <AlgoHeader {...props}/>
             <div className = "algo-nav">
-                <AlgoNavButton text = "Overview" value = {AlgoPageState.Overview} setter = {setPageState}/>
-                <AlgoNavButton text = "Complexity" value = {AlgoPageState.Complexity} setter = {setPageState}/>
-                <AlgoNavButton text = "Implementations" value = {AlgoPageState.Implementations} setter = {setPageState}/>
-                <AlgoNavButton text = "Sandbox" value = {AlgoPageState.Sandbox} setter = {setPageState}/>
+                <AlgoNavButton text = "Overview" value = {AlgoPageState.Overview} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Complexity" value = {AlgoPageState.Complexity} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Implementations" value = {AlgoPageState.Implementations} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Sandbox" value = {AlgoPageState.Sandbox} setter = {setPageState} selected = {pageState}/>
             </div>
             {
                 (() => {

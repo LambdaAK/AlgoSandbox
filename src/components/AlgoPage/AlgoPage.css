@@ -37,7 +37,7 @@
   }
 }
 
-.algo-nav-button {
+.algo-nav-button, .algo-nav-button-selected {
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
@@ -46,16 +46,30 @@
   text-justify: center;
   color: #f39c12;
   font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.algo-nav-button:hover, .algo-nav-button-selected:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+  color: #3498db;
 }
 @media (min-width: 400px) {
-  .algo-nav-button {
+  .algo-nav-button, .algo-nav-button-selected {
     font-size: 1.5rem;
   }
 }
 @media (min-width: 992px) {
-  .algo-nav-button {
+  .algo-nav-button, .algo-nav-button-selected {
     font-size: 2rem;
   }
+}
+
+.algo-nav-button-selected {
+  transform: translateY(-10px);
+  color: #e74c3c;
+}
+.algo-nav-button-selected:hover {
+  color: #e74c3c;
 }
 
 .algo-overview {
