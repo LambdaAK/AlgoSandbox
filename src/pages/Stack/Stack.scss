@@ -1,12 +1,64 @@
+@import "./../../css/util.scss";
+
 .stack-sandbox {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
+
 }
 
 .operations-box {
+    @include shadow;
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    background-color: $slate;
+    margin-bottom: 4rem;
+}
+
+.action-button {
+    @include shadow;
+    background-color: $background-color;
+    color: $interactive-color;
+    &:hover {
+        transform: translateY(-10px);
+        color: $secondary-color;
+    }
+    transition: all 0.2s ease-in-out;
+    @include sm {
+        font-size: 1.5rem;
+    }
+    
+}
+
+.action-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: fit-content;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    align-self: start;
+
+    @include md {
+        flex-direction: row;
+    }
+
+}
+
+.action-input {
+    @include shadow;
+    background-color: $background-color;
+    border: none;
+    color: white;
+    color: $interactive-color;
+    font-size: 1rem;
+    @include sm {
+        font-size: 1.5rem;
+    }
+    
 }

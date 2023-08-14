@@ -35,7 +35,19 @@ export function ArrayDisplay(props: ArrayDisplayProps) {
     return (
         <div className = "array-display">
             {
-                props.elements.map(e => <Element value = {e.value} properties = {e.properties}/>)
+                (() => {
+                    if (props.elements.length > 0) {
+                        return props.elements.map(e => <Element value = {e.value} properties = {e.properties}/>)
+                    }
+                    else {
+                        return (
+                            <div className = "empty">
+                                Empty
+                            </div>
+                        )
+                    }
+                })()
+                
             }
         </div>
     )
