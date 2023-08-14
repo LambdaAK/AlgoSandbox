@@ -189,6 +189,12 @@ const algoInfos: AlgoInfo[] = [
         desc: "Efficiently finds the last occurence of a target element in a sorted array by repeatedly halving the search space.",
         icons: ["Search", "Divide and Conquer", "Binary Search"],
         dir: "/rightbisect"
+    },
+    {
+        name: "Stack",
+        desc: "A data structure that stores elements in a last-in-first-out manner.",
+        icons: ["Data Structure"],
+        dir: "/stack"
     }
 ]
 
