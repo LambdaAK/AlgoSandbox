@@ -195,6 +195,12 @@ const algoInfos: AlgoInfo[] = [
         desc: "A data structure that stores elements in a last-in-first-out manner.",
         icons: ["Data Structure"],
         dir: "/stack"
+    },
+    {
+        name: "Queue",
+        desc: "A data structure that stores elements in a first-in-first-out manner.",
+        icons: ["Data Structure"],
+        dir: "/queue"
     }
 ]
 

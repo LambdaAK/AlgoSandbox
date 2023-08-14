@@ -48,7 +48,7 @@ export interface AlgoPageProps {
     name: string,
 	overview: string[],
 	implementations: Implementation[],
-	complexity: Complexity,
+	complexity: Complexity | object,
 	sandbox: JSX.Element // a component
 }
 
@@ -117,6 +117,18 @@ function ComplexityComponent(props: AlgoPageProps) {
             <span className = "complexity-formula">{props.complexity.bestCaseSpace}</span>
         </motion.div>
     )
+}
+
+function ComplexityComponentDS(props: {complexity: object}) {
+    return 
+        {
+            Object.keys(props.complexity).map(key => {
+                return (
+                    <span className = "complexity-formula">{props.complexity[key]}</span>
+                )
+            })
+        }
+    
 }
 
 

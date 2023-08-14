@@ -15,6 +15,7 @@ import MergeSort from '../pages/MergeSort/MergeSort'
 import RightBisect from '../pages/RightBisect/RightBisect'
 import { BubbleSort } from '../pages/BubbleSort/BubbleSort'
 import { Stack } from '../pages/Stack/Stack'
+import { Queue } from '../pages/Queue/Queue'
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path = "/leftbisect" element = {<LeftBisect/>}/>
         <Route path = "/rightbisect" element = {<RightBisect/>}/>
         <Route path = "/stack" element = {<Stack/>}/>
+        <Route path = "/queue" element = {<Queue/>}/>
       </Routes>
     </BrowserRouter>
   )
