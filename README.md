@@ -6,13 +6,17 @@
 AlgoSandbox is a powerful tool designed to help you grasp complex algorithms and data structures through visual representation. Whether you're a student, educator, or developer, AlgoSandbox provides an intuitive platform to experiment, learn, and teach algorithms in an engaging way.
 
 <br><br>
-
+# Algos page
 ![Browse](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/algos.png?raw=true)
 <br><br><br><br>
+# Searching by tags
 ![Tags](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/tags.png?raw=true)
 <br><br><br><br>
+# Merge sort in action
 ![Merge sort in action](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/merge_sort.png?raw=true)
 <br><br><br><br>
+# Left bisect in action
 ![Left bisect in action](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/left_bisect.png?raw=true)
 <br><br><br><br>
+# Insertion sort implementation
 ![Insertion sort implementation](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/insertion_sort.png?raw=true)
