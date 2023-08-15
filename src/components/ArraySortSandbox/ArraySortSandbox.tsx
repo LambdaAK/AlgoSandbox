@@ -8,6 +8,7 @@ interface InputSectionProps {
     arraySetter: Function,
     delaySetter: Function
 }
+
 function InputSection(props: InputSectionProps) {
 
     useEffect(() => {

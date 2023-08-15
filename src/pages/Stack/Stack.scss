@@ -24,8 +24,8 @@
     background-color: $background-color;
     color: $interactive-color;
     &:hover {
-        transform: translateY(-10px);
-        color: $secondary-color;
+        color: greenyellow;
+        cursor: pointer;
     }
     transition: all 0.2s ease-in-out;
     @include sm {

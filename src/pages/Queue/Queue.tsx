@@ -1,9 +1,9 @@
 import "./Queue.css"
 import { AlgoPage, Implementation } from "../../components/AlgoPage/AlgoPage";
-import { ArrayDisplay, ElementProps } from "../../components/sandboxUtils/sandboxUtils";
+import { ArrayDisplay, ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 import { useState } from "react";
 import "./../Stack/Stack.css"
-import { DSPage } from "../../components/DSPage/DSPage";
+import { ArrayDisplayAnimator, DSPage } from "../../components/DSPage/DSPage";
 
 const pythonCode: string =
 `class Queue:
@@ -117,9 +117,61 @@ function dequeue(elements: ElementProps[], setElements: Function) {
     setElements(newElements)
 }
 
+function createDequeueAnimation(elements: ElementProps[]): ElementProps[][] {
+    // the first state shows the element that is getting removed
+    if (elements.length == 0) {
+        return []
+    }
+    const newElements = [...elements]
+    newElements[0].properties = [Property.Secondary]
+
+    const firstState = newElements
+
+    // the second state remove the element
+    const secondState = [...newElements]
+    secondState.shift()
+
+    return [firstState, secondState]
+}
+
+function createEnqueueAnimation(elements: ElementProps[], value: number): ElementProps[][] {
+    // first frame show the unmodified array
+    // the first and last elements are colored
+    // second frame shows the addition of the new element, which is colored
+    // third frame shows the removal of color from the second to last element, and the last element becomes colored
+    // deep copy the array, so the objects are different
+
+    const firstState = elements.map(element => {
+        return (
+            {...element}
+        )
+    })
+
+    firstState.push({
+        value: value,
+        properties: [Property.Primary]
+    })
+
+    const secondState = elements.map(element => {
+        return (
+            {...element}
+        )
+    })
+
+    secondState.push({
+        value: value,
+        properties: []
+    })
+
+    return [firstState, secondState]
+    
+}
+
+
 function QueueSandbox() {
 
     const [elements, setElements] = useState<ElementProps[]>([])
+    const [animation, setAnimation] = useState<ElementProps[][]>([])
 
     return (
         <div className = "stack-sandbox">
@@ -128,9 +180,10 @@ function QueueSandbox() {
                     <div className = "action-button"
                         onClick={
                             () => {
+                                setAnimation(createDequeueAnimation(elements))
                                 dequeue(elements, setElements)
                             }
-                        }
+                        }   
                     >
                         Dequeue
                     </div>
@@ -141,7 +194,9 @@ function QueueSandbox() {
                         onClick = {
                             () => {
                                 const value = document.querySelector(".action-input") as HTMLInputElement
-                                enqueue(elements, setElements, parseFloat(value.value))
+                                setAnimation([])
+                                setAnimation(createEnqueueAnimation(elements, parseInt(value.value)))
+                                enqueue(elements, setElements, parseInt(value.value))
                                 value.value = ""
                             }
                         }
@@ -151,13 +206,13 @@ function QueueSandbox() {
                     <input className = "action-input" type = "text" placeholder = "Value"/>
                 </div>
 
-
             </div>
 
-            <ArrayDisplay
-                elements = {elements}
+            <ArrayDisplayAnimator
+                frames={animation}
+                setFrames={setAnimation}
+                delay={1000}                
             />
-
         </div>
     )
 }

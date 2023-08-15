@@ -27,8 +27,8 @@
   transition: all 0.2s ease-in-out;
 }
 .action-button:hover {
-  transform: translateY(-10px);
-  color: #e74c3c;
+  color: greenyellow;
+  cursor: pointer;
 }
 @media (min-width: 400px) {
   .action-button {

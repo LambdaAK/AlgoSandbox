@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Nav from "../nav/Nav"
 import { AlgoHeader, AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState, animationData } from "../AlgoPage/AlgoPage"
 import { AnimatePresence, motion } from "framer-motion"
 import "./DSPage.css"
+import { ArrayDisplay, ElementProps } from "../sandboxUtils/sandboxUtils"
 
 
 export interface OperationProps {
@@ -17,7 +18,7 @@ interface DSPageProps {
     overview: string[],
     operations: OperationProps[],
     implementations: Implementation[],
-    sandbox: JSX.Element
+    sandbox: () => JSX.Element
 }
 
 
@@ -54,6 +55,38 @@ function OperationsComponent(props: {operations: OperationProps[]}) {
                 })
             }
         </motion.div>
+    )
+}
+
+interface ArrayDisplayAnimatorProps {
+    frames: ElementProps[][],
+    setFrames: (frames: ElementProps[][]) => void,
+    delay: number
+}
+export function ArrayDisplayAnimator(props: ArrayDisplayAnimatorProps): JSX.Element {
+    useEffect(() => {
+        console.log(props.frames)
+        // if there's only element in elements, return
+        if (props.frames.length <= 1) {
+            return
+        }
+        // set a timeout
+
+        const id: NodeJS.Timeout = setTimeout(() => {
+            console.log("timeout")
+            // remove the first element
+            let e = [...props.frames]
+            props.setFrames(e.slice(1))
+        }, props.delay)
+
+        return () => clearTimeout(id)
+
+    }, [props.frames, props.delay])
+
+    return (
+        <ArrayDisplay
+            elements = {props.frames.length > 0 ? props.frames[0] : []}
+        />
     )
 }
 

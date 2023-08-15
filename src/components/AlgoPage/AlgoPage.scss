@@ -18,15 +18,20 @@
 
 .algo-nav {
     @include shadow;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1fr;
     grid-gap: 0.5rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
 
     @include sm {
         grid-template-columns: 1fr 1fr;
     }
     @include md {
-        grid-template-columns: repeat(4, 1fr);
+        flex-direction: row;
+        gap: 0.5rem;
     }
 
     margin-top: 2rem;
@@ -43,7 +48,6 @@
     font-size: 1rem;
     &:hover {
         cursor: pointer;
-        transform: translateY(-10px);
         color: $primary-color;
     }
     @include sm {
@@ -57,7 +61,6 @@
 
 .algo-nav-button-selected {
     @extend .algo-nav-button;
-    transform: translateY(-10px);
     color: $secondary-color;
     &:hover {
         color: $secondary-color;
