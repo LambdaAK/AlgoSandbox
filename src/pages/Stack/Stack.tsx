@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { AlgoPage, Implementation } from "../../components/AlgoPage/AlgoPage";
-import { ArrayDisplay, ElementProps } from "../../components/sandboxUtils/sandboxUtils";
+import { ArrayDisplay, ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 import "./Stack.css"
-import { DSPage } from "../../components/DSPage/DSPage";
+import { ArrayDisplayAnimator, DSPage } from "../../components/DSPage/DSPage";
 
 
 function push(elements: ElementProps[], setElements: Function, element: number) {
@@ -108,9 +108,44 @@ const implementations: Implementation[] = [
 ]
 
 
+function createPopAnimation(elements: ElementProps[]) {
+    const firstFrame = elements.map((element: ElementProps, index: number) => {
+        return {
+            value: element.value,
+            properties: index == 0 ? [Property.Secondary] : []
+        }
+    })
+
+    const secondFrame = [...elements]
+    secondFrame.shift()
+
+    return [firstFrame, secondFrame]
+}
+
+function createPushAnimation(elements: ElementProps[], element: number) {
+    const e  = [{value: element, properties: []}, ...elements]
+    const firstFrame = e.map((element: ElementProps, index: number) => {
+        return {
+            value: element.value,
+            properties: index == 0 ? [Property.Primary] : []
+        }
+    })
+    const secondFrame = e.map((element: ElementProps, index: number) => {
+        return {
+            value: element.value,
+            properties: []
+        }
+    })
+
+    return [firstFrame, secondFrame]
+
+}
+
+
 function StackSandbox() {
 
     const [elements, setElements] = useState<ElementProps[]>([])
+    const [animation, setAnimation] = useState<ElementProps[][]>([])
 
     return (
         <div className = "stack-sandbox">
@@ -119,6 +154,7 @@ function StackSandbox() {
                     <div className = "action-button"
                         onClick={
                             () => {
+                                setAnimation(createPopAnimation(elements))
                                 pop(elements, setElements)
                             }
                         }
@@ -133,6 +169,7 @@ function StackSandbox() {
                             () => {
                                 const value = document.querySelector(".action-input") as HTMLInputElement
                                 push(elements, setElements, parseFloat(value.value))
+                                setAnimation(createPushAnimation(elements, parseFloat(value.value)))
                                 value.value = ""
                             }
                         }
@@ -145,8 +182,10 @@ function StackSandbox() {
 
             </div>
 
-            <ArrayDisplay
-                elements = {elements}
+            <ArrayDisplayAnimator
+                frames={animation}
+                setFrames={setAnimation}
+                delay={1000}
             />
 
         </div>

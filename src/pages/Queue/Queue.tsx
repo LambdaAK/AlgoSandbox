@@ -195,8 +195,8 @@ function QueueSandbox() {
                             () => {
                                 const value = document.querySelector(".action-input") as HTMLInputElement
                                 setAnimation([])
-                                setAnimation(createEnqueueAnimation(elements, parseInt(value.value)))
-                                enqueue(elements, setElements, parseInt(value.value))
+                                setAnimation(createEnqueueAnimation(elements, parseFloat(value.value)))
+                                enqueue(elements, setElements, parseFloat(value.value))
                                 value.value = ""
                             }
                         }
@@ -234,12 +234,12 @@ export function Queue() {
             operations={
                 [
                     {
-                        name: "enqueue",
+                        name: "Enqueue",
                         timeComplexity: "O(1)",
                         description: ["Adds an element to the end of the queue."]
                     },
                     {
-                        name: "dequeue",
+                        name: "Dequeue",
                         timeComplexity: "O(1)",
                         description: ["Removes the first element from the queue."]
                     }
