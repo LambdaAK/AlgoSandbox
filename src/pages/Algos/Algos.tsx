@@ -98,7 +98,8 @@ const tags: string[] = [
     "Comparison",
     "Stable Sort",
     "Unstable Sort",
-    "Binary Search"
+    "Binary Search",
+    "Data Structure"
 ]
 
 function TagsButton(props: {toggleTagsOpen: () => void}) {

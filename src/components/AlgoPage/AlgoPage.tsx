@@ -48,25 +48,30 @@ export interface AlgoPageProps {
     name: string,
 	overview: string[],
 	implementations: Implementation[],
-	complexity: Complexity | object,
+	complexity: Complexity,
 	sandbox: JSX.Element // a component
 }
 
-enum AlgoPageState {
+export enum PageState {
     Overview,
     Complexity,
     Implementations,
-    Sandbox
+    Sandbox,
+    Operations,
 }
 
 interface AlgoNavButtonProps {
     text: string,
-    value: AlgoPageState,
+    value: PageState,
     setter: Function,
-    selected: AlgoPageState
+    selected: PageState
 }
 
-function AlgoHeader(props: AlgoPageProps) {
+interface AlgoHeaderProps {
+    name: string
+}
+
+function AlgoHeader(props: AlgoHeaderProps) {
     return (
         <div className = "algo-header">
             {props.name}
@@ -74,7 +79,7 @@ function AlgoHeader(props: AlgoPageProps) {
     )
 }
 
-function AlgoNavButton(props: AlgoNavButtonProps) {
+export function AlgoNavButton(props: AlgoNavButtonProps) {
     
     return (
         <div className = { 
@@ -89,7 +94,7 @@ function AlgoNavButton(props: AlgoNavButtonProps) {
     )
 }
 
-function OverViewComponent(props: AlgoPageProps) {
+export function OverViewComponent(props: {overview: string[]}) {
     return (
         <motion.div
             className = "algo-overview" {...animationData}>
@@ -100,7 +105,7 @@ function OverViewComponent(props: AlgoPageProps) {
     )
 }
 
-function ComplexityComponent(props: AlgoPageProps) {
+export function ComplexityComponent(props: {complexity: Complexity}) {
     return (
         <motion.div className = "algo-complexity" {...animationData}>
             Worst Case Time Complexity:
@@ -119,20 +124,8 @@ function ComplexityComponent(props: AlgoPageProps) {
     )
 }
 
-function ComplexityComponentDS(props: {complexity: object}) {
-    return 
-        {
-            Object.keys(props.complexity).map(key => {
-                return (
-                    <span className = "complexity-formula">{props.complexity[key]}</span>
-                )
-            })
-        }
-    
-}
 
-
-function ImplementationsComponent(props: AlgoPageProps) {
+export function ImplementationsComponent(props: {implementations: Implementation[]}) {
     const [language, setLanguage] = useState<string>("python")
     const [code, setCode] = useState<string>("")
 
@@ -205,26 +198,25 @@ function LanguageButton(props: LanguageButtonProps) {
 
 export function AlgoPage(props: AlgoPageProps) {
 
-    const [pageState, setPageState] = useState<AlgoPageState>(AlgoPageState.Overview)
+    const [pageState, setPageState] = useState<PageState>(PageState.Overview)
 
     return (
         <div className = "algo-page">
             <Nav/>
             
-            <AlgoHeader {...props}/>
+            <AlgoHeader name = {props.name}/>
             <div className = "algo-nav">
-                <AlgoNavButton text = "Overview" value = {AlgoPageState.Overview} setter = {setPageState} selected = {pageState}/>
-                <AlgoNavButton text = "Complexity" value = {AlgoPageState.Complexity} setter = {setPageState} selected = {pageState}/>
-                <AlgoNavButton text = "Implementations" value = {AlgoPageState.Implementations} setter = {setPageState} selected = {pageState}/>
-                <AlgoNavButton text = "Sandbox" value = {AlgoPageState.Sandbox} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Overview" value = {PageState.Overview} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Complexity" value = {PageState.Complexity} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Implementations" value = {PageState.Implementations} setter = {setPageState} selected = {pageState}/>
+                <AlgoNavButton text = "Sandbox" value = {PageState.Sandbox} setter = {setPageState} selected = {pageState}/>
             </div>
             <AnimatePresence>
             
-                {pageState === AlgoPageState.Overview && <OverViewComponent {...props} key = "0"/>}
-                {pageState === AlgoPageState.Complexity && <ComplexityComponent {...props} key = "1"/>}
-                {pageState === AlgoPageState.Implementations && <ImplementationsComponent {...props} key = "2"/>}
-                {pageState === AlgoPageState.Sandbox && <props.sandbox {...props} key = "3"/>}
-                
+                {pageState === PageState.Overview && <OverViewComponent overview = {props.overview} key = "0"/>}
+                {pageState === PageState.Complexity && <ComplexityComponent complexity = {props.complexity} key = "1"/>}
+                {pageState === PageState.Implementations && <ImplementationsComponent implementations = {props.implementations} key = "2"/>}
+                {pageState === PageState.Sandbox && <props.sandbox {...props} key = "3"/>}
             
             </AnimatePresence>
         </div>
