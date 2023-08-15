@@ -216,7 +216,10 @@ export function AlgoPage(props: AlgoPageProps) {
                 {pageState === PageState.Overview && <OverViewComponent overview = {props.overview} key = "0"/>}
                 {pageState === PageState.Complexity && <ComplexityComponent complexity = {props.complexity} key = "1"/>}
                 {pageState === PageState.Implementations && <ImplementationsComponent implementations = {props.implementations} key = "2"/>}
-                {pageState === PageState.Sandbox && <props.sandbox {...props} key = "3"/>}
+                {pageState === PageState.Sandbox &&
+                <motion.div key = "3" {...animationData}>
+                    <props.sandbox {...props}/>
+                </motion.div>}
             
             </AnimatePresence>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Nav from "../nav/Nav"
-import { AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState } from "../AlgoPage/AlgoPage"
+import { AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState, animationData } from "../AlgoPage/AlgoPage"
 import { AnimatePresence, motion } from "framer-motion"
 import "./DSPage.css"
 
@@ -40,7 +40,7 @@ function OperationInfo(props:OperationProps) {
 function OperationsComponent(props: {operations: OperationProps[]}) {
     
     return (
-        <motion.div className = "complexity">
+        <motion.div className = "complexity" {...animationData}>
             {
                 props.operations.map((operation, index) => {
                     return (
@@ -94,7 +94,10 @@ export function DSPage(props: DSPageProps) {
             {pageState === PageState.Overview && <OverViewComponent overview = {props.overview} key = "0"/>}
             {pageState === PageState.Implementations && <ImplementationsComponent implementations={props.implementations} key = "1"/>}
             {pageState === PageState.Operations && <OperationsComponent operations = {props.operations} key = "2"/>}
-            {pageState === PageState.Sandbox && <props.sandbox {...props} key = "3"/>}
+            {pageState === PageState.Sandbox && 
+                <motion.div key = "3" {...animationData}>
+                    <props.sandbox {...props}/>
+                </motion.div>}
             </AnimatePresence>
         </div>
     )
