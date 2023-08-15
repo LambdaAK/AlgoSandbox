@@ -1,11 +1,11 @@
 import { useState } from "react"
-import "./"
 import Nav from "../nav/Nav"
 import { AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState } from "../AlgoPage/AlgoPage"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import "./DSPage.css"
 
 
-interface OperationProps {
+export interface OperationProps {
     name: string,
     timeComplexity: string,
     description: string[]
@@ -21,12 +21,39 @@ interface DSPageProps {
 }
 
 
+function OperationInfo(props:OperationProps) {
+    return (
+        <div className = "operation">
+            <div className = "operation-name">
+                {props.name}
+            </div>
+            <div className = "complexity-description">
+                {props.description}
+            </div>
+            <div className = "complexity-formula">
+                {props.timeComplexity}
+            </div>
+        </div>
+    )
+}
+
 function OperationsComponent(props: {operations: OperationProps[]}) {
     
     return (
-        <div>
-            Operations
-        </div>
+        <motion.div className = "complexity">
+            {
+                props.operations.map((operation, index) => {
+                    return (
+                        <OperationInfo
+                            key = {index}
+                            name = {operation.name}
+                            timeComplexity = {operation.timeComplexity}
+                            description = {operation.description}
+                        />
+                    )
+                })
+            }
+        </motion.div>
     )
 }
 
@@ -53,12 +80,6 @@ export function DSPage(props: DSPageProps) {
                 <AlgoNavButton
                     text = "Implementations"
                     value = {PageState.Implementations}
-                    setter = {setPageState}
-                    selected = {pageState}
-                />
-                <AlgoNavButton
-                    text = "Complexity"
-                    value = {PageState.Complexity}
                     setter = {setPageState}
                     selected = {pageState}
                 />

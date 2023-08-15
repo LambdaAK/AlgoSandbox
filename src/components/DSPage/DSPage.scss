@@ -1,0 +1,46 @@
+@import "./../../css/util.scss";
+
+.operation {
+    @include shadow;
+    display: flex;
+    flex-direction: column;
+    width: min(50%, 500px);
+}
+
+.complexity {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.operation-name {
+    @include shadow;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    width: fit-content;
+    align-self: center;
+    color: $primary-color;
+}
+
+.complexity-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.complexity-formula {
+    @include shadow;
+}
+
+.complexity-description {
+    @include shadow;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: fit-content;
+    align-self: center;
+    color: $secondary-color;
+    margin-bottom: 1rem;
+}

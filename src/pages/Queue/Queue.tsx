@@ -3,6 +3,7 @@ import { AlgoPage, Implementation } from "../../components/AlgoPage/AlgoPage";
 import { ArrayDisplay, ElementProps } from "../../components/sandboxUtils/sandboxUtils";
 import { useState } from "react";
 import "./../Stack/Stack.css"
+import { DSPage } from "../../components/DSPage/DSPage";
 
 const pythonCode: string =
 `class Queue:
@@ -163,23 +164,34 @@ function QueueSandbox() {
 
 export function Queue() {
 
-    return <AlgoPage 
-        name = "Queue"
-        overview = {
-            [
-                "A queue is a linear data structure that follows the First In First Out (FIFO) principle.",
-            ]
-        }
-        implementations = {implementations}
-        complexity = {{
-            "averageCaseSpace": "O(n)",
-            "averageCaseTime": "O(1)",
-            "bestCaseSpace": "O(n)",
-            "bestCaseTime": "O(1)",
-            "worstCaseSpace": "O(n)",
-            "worstCaseTime": "O(1)"
-        }}
-        sandbox = {QueueSandbox}
-    />
+    return (
+        <DSPage
+            name={"Queue"}
+            overview={
+                [
+                    "A queue is a linear data structure that follows the FIFO (First In First Out) principle.",
+                    "The first element to be inserted into the queue is the first one to be removed.",
+                    "A queue is an abstract data type with the following operations:",
+                    "enqueue(item): Add an item to the end of the queue.",
+                    "dequeue(): Remove the first item from the queue.",
+                ]
+            }
+            operations={
+                [
+                    {
+                        name: "enqueue",
+                        timeComplexity: "O(1)",
+                        description: ["Adds an element to the end of the queue."]
+                    },
+                    {
+                        name: "dequeue",
+                        timeComplexity: "O(1)",
+                        description: ["Removes the first element from the queue."]
+                    }
+                ]
+            }
+            implementations={[]}
+            sandbox={QueueSandbox}/>
+    )
 
 }
