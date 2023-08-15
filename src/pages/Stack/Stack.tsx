@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AlgoPage, Implementation } from "../../components/AlgoPage/AlgoPage";
 import { ArrayDisplay, ElementProps } from "../../components/sandboxUtils/sandboxUtils";
 import "./Stack.css"
+import { DSPage } from "../../components/DSPage/DSPage";
 
 
 function push(elements: ElementProps[], setElements: Function, element: number) {
@@ -155,23 +156,34 @@ function StackSandbox() {
 
 export function Stack() {
 
-    return <AlgoPage 
-        name = "Stack"
-        overview = {
-            [
-                "A stack is a data structure that follows the Last In First Out (LIFO) principle. This means that the last element added to the stack will be the first element removed from the stack. Think of a stack of plates. The last plate you put on the stack will be the first plate you take off the stack.",
-            ]
-        }
-        implementations = {implementations}
-        complexity = {{
-            "averageCaseSpace": "O(n)",
-            "averageCaseTime": "O(1)",
-            "bestCaseSpace": "O(n)",
-            "bestCaseTime": "O(1)",
-            "worstCaseSpace": "O(n)",
-            "worstCaseTime": "O(1)"
-        }}
-        sandbox = {StackSandbox}
-    />
+    return (
+        <DSPage
+            name = "Stack"
+            overview = {
+                [
+                    "A stack is a data structure that stores elements in a last-in-first-out (LIFO) manner.",
+                    "This means that the last element added to the stack will be the first element removed from the stack."
+                ]
+            }
+            operations = {
+                [
+                    {
+                        "name": "Push",
+                        "description": ["Adds an element to the top of the stack."],
+                        "timeComplexity": "O(1)"
+                    },
+                    {
+                        "name": "Pop",
+                        "description": ["Removes the top element from the stack and returns it."],
+                        "timeComplexity": "O(1)"
+                    }
+                ]
+            }
+            implementations = {
+                implementations
+            }
+            sandbox = {StackSandbox}
+        />
+    )
 
 }
