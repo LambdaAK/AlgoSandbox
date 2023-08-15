@@ -2,6 +2,7 @@ import { useState } from "react"
 import "./"
 import Nav from "../nav/Nav"
 import { AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState } from "../AlgoPage/AlgoPage"
+import { AnimatePresence } from "framer-motion"
 
 
 interface OperationProps {
@@ -68,10 +69,12 @@ export function DSPage(props: DSPageProps) {
                     selected = {pageState}
                 />
             </div>
+            <AnimatePresence>
             {pageState === PageState.Overview && <OverViewComponent overview = {props.overview} key = "0"/>}
-            {pageState === PageState.Implementations && <ImplementationsComponent implementations={props.implementations} key = "2"/>}
-            {pageState === PageState.Operations && <OperationsComponent operations = {props.operations} key = "3"/>}
-            {pageState === PageState.Sandbox && <props.sandbox {...props} key = "4"/>}
+            {pageState === PageState.Implementations && <ImplementationsComponent implementations={props.implementations} key = "1"/>}
+            {pageState === PageState.Operations && <OperationsComponent operations = {props.operations} key = "2"/>}
+            {pageState === PageState.Sandbox && <props.sandbox {...props} key = "3"/>}
+            </AnimatePresence>
         </div>
     )
 }
