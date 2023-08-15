@@ -71,7 +71,7 @@ interface AlgoHeaderProps {
     name: string
 }
 
-function AlgoHeader(props: AlgoHeaderProps) {
+export function AlgoHeader(props: AlgoHeaderProps) {
     return (
         <div className = "algo-header">
             {props.name}
@@ -194,7 +194,6 @@ function LanguageButton(props: LanguageButtonProps) {
         </div>
     )
 }
-
 
 export function AlgoPage(props: AlgoPageProps) {
 

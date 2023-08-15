@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Nav from "../nav/Nav"
-import { AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState, animationData } from "../AlgoPage/AlgoPage"
+import { AlgoHeader, AlgoNavButton, ComplexityComponent, Implementation, ImplementationsComponent, OverViewComponent, PageState, animationData } from "../AlgoPage/AlgoPage"
 import { AnimatePresence, motion } from "framer-motion"
 import "./DSPage.css"
 
@@ -64,6 +64,7 @@ export function DSPage(props: DSPageProps) {
         <div className = "algo-page">
             <Nav/>
 
+            <AlgoHeader name = {props.name}/>
             <div className = "algo-nav">
                 <AlgoNavButton
                     text = "Overview"

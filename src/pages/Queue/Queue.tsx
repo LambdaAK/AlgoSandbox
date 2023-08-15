@@ -190,7 +190,7 @@ export function Queue() {
                     }
                 ]
             }
-            implementations={[]}
+            implementations={implementations}
             sandbox={QueueSandbox}/>
     )
 
