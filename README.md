@@ -17,6 +17,8 @@ AlgoSandbox is a powerful tool designed to help you grasp complex algorithms and
 <br><br><br><br>
 # Left bisect in action
 ![Left bisect in action](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/left_bisect.png?raw=true)
+# Queue sandbox
+![Queue sandbox](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/queue.png?raw=true)
 <br><br><br><br>
 # Insertion sort implementation
 ![Insertion sort implementation](https://github.com/LambdaAK/AlgoSandbox/blob/main/readme%20pictures/insertion_sort.png?raw=true)
