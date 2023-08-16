@@ -130,7 +130,7 @@ function createPushAnimation(elements: ElementProps[], element: number) {
             properties: index == 0 ? [Property.Primary] : []
         }
     })
-    const secondFrame = e.map((element: ElementProps, index: number) => {
+    const secondFrame = e.map((element: ElementProps) => {
         return {
             value: element.value,
             properties: []

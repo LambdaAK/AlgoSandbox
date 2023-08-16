@@ -2,11 +2,12 @@
   box-shadow: 0 30px 30px hsla(0, 0%, 0%, 0.25);
   border-radius: 8px;
   padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
-  gap: 0.5rem;
+  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .array-input {
