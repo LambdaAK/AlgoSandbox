@@ -17,16 +17,20 @@ export const animationData: object = {
     },
     animate: {
         opacity: 1,
-        x: 0
+        transition: {
+            delay: 0.5, // Delay for the "in" animation
+            duration: 0.5,
+            ease: "easeInOut",
+        },
+        x:0
     },
     exit: {
         opacity: 0,
-        x: 100
-    },
-    transition: {
-        duration: 0.5,
-        delay: 0.5,
-        ease: "easeInOut"
+        transition: { // out animation has no delay
+            duration: 0.5,
+            ease: "easeInOut",
+        },
+        x:100
     }
 }
 
@@ -211,7 +215,6 @@ export function AlgoPage(props: AlgoPageProps) {
                 <AlgoNavButton text = "Sandbox" value = {PageState.Sandbox} setter = {setPageState} selected = {pageState}/>
             </div>
             <AnimatePresence>
-            
                 {pageState === PageState.Overview && <OverViewComponent overview = {props.overview} key = "0"/>}
                 {pageState === PageState.Complexity && <ComplexityComponent complexity = {props.complexity} key = "1"/>}
                 {pageState === PageState.Implementations && <ImplementationsComponent implementations = {props.implementations} key = "2"/>}
