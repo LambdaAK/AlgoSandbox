@@ -16,6 +16,7 @@ import RightBisect from '../pages/RightBisect/RightBisect'
 import { BubbleSort } from '../pages/BubbleSort/BubbleSort'
 import { Stack } from '../pages/Stack/Stack'
 import { Queue } from '../pages/Queue/Queue'
+import WeightedIntervalScheduler from '../pages/WeightedIntervalScheduler/WeightedIntervalScheduler'
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path = "/rightbisect" element = {<RightBisect/>}/>
         <Route path = "/stack" element = {<Stack/>}/>
         <Route path = "/queue" element = {<Queue/>}/>
+        <Route path = "/weightedintervalscheduler" element = {<WeightedIntervalScheduler/>}/>
       </Routes>
     </BrowserRouter>
   )

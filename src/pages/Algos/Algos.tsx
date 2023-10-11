@@ -202,6 +202,12 @@ const algoInfos: AlgoInfo[] = [
         desc: "A data structure that stores elements in a first-in-first-out manner.",
         icons: ["Data Structure"],
         dir: "/queue"
+    },
+    {
+        name: "Weighted Interval Scheduler",
+        desc: "placeholder",
+        icons: [],
+        dir: "/weightedintervalscheduler"
     }
 ]
 
