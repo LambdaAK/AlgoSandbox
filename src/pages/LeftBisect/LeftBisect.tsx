@@ -3,7 +3,7 @@ import { ArraySearchSandbox, ArraySearchSandboxState } from "../../components/Ar
 import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 
 const pythonCode: string =
-`def left_bisect(arr, target):
+    `def left_bisect(arr, target):
     left = 0
     right = len(arr) - 1
     while left < right:
@@ -19,7 +19,7 @@ const pythonCode: string =
 `
 
 const javaCode: string =
-`public static int leftBisect(int[] arr, int target) {
+    `public static int leftBisect(int[] arr, int target) {
     int left = 0;
     int right = arr.length - 1;
     while (left < right) {
@@ -35,7 +35,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`#include <iostream>
+    `#include <iostream>
 using namespace std;
 
 int leftBisect(int arr[], int n, int target) {
@@ -55,7 +55,7 @@ int leftBisect(int arr[], int n, int target) {
 `
 
 const jsCode: string =
-`function leftBisect(arr, target) {
+    `function leftBisect(arr, target) {
     let left = 0;
     let right = arr.length - 1;
     while (left < right) {
@@ -229,7 +229,7 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySe
     }
     else {
         const newDialog: string = `Target value ${target} not found.`
-        const newElements: ElementProps[] = inputArray.map((val: number, index: number) => {
+        const newElements: ElementProps[] = inputArray.map((val: number) => {
             return {
                 value: val,
                 properties: []
@@ -247,14 +247,14 @@ function leftBisectStateGenerator(inputArray: number[], target: number): ArraySe
             }
         })
     }
-    
+
     return states
 
 }
 
 const LeftBisectSandbox = () => {
     return (
-        <ArraySearchSandbox name = "Linear Search" stateGenerator = {leftBisectStateGenerator} />
+        <ArraySearchSandbox name="Linear Search" stateGenerator={leftBisectStateGenerator} />
     )
 }
 
@@ -267,7 +267,7 @@ const props: AlgoPageProps = {
     ],
     implementations: implementations,
     complexity: complexity,
-    sandbox: () => <LeftBisectSandbox/>
+    sandbox: () => <LeftBisectSandbox />
 }
 
 export default () => <AlgoPage {...props} />

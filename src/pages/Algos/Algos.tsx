@@ -1,18 +1,14 @@
-import HomeButton from "../../components/homebutton/HomeButton"
-import Home from "../Home/Home"
 import Algo from "../../components/algo/Algo"
 import "./Algos.css"
 import Nav from "../../components/nav/Nav"
-import SortText, { Sort, Order, Size } from "../../components/SortText/SortText"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 
-
-function Search(props: {setQuery: (query: string) => void}) {
+function Search(props: { setQuery: (query: string) => void }) {
     return (
-        <input type="text" className = "search" placeholder = "Search"
-            onChange = {
+        <input type="text" className="search" placeholder="Search"
+            onChange={
                 (e) => {
                     props.setQuery(e.target.value)
                 }
@@ -21,7 +17,7 @@ function Search(props: {setQuery: (query: string) => void}) {
     )
 }
 
-function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean, selectedTags: string[], setSelectedTags: (tags: string[]) => void}) {
+function TagsModal(props: { setOpen: (open: boolean) => void, open: boolean, selectedTags: string[], setSelectedTags: (tags: string[]) => void }) {
 
 
     const addTag = (tag: string) => {
@@ -35,30 +31,30 @@ function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean, sele
     }
 
     const inside = (
-        <motion.div className = "tags-modal"
-            initial = {{
+        <motion.div className="tags-modal"
+            initial={{
                 opacity: 0,
                 y: -100
             }}
-            animate = {{
+            animate={{
                 opacity: 1,
                 y: 0
             }}
-            exit = {{
+            exit={{
                 opacity: 0,
                 y: 100
             }}
         >
-            <div className = "tags-modal-exit-button"
-            onClick = {
-                () => {
-                    props.setOpen(false)
+            <div className="tags-modal-exit-button"
+                onClick={
+                    () => {
+                        props.setOpen(false)
+                    }
                 }
-            }
             >
                 Exit
             </div>
-            <div style = {
+            <div style={
                 {
                     display: "flex",
                     flexDirection: "row",
@@ -70,10 +66,10 @@ function TagsModal(props: {setOpen: (open: boolean) => void, open: boolean, sele
                     tags.map((tag: string) => {
                         return (
                             <Tag
-                                tagName = {tag}
-                                addTag = {addTag}
-                                removeTag = {removeTag}
-                                selectedTags = {props.selectedTags}
+                                tagName={tag}
+                                addTag={addTag}
+                                removeTag={removeTag}
+                                selectedTags={props.selectedTags}
                             />
                         )
                     })
@@ -102,23 +98,23 @@ const tags: string[] = [
     "Data Structure"
 ]
 
-function TagsButton(props: {toggleTagsOpen: () => void}) {
+function TagsButton(props: { toggleTagsOpen: () => void }) {
     return (
-        <div className = "tags-button"
-            onClick = {props.toggleTagsOpen}
+        <div className="tags-button"
+            onClick={props.toggleTagsOpen}
         >
             Tags
         </div>
     )
 }
 
-function Tag(props: {tagName: string, addTag: (tag: string) => void, removeTag: (tag: string) => void, selectedTags: string[]}) {
+function Tag(props: { tagName: string, addTag: (tag: string) => void, removeTag: (tag: string) => void, selectedTags: string[] }) {
     return (
-        <div className = {"tag " + (() => {
+        <div className={"tag " + (() => {
             if (props.selectedTags.includes(props.tagName)) return "tag-selected"
             else return ""
         })()}
-            onClick = {
+            onClick={
                 () => {
                     if (props.selectedTags.includes(props.tagName)) {
                         props.removeTag(props.tagName)
@@ -202,12 +198,6 @@ const algoInfos: AlgoInfo[] = [
         desc: "A data structure that stores elements in a first-in-first-out manner.",
         icons: ["Data Structure"],
         dir: "/queue"
-    },
-    {
-        name: "Weighted Interval Scheduler",
-        desc: "placeholder",
-        icons: [],
-        dir: "/weightedintervalscheduler"
     }
 ]
 
@@ -243,8 +233,8 @@ export default function Algos() {
 
     return (
         <>
-        <Nav/>
-        <div id = "a" style = {
+            <Nav />
+            <div id="a" style={
                 {
                     display: "flex",
                     flexDirection: "row",
@@ -257,63 +247,63 @@ export default function Algos() {
                     width: "fit-content"
                 }
             }>
-                <Search setQuery = {setQuery}/>
+                <Search setQuery={setQuery} />
                 <TagsButton toggleTagsOpen={
                     () => setTagsOpen(!tagsOpen)
-                }/>
+                } />
             </div>
-        <div className = {"algos-page " + (() => {
-            if (tagsOpen) return "algos-page-modal-activated"
-            else return ""
-        })()}>
-        
-            <div className = "algos-container">
-                {
-                    algoInfos
-                    .filter((algoInfo: AlgoInfo) => {
-                        if (selectedTags.length === 0) return true
-                        else {
-                            for (let i = 0; i < selectedTags.length; i++) {
-                                if (!algoInfo.icons.includes(selectedTags[i])) return false
-                            }
-                            return true
-                        }
-                    })
-                    .filter((algoInfo: AlgoInfo) => {
-                        if (query.length === 0) return true
-                        else {
-                            for (let i = 0; i < terms.length; i++) {
-                                const termsInName: string[] = algoInfo.name.toLowerCase().split(" ")
-                                const termsInQuery = query.toLowerCase().split(" ").filter((term: string) => term.length > 0 && term !== " ")
-                                // the algo should be included if all the terms in the query are in the name
-                                
-                                for (let j = 0; j < termsInQuery.length; j++) {
-                                    if (!termsInName.includes(termsInQuery[j])) {
-                                        return false
+            <div className={"algos-page " + (() => {
+                if (tagsOpen) return "algos-page-modal-activated"
+                else return ""
+            })()}>
+
+                <div className="algos-container">
+                    {
+                        algoInfos
+                            .filter((algoInfo: AlgoInfo) => {
+                                if (selectedTags.length === 0) return true
+                                else {
+                                    for (let i = 0; i < selectedTags.length; i++) {
+                                        if (!algoInfo.icons.includes(selectedTags[i])) return false
                                     }
+                                    return true
                                 }
-                                return true
-                            }
-                            return false
-                        }
-                    })
-                    .map((algoInfo: AlgoInfo) => {
-                        return (
-                            <Algo name = {algoInfo.name} desc = {algoInfo.desc} icons = {algoInfo.icons} dir = {algoInfo.dir}/>
-                        )
-                    })
-                }
+                            })
+                            .filter((algoInfo: AlgoInfo) => {
+                                if (query.length === 0) return true
+                                else {
+                                    for (let i = 0; i < terms.length; i++) {
+                                        const termsInName: string[] = algoInfo.name.toLowerCase().split(" ")
+                                        const termsInQuery = query.toLowerCase().split(" ").filter((term: string) => term.length > 0 && term !== " ")
+                                        // the algo should be included if all the terms in the query are in the name
+
+                                        for (let j = 0; j < termsInQuery.length; j++) {
+                                            if (!termsInName.includes(termsInQuery[j])) {
+                                                return false
+                                            }
+                                        }
+                                        return true
+                                    }
+                                    return false
+                                }
+                            })
+                            .map((algoInfo: AlgoInfo) => {
+                                return (
+                                    <Algo name={algoInfo.name} desc={algoInfo.desc} icons={algoInfo.icons} dir={algoInfo.dir} />
+                                )
+                            })
+                    }
+                </div>
+
             </div>
-            
-        </div>
-        <TagsModal
-            open = {tagsOpen}
-            setOpen = {
-                (open: boolean) => setTagsOpen(open)
-            }
-            selectedTags = {selectedTags}
-            setSelectedTags = {setSelectedTags}
-        />
+            <TagsModal
+                open={tagsOpen}
+                setOpen={
+                    (open: boolean) => setTagsOpen(open)
+                }
+                selectedTags={selectedTags}
+                setSelectedTags={setSelectedTags}
+            />
         </>
     )
 }

@@ -1,10 +1,10 @@
-
+// @ts-nocheck
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
 import { ArraySearchSandbox, ArraySearchSandboxState } from "../../components/ArraySearchSandbox/ArraySearchSandbox";
 import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 
 const pythonCode: string =
-`def right_bisect(arr, x):
+    `def right_bisect(arr, x):
 left, right = 0, len(arr)
 
 while left < right:
@@ -16,10 +16,10 @@ while left < right:
         left = mid + 1
         
 return left
-`         
+`
 
 const javaCode: string =
-`public class RightBisect {
+    `public class RightBisect {
     public static int rightBisect(int[] arr, int x) {
         int left = 0;
         int right = arr.length;
@@ -40,7 +40,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`using namespace std;
+    `using namespace std;
 
 int rightBisect(int arr[], int size, int x) {
     int left = 0;
@@ -61,7 +61,7 @@ int rightBisect(int arr[], int size, int x) {
 `
 
 const jsCode: string =
-`function rightBisect(arr, x) {
+    `function rightBisect(arr, x) {
     let left = 0;
     let right = arr.length;
 
@@ -131,7 +131,7 @@ function rightBisectStateGenerator(inputArray: number[], target: number): ArrayS
                     mid: -1,
                     right: -1,
                     "search space": -1
-                }  
+                }
             }
         )
         return states
@@ -272,14 +272,14 @@ function rightBisectStateGenerator(inputArray: number[], target: number): ArrayS
             }
         })
     }
-    
+
     return states
 
 }
 
 const RightBisectSandbox = () => {
     return (
-        <ArraySearchSandbox name = "Linear Search" stateGenerator = {rightBisectStateGenerator} />
+        <ArraySearchSandbox name="Linear Search" stateGenerator={rightBisectStateGenerator} />
     )
 }
 
@@ -292,7 +292,7 @@ const props: AlgoPageProps = {
     ],
     implementations: implementations,
     complexity: complexity,
-    sandbox: () => <RightBisectSandbox/>
+    sandbox: () => <RightBisectSandbox />
 }
 
 export default () => <AlgoPage {...props} />

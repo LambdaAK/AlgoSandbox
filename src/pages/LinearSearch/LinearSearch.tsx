@@ -1,10 +1,10 @@
 import { AlgoPage, AlgoPageProps, Implementation, Complexity } from "../../components/AlgoPage/AlgoPage";
-import { ArraySearchSandbox, ArraySearchSandboxProps, ArraySearchSandboxState } from "../../components/ArraySearchSandbox/ArraySearchSandbox";
+import { ArraySearchSandbox, ArraySearchSandboxState } from "../../components/ArraySearchSandbox/ArraySearchSandbox";
 import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 
 
 const pythonCode: string =
-`def linear_search(arr, target):
+    `def linear_search(arr, target):
     for i in range(len(arr)):
         if arr[i] == target:
             return i
@@ -12,7 +12,7 @@ const pythonCode: string =
 `
 
 const javaCode: string =
-`public static int linearSearch(int[] arr, int target) {
+    `public static int linearSearch(int[] arr, int target) {
     for (int i = 0; i < arr.length; i++) {
         if (arr[i] == target) {
             return i;
@@ -23,7 +23,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`int linearSearch(int arr[], int n, int target) {
+    `int linearSearch(int arr[], int n, int target) {
     for (int i = 0; i < n; i++) {
         if (arr[i] == target) {
             return i;
@@ -34,7 +34,7 @@ const cppCode: string =
 `
 
 const jsCode: string =
-`function linearSearch(arr, target) {
+    `function linearSearch(arr, target) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === target) {
             return i;
@@ -104,7 +104,11 @@ const linearSearchStateGenerator = (inputArray: number[], target: number): Array
             const dialog: string = `Target found at index ${i}`
             states.push({
                 dialog: dialog,
-                elements: elements
+                elements: elements,
+                statistics: {
+                    comparisons: i + 1,
+                    "search space": i + 1
+                }
             })
             break
         }
@@ -123,14 +127,18 @@ const linearSearchStateGenerator = (inputArray: number[], target: number): Array
                             else {
                                 return []
                             }
-                        })() 
+                        })()
                 }
             })
 
             const dialog: string = `Searching for target ${target} at index ${i}`
             states.push({
                 dialog: dialog,
-                elements: elements
+                elements: elements,
+                statistics: {
+                    comparisons: i + 1,
+                    "search space": inputArray.length - i
+                }
             })
         }
 
@@ -145,7 +153,11 @@ const linearSearchStateGenerator = (inputArray: number[], target: number): Array
         const dialog: string = `Target not found`
         states.push({
             dialog: dialog,
-            elements: elements
+            elements: elements,
+            statistics: {
+                comparisons: inputArray.length,
+                "search space": inputArray.length
+            }
         })
     }
 
@@ -154,7 +166,7 @@ const linearSearchStateGenerator = (inputArray: number[], target: number): Array
 
 const LinearSearchSandbox = () => {
     return (
-        <ArraySearchSandbox name = "Linear Search" stateGenerator = {linearSearchStateGenerator} />
+        <ArraySearchSandbox name="Linear Search" stateGenerator={linearSearchStateGenerator} />
     )
 }
 
@@ -170,7 +182,7 @@ const props: AlgoPageProps = {
     ],
     implementations: implementations,
     complexity: complexity,
-    sandbox: () => <LinearSearchSandbox/>
+    sandbox: () => <LinearSearchSandbox />
 }
 
 export default function LinearSearch() {

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { AlgoPage, Implementation } from "../../components/AlgoPage/AlgoPage";
-import { ArrayDisplay, ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
+import { Implementation } from "../../components/AlgoPage/AlgoPage";
+import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 import "./Stack.css"
 import { ArrayDisplayAnimator, DSPage } from "../../components/DSPage/DSPage";
 
 
 function push(elements: ElementProps[], setElements: Function, element: number) {
-    const newElements = [{value: element, properties: []}, ...elements]
+    const newElements = [{ value: element, properties: [] }, ...elements]
     setElements(newElements)
 }
 
@@ -19,7 +19,7 @@ function pop(elements: ElementProps[], setElements: Function) {
 
 
 const pythonCode: string =
-`class Stack:
+    `class Stack:
     def __init__(self):
         self.stack = []
     
@@ -33,7 +33,7 @@ const pythonCode: string =
 `
 
 const javaCode: string =
-`class Stack {
+    `class Stack {
     ArrayList<Integer> stack = new ArrayList<Integer>();
 
     public void push(int element) {
@@ -50,7 +50,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`class Stack {
+    `class Stack {
     vector<int> stack;
 
     public:
@@ -70,7 +70,7 @@ const cppCode: string =
 `
 
 const jsCode: string =
-`class Stack {
+    `class Stack {
     constructor() {
         this.stack = [];
     }
@@ -123,7 +123,7 @@ function createPopAnimation(elements: ElementProps[]) {
 }
 
 function createPushAnimation(elements: ElementProps[], element: number) {
-    const e  = [{value: element, properties: []}, ...elements]
+    const e = [{ value: element, properties: [] }, ...elements]
     const firstFrame = e.map((element: ElementProps, index: number) => {
         return {
             value: element.value,
@@ -148,10 +148,10 @@ function StackSandbox() {
     const [animation, setAnimation] = useState<ElementProps[][]>([])
 
     return (
-        <div className = "stack-sandbox">
-            <div className = "operations-box">
-                <div className = "action-group">
-                    <div className = "action-button"
+        <div className="stack-sandbox">
+            <div className="operations-box">
+                <div className="action-group">
+                    <div className="action-button"
                         onClick={
                             () => {
                                 setAnimation(createPopAnimation(elements))
@@ -163,9 +163,9 @@ function StackSandbox() {
                     </div>
                 </div>
 
-                <div className = "action-group">
-                    <div className = "action-button"
-                        onClick = {
+                <div className="action-group">
+                    <div className="action-button"
+                        onClick={
                             () => {
                                 const value = document.querySelector(".action-input") as HTMLInputElement
                                 push(elements, setElements, parseFloat(value.value))
@@ -176,7 +176,7 @@ function StackSandbox() {
                     >
                         Push
                     </div>
-                    <input className = "action-input" type = "text" placeholder = "Value"/>
+                    <input className="action-input" type="text" placeholder="Value" />
                 </div>
 
 
@@ -197,14 +197,14 @@ export function Stack() {
 
     return (
         <DSPage
-            name = "Stack"
-            overview = {
+            name="Stack"
+            overview={
                 [
                     "A stack is a data structure that stores elements in a last-in-first-out (LIFO) manner.",
                     "This means that the last element added to the stack will be the first element removed from the stack."
                 ]
             }
-            operations = {
+            operations={
                 [
                     {
                         "name": "Push",
@@ -218,10 +218,10 @@ export function Stack() {
                     }
                 ]
             }
-            implementations = {
+            implementations={
                 implementations
             }
-            sandbox = {StackSandbox}
+            sandbox={StackSandbox}
         />
     )
 

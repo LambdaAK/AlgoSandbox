@@ -1,10 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from '../pages/Home/Home'
 import "./App.css"
-import Nav from '../components/nav/Nav'
 import Algos from '../pages/Algos/Algos'
 import SelectionSort from '../pages/SelectionSort/SelectionSort'
 import InsertionSort from '../pages/InsertionSort/InsertionSort'
@@ -23,19 +19,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/algos" element={<Algos/>} />
-        <Route path="/selectionsort" element={<SelectionSort/>} />
-        <Route path = "/insertionsort" element = {<InsertionSort/>}/>
-        <Route path = "/mergesort" element = {<MergeSort/>}/>
-        <Route path = "/mergesortiterative" element = {<MergeSortIterative/>}/>
-        <Route path = "/bubblesort" element = {<BubbleSort/>}/>
-        <Route path = "/linearsearch" element = {<LinearSearch/>}/>
-        <Route path = "/leftbisect" element = {<LeftBisect/>}/>
-        <Route path = "/rightbisect" element = {<RightBisect/>}/>
-        <Route path = "/stack" element = {<Stack/>}/>
-        <Route path = "/queue" element = {<Queue/>}/>
-        <Route path = "/weightedintervalscheduler" element = {<WeightedIntervalScheduler/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/algos" element={<Algos />} />
+        <Route path="/selectionsort" element={<SelectionSort />} />
+        <Route path="/insertionsort" element={<InsertionSort />} />
+        <Route path="/mergesort" element={<MergeSort />} />
+        <Route path="/mergesortiterative" element={<MergeSortIterative />} />
+        <Route path="/bubblesort" element={<BubbleSort />} />
+        <Route path="/linearsearch" element={<LinearSearch />} />
+        <Route path="/leftbisect" element={<LeftBisect />} />
+        <Route path="/rightbisect" element={<RightBisect />} />
+        <Route path="/stack" element={<Stack />} />
+        <Route path="/queue" element={<Queue />} />
+        <Route path="/weightedintervalscheduler" element={<WeightedIntervalScheduler />} />
       </Routes>
     </BrowserRouter>
   )

@@ -11,20 +11,20 @@ const jsCode: string = "placeholder"
 
 const implementations: Implementation[] = [
   {
-      language: "python",
-      code: pythonCode
+    language: "python",
+    code: pythonCode
   },
   {
-      language: "java",
-      code: javaCode
+    language: "java",
+    code: javaCode
   },
   {
-      language: "cpp",
-      code: cppCode
+    language: "cpp",
+    code: cppCode
   },
   {
-      language: "javascript",
-      code: jsCode
+    language: "javascript",
+    code: jsCode
   }
 ]
 
@@ -37,7 +37,7 @@ const complexity: Complexity = {
   worstCaseSpace: "O(n)"
 }
 
-function WeightedIntervalSchedulerSandbox(props: object) {
+function WeightedIntervalSchedulerSandbox() {
   return (
     <div>
       Weighted Interval Scheduler Sandbox
@@ -45,6 +45,7 @@ function WeightedIntervalSchedulerSandbox(props: object) {
   )
 }
 
+/*
 interface Interval {
   a: number,
   b: number
@@ -58,8 +59,10 @@ interface WeightedIntervalSchedulerState {
 }
 
 function weightedIntervalSchedulerStateGenerator(input: string): WeightedIntervalSchedulerState[] {
+
   return []
 }
+*/
 
 const props: AlgoPageProps = {
   name: "Weighted Interval Scheduler",
@@ -75,12 +78,12 @@ const props: AlgoPageProps = {
     "placeholder",
   ],
   complexity: complexity,
-  sandbox: () => <WeightedIntervalSchedulerSandbox/>
+  sandbox: () => <WeightedIntervalSchedulerSandbox />
 
 }
 
 export default function WeightedIntervalScheduler() {
   return (
-    <AlgoPage {...props}/>
+    <AlgoPage {...props} />
   )
 }

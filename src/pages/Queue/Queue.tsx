@@ -1,12 +1,12 @@
 import "./Queue.css"
-import { AlgoPage, Implementation } from "../../components/AlgoPage/AlgoPage";
-import { ArrayDisplay, ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
+import { Implementation } from "../../components/AlgoPage/AlgoPage";
+import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 import { useState } from "react";
 import "./../Stack/Stack.css"
 import { ArrayDisplayAnimator, DSPage } from "../../components/DSPage/DSPage";
 
 const pythonCode: string =
-`class Queue:
+    `class Queue:
     def __init__(self):
         self.queue = []
 
@@ -20,7 +20,7 @@ const pythonCode: string =
 `
 
 const javaCode: string =
-`public class Queue {
+    `public class Queue {
     private ArrayList<Integer> queue;
     
     public Queue() {
@@ -41,7 +41,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`class Queue {
+    `class Queue {
     private:
         vector<int> queue;
     public:
@@ -65,7 +65,7 @@ const cppCode: string =
 `
 
 const jsCode: string =
-`class Queue {
+    `class Queue {
     constructor() {
         this.queue = [];
     }
@@ -143,7 +143,7 @@ function createEnqueueAnimation(elements: ElementProps[], value: number): Elemen
 
     const firstState = elements.map(element => {
         return (
-            {...element}
+            { ...element }
         )
     })
 
@@ -154,7 +154,7 @@ function createEnqueueAnimation(elements: ElementProps[], value: number): Elemen
 
     const secondState = elements.map(element => {
         return (
-            {...element}
+            { ...element }
         )
     })
 
@@ -164,7 +164,7 @@ function createEnqueueAnimation(elements: ElementProps[], value: number): Elemen
     })
 
     return [firstState, secondState]
-    
+
 }
 
 
@@ -174,24 +174,24 @@ function QueueSandbox() {
     const [animation, setAnimation] = useState<ElementProps[][]>([])
 
     return (
-        <div className = "stack-sandbox">
-            <div className = "operations-box">
-                <div className = "action-group">
-                    <div className = "action-button"
+        <div className="stack-sandbox">
+            <div className="operations-box">
+                <div className="action-group">
+                    <div className="action-button"
                         onClick={
                             () => {
                                 setAnimation(createDequeueAnimation(elements))
                                 dequeue(elements, setElements)
                             }
-                        }   
+                        }
                     >
                         Dequeue
                     </div>
                 </div>
 
-                <div className = "action-group">
-                    <div className = "action-button"
-                        onClick = {
+                <div className="action-group">
+                    <div className="action-button"
+                        onClick={
                             () => {
                                 const value = document.querySelector(".action-input") as HTMLInputElement
                                 setAnimation([])
@@ -203,7 +203,7 @@ function QueueSandbox() {
                     >
                         Enqueue
                     </div>
-                    <input className = "action-input" type = "text" placeholder = "Value"/>
+                    <input className="action-input" type="text" placeholder="Value" />
                 </div>
 
             </div>
@@ -211,7 +211,7 @@ function QueueSandbox() {
             <ArrayDisplayAnimator
                 frames={animation}
                 setFrames={setAnimation}
-                delay={1000}                
+                delay={1000}
             />
         </div>
     )
@@ -246,7 +246,7 @@ export function Queue() {
                 ]
             }
             implementations={implementations}
-            sandbox={QueueSandbox}/>
+            sandbox={QueueSandbox} />
     )
 
 }

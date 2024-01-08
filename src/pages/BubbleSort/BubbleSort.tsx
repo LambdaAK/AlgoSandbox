@@ -1,10 +1,9 @@
 import { AlgoPage, AlgoPageProps, Complexity, Implementation } from "../../components/AlgoPage/AlgoPage"
 import { ArraySandboxState, ArraySortSandbox } from "../../components/ArraySortSandbox/ArraySortSandbox"
 import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils"
-import { selectionSortStateGenerator } from "../SelectionSort/SelectionSort"
 
 const pythonCode: string =
-`def bubble_sort(arr):
+    `def bubble_sort(arr):
     for i in range(len(arr)):
         for j in range(len(arr) - 1, i, -1):
             if arr[j] < arr[j - 1]:
@@ -12,7 +11,7 @@ const pythonCode: string =
 
 `
 const javaCode: string =
-`public static void bubbleSort(int[] arr) {
+    `public static void bubbleSort(int[] arr) {
     for (int i = 0; i < arr.length; i++) {
         for (int j = arr.length - 1; j > i; j--) {
             if (arr[j] < arr[j - 1]) {
@@ -26,7 +25,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`void bubbleSort(int arr[], int n) {
+    `void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         for (int j = n - 1; j > i; j--) {
             if (arr[j] < arr[j - 1]) {
@@ -40,7 +39,7 @@ const cppCode: string =
 `
 
 const javaScriptCode: string =
-`function bubbleSort(arr) {
+    `function bubbleSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = arr.length - 1; j > i; j--) {
             if (arr[j] < arr[j - 1]) {
@@ -204,11 +203,11 @@ const props: AlgoPageProps = {
         javaScriptImplementation
     ],
     complexity: complexity,
-    sandbox: () => <ArraySortSandbox stateGenerator = {bubbleSortStateGenerator} name = {"Bubble Sort"}/>
+    sandbox: () => <ArraySortSandbox stateGenerator={bubbleSortStateGenerator} name={"Bubble Sort"} />
 }
 
 export const BubbleSort = () => {
     return (
-        <AlgoPage {...props}/>
+        <AlgoPage {...props} />
     )
 }

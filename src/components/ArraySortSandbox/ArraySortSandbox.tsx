@@ -12,13 +12,13 @@ interface InputSectionProps {
 function InputSection(props: InputSectionProps) {
 
     useEffect(() => {
-        
+
         const button: HTMLElement = document.getElementById("run-button") as HTMLElement
         const delayInput: HTMLInputElement = document.getElementById("delay-input") as HTMLInputElement
 
         button.addEventListener("click", () => {
             const arrayInputContent: string = (document.getElementById("array-input") as HTMLInputElement).value
-            const array: number[] = arrayInputContent.split(",").map(e => (e))
+            const array: number[] = arrayInputContent.split(",").map(e => Number(e))
 
             console.log(array)
 
@@ -33,10 +33,10 @@ function InputSection(props: InputSectionProps) {
     }, [])
 
     return (
-        <div className = "input-modal">
-            <ArrayInput/>
-            <DelaySetter/>
-            <RunButton/>
+        <div className="input-modal">
+            <ArrayInput />
+            <DelaySetter />
+            <RunButton />
         </div>
     )
 }
@@ -80,8 +80,8 @@ export function ArraySortSandbox(props: ArraySandboxProps) {
     }, [states])
 
     return (
-        <motion.div className = "array-sandbox" {...animationData}>
-            <InputSection arraySetter={setInputArray} delaySetter={setDelay}/>
+        <motion.div className="array-sandbox" {...animationData}>
+            <InputSection arraySetter={setInputArray} delaySetter={setDelay} />
             <DialogBox content={
                 (() => {
                     if (states.length === 0) {
@@ -91,14 +91,14 @@ export function ArraySortSandbox(props: ArraySandboxProps) {
                         return states[0].dialog
                     }
                 })()
-            }/>
+            } />
             {
                 (() => {
                     if (states.length === 0) {
                         return <div></div>
                     }
                     else {
-                        return <StatisticsBox {...states[0].statistics}/>
+                        return <StatisticsBox {...states[0].statistics} />
                     }
                 })()
             }
@@ -111,7 +111,7 @@ export function ArraySortSandbox(props: ArraySandboxProps) {
                         return states[0].elements
                     }
                 })()
-            }/>
+            } />
         </motion.div>
-    )  
+    )
 }

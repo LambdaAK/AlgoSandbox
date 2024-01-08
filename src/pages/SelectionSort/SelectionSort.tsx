@@ -3,7 +3,7 @@ import { ArraySandboxState, ArraySortSandbox } from "../../components/ArraySortS
 import { ElementProps, Property } from "../../components/sandboxUtils/sandboxUtils";
 
 const pythonCode: string =
-`def selection_sort(arr):
+    `def selection_sort(arr):
     for i in range(len(arr)):
         min_index = i
         for j in range(i + 1, len(arr)):
@@ -13,7 +13,7 @@ const pythonCode: string =
 `
 
 const javaCode: string =
-`public static void selectionSort(int[] arr) {
+    `public static void selectionSort(int[] arr) {
     for (int i = 0; i < arr.length; i++) {
         int minIndex = i;
         for (int j = i + 1; j < arr.length; j++) {
@@ -29,7 +29,7 @@ const javaCode: string =
 `
 
 const cppCode: string =
-`void selectionSort(int arr[], int n) {
+    `void selectionSort(int arr[], int n) {
     for (int i = 0; i < n; i++) {
         int minIndex = i;
         for (int j = i + 1; j < n; j++) {
@@ -45,7 +45,7 @@ const cppCode: string =
 `
 
 const jsCode: string =
-`function selectionSort(arr) {
+    `function selectionSort(arr) {
     for (let i = 0; i < arr.length; i++) {
         let minIndex = i;
         for (let j = i + 1; j < arr.length; j++) {
@@ -209,11 +209,11 @@ const props: AlgoPageProps = {
     ],
     implementations: [pythonImplentation, javaImplentation, cppImplentation, jsImplentation],
     complexity: complexity,
-    sandbox: () => <ArraySortSandbox stateGenerator={selectionSortStateGenerator} name={"Selection Sort"}/>
+    sandbox: () => <ArraySortSandbox stateGenerator={selectionSortStateGenerator} name={"Selection Sort"} />
 }
 
 export default function SelectionSort() {
     return (
-        <AlgoPage {...props}/>
+        <AlgoPage {...props} />
     )
 }
