@@ -42,3 +42,20 @@ $slate: #353535;
     padding: 10px;
 }
 
+@mixin shadow-no-padding {
+    box-shadow: 0 5px 15px hsla(0, 0%, 0%, 0.25);
+    border-radius: 8px;
+}
+
+@mixin shadow-no-shadow {
+    border-radius: 8px;
+    padding: 10px;
+}
+
+@mixin color-shadow {
+    @include shadow-no-padding;
+    border-radius: 10px; 
+    box-shadow:
+    0 0 10px 0px rgba(22, 127, 239, 0.5),   
+    0 0 15px 0px rgba(107, 241, 174, 0.7);   
+}

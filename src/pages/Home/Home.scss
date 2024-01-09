@@ -12,16 +12,18 @@
 }
 
 .desc {
-    @include shadow;
-    font-size: 1rem;
+    @include color-shadow;
+    padding: 10px;
+    font-size: 20px;
 
     @include sm {
-        font-size: 1.2rem;
+        font-size: 25px;
     }
 
     @include md {
-        font-size: 1.5rem;
+        font-size: 30px;
     }
+
 }
 
 .algos-link {

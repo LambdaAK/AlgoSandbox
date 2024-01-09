@@ -5,14 +5,18 @@ import SortText, { Order, Size, Sort } from "../../components/SortText/SortText"
 
 export default function Home() {
     return (
-        <div className = "home-container">
-            <Nav/>
+        <div className="home-container">
+            <Nav />
             <SortText
                 text="AlgoSandbox"
                 sort={Sort.Insertion}
                 order={Order.Descending}
                 size={Size.XL}
             />
+            <div className="desc">
+
+                An interactive algorithm visualizer
+            </div>
         </div>
     )
 }

@@ -163,19 +163,21 @@
     display: flex;
     flex-direction: row;
     width: fit-content;
+    font-size: 20px;
+
+    @include sm {
+        font-size: 25px;
+    }
 }
 
 .statistic-name {
     @include shadow;
     color: $primary-color;
-    font-size: 2rem;
 }
 
 .statistic-value {
     @include shadow;
     color: $secondary-color;
-    font-size: 2rem;
-    
 }
 
 .empty {
